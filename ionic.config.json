@@ -1,0 +1,7 @@
+{
+  "name": "el_mandado",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
