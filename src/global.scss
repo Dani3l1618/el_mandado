@@ -34,4 +34,15 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+// @import '@ionic/angular/css/palettes/dark.system.css';
+
+@import "./styles/utilities.scss";
+@import "./styles/shared.scss";
+@import "./styles/modifiers.scss";
+
+
+html{
+  --ion-dynamic-font: var(--ion-default-dynamic-font);
+  --ion-font-family: "Poppins", 'Comic Sans MS', sans-serif;
+}
+

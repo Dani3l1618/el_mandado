@@ -1,0 +1,11 @@
+<ion-grid>
+  @for (row of rows(); track row.id) {
+    <ion-row>
+      @for (data of row.data; track data.id) {
+        <ion-col size="6">
+          <app-home-card [info]="data" [cssClass]="data.cssClass"/>
+        </ion-col>
+      }
+    </ion-row>
+  }
+</ion-grid>

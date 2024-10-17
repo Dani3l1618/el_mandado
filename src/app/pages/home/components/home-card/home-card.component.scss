@@ -1,0 +1,33 @@
+.card{
+
+  --card-font-size: 1.5rem;
+  --card-data-fs:1em;
+  --card-bg: var(--ion-color-white);
+  --card-color: var(--text-color-sec);
+
+  &--sm{
+    --card-data-fs:0.6em;
+  }
+
+  &--xs{
+    --card-data-fs:0.5em;
+  }
+
+  width: 100%;
+  height: 100%;
+  padding: 7px;
+
+  background-color: var(--card-bg);
+  font-size: var(--card-font-size);
+
+  &__title{
+    color: var(--card-color);
+    font-size: 0.5em;
+  }
+
+  &__data{
+    font-size: var(--card-data-fs);
+    font-weight: 500;
+    letter-spacing: 2px;
+  }
+}

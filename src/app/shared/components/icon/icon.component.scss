@@ -1,0 +1,21 @@
+
+
+.icon {
+  --icon-color: var(--ion-color-primary);
+  --icon-cont-width: 2rem;
+  --icon-cont-heght:2rem;
+  --icon-shape: 50%;
+
+  --icon-width:1em;
+  --icon-height:1em;
+
+  background: var(--icon-color) ;
+  border-radius: var(--icon-shape);
+  width: var(--icon-cont-width);
+  height: var(--icon-cont-heght);
+
+  ion-icon{
+    height: var(--icon-height);
+    width: var(--icon-width);
+  }
+}

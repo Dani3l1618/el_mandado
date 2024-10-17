@@ -1,0 +1,36 @@
+.shadow{
+  --shadow-width: 100%;
+  --shadow-height:.5em;
+  --shadow-color:var(--ion-color-primary);
+
+  position: relative;
+  z-index: 10;
+  &::after{
+    content: "";
+    width: var(--shadow-width);
+    height: var(--shadow-height);
+    color: var(--shadow-color);
+    background: var(--shadow-color);
+    position: absolute;
+    left: 50%;
+    top: var(--shadow-height);
+    translate: -50%;
+    z-index: -10;
+  }
+}
+
+.divider{
+  position: relative;
+  &::before{
+    content: "";
+    background-color: var(--ion-background-color-step-100);
+    // background-color: black;
+    width: 75%;
+    height: 1px;
+    left: 50%;
+    position: relative;
+    translate: -50%;
+    display: block;
+    top: 100%;
+  }
+}
