@@ -1,5 +1,6 @@
 import { Injectable, signal, Signal } from '@angular/core';
 import { HomeRows } from '../models/home-card.model';
+import { HomeListItem } from '../models/home-list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -65,5 +66,25 @@ export class HomeService {
     ];
 
     return signal(rows)
+  }
+
+  getListItems(): Signal<HomeListItem[]> {
+    const items: HomeListItem[] = [
+      {
+        title:"Total gastado",
+        label:"6 meses",
+        data:"12560",
+        icon:"list",
+        id: 1,
+      },
+      {
+        title:"Gasto mensual",
+        label:"promedio",
+        data:"4560",
+        icon:"wallet",
+        id:2
+      }
+    ]
+    return signal(items);
   }
 }

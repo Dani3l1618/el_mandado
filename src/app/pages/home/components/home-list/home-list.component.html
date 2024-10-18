@@ -1,0 +1,17 @@
+<div class="home-list full ion-padding">
+  <ion-list lines="none">
+
+    @for (item of info(); track item.id) {
+      <ion-item>
+        <app-icon [name]="item.icon" slot="start" cssClass="list-icon" color="secondary"/>
+
+        <ion-label>
+          <h3>{{item.title}}</h3>
+          <p class="home-list__label">{{item.label|homeListLabel}}</p>
+        </ion-label>
+        <span class="home-list__data" slot="end">{{item.data|currency:'USD': 'symbol':'1.2-2':'en-US'}}</span>
+
+      </ion-item>
+    }
+  </ion-list>
+</div>

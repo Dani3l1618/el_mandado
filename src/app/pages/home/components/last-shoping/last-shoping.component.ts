@@ -1,32 +1,27 @@
 import { Component, inject, Signal } from '@angular/core';
 import {
   IonCol,
-  IonGrid,
-  IonIcon,
-  IonRow,
-  IonText,
+  IonGrid, IonRow
 } from '@ionic/angular/standalone';
-import { IconComponent } from 'src/app/shared/components/icon/icon.component';
-import { HomePage } from '../../home.page';
-import { HomeRows } from '../../models/home-card.model';
-import { HomeService } from '../../services/home.service';
-import { HomeCardComponent } from '../home-card/home-card.component';
+import { HomeCardComponent } from '..';
+import { HomeService } from '../../services';
+import { HomeRows } from '../../models';
+
+
+const imports = [
+  IonGrid,
+  IonRow,
+  IonCol,
+
+  HomeCardComponent,
+];
 
 @Component({
   selector: 'app-last-shoping',
   templateUrl: './last-shoping.component.html',
   styleUrls: ['./last-shoping.component.scss'],
   standalone: true,
-  imports: [
-    IonCol,
-    IonRow,
-    IonGrid,
-    IonText,
-    IonIcon,
-    IconComponent,
-    HomeCardComponent,
-    HomePage,
-  ],
+  imports,
 })
 export class LastShopingComponent {
   private homeService = inject(HomeService);

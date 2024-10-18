@@ -14,3 +14,4 @@ export type HomeRows = {
   id: number,
   data: [HomeCard, HomeCard]
 }
+

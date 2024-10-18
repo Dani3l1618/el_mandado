@@ -1,0 +1,17 @@
+.home-list{
+  // border: 1px solid fuchsia;
+
+  &__label{
+    font-size: 0.7rem;
+  }
+
+  &__data{
+    font-weight: 600;
+  }
+}
+
+ion-item{
+  margin-bottom: 1rem;;
+  --background: var(--ion-color-primary);
+  --border-radius: 2rem;
+}
