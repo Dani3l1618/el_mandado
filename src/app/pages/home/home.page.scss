@@ -18,7 +18,6 @@
   &__stadistics{
     width: 100%;
     height: calc(100% - var(--home-title-h));
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
   }
@@ -26,22 +25,16 @@
   &__last-shop{
     width: 100%;
     flex: 3;
-    // height: var(--home-last-shop-h);
   }
 
   &__last-month{
     width: 100%;
     flex:2;
-    // overflow-y: auto;
-    // height: var(--home-last-month-h);
-    // background: pink;
   }
 
   &__start{
     width: 100%;
     flex:1;
-    // height: var(--home-start);
-    // background: lavender;
   }
 }
 

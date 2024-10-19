@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {
   IonContent, IonText
 } from '@ionic/angular/standalone';
-import { HomeListComponent, LastShopingComponent } from './components';
+import { HomeListComponent, HomeStartComponent, LastShopingComponent } from './components';
 
 
 
@@ -12,6 +12,7 @@ const imports = [
 
   LastShopingComponent,
   HomeListComponent,
+  HomeStartComponent
 ];
 
 @Component({
