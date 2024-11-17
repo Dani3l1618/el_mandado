@@ -7,4 +7,16 @@ export type IconName =
   | 'calendar-clear'
   | 'pin'
   | 'wallet'
-  | 'list';
+  | 'list'
+  | 'add-outline'
+  | 'add';
+
+export enum IconSrc {
+  addList = 'add-list-g.svg',
+  editList = 'edit-list-g.svg',
+  list = 'list-g.svg',
+  location = 'location-g.svg',
+  history = 'log-g.svg',
+  search = 'search-g.svg',
+  sync = 'sync-g.svg',
+}
