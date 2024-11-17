@@ -5,7 +5,7 @@ export const MENU_ITEMS = [
   {
     iconSrc: IconSrc.addList,
     title: 'Nueva Lista',
-    url: AppRoutes.home,
+    url: AppRoutes.listShop,
     id: '1',
   },
   {
