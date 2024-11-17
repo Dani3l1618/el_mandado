@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
-import {
-  IonContent, IonText
-} from '@ionic/angular/standalone';
+import { IonContent } from '@ionic/angular/standalone';
+import { TitleComponent } from 'src/app/shared';
 import { HomeListComponent, HomeStartComponent, LastShopingComponent } from './components';
 
 
 
 const imports = [
   IonContent,
-  IonText,
 
   LastShopingComponent,
   HomeListComponent,
-  HomeStartComponent
+  HomeStartComponent,
+  TitleComponent,
 ];
 
 @Component({

@@ -20,11 +20,12 @@
     height: calc(100% - var(--home-title-h));
     display: flex;
     flex-direction: column;
+    padding-top: 2rem;
   }
 
   &__last-shop{
     width: 100%;
-    flex: 3;
+    flex: 4;
   }
 
   &__last-month{

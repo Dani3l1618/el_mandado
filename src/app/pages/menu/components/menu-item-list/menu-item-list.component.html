@@ -1,0 +1,9 @@
+<ion-grid>
+  <ion-row>
+    @for (item of menuItems(); track item.id) {
+      <ion-col size="6">
+        <app-menu-item [menuItem]="item"/>
+      </ion-col>
+    }
+  </ion-row>
+</ion-grid>

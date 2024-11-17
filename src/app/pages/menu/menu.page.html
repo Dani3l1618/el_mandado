@@ -1,0 +1,14 @@
+<ion-text class="ion-padding" (click)="goHome()">
+  <h2 class="shadow menu__title">Menu</h2>
+</ion-text>
+
+<ion-content [fullscreen]="true"  class="ion-padding menu">
+
+  <div class="menu__toolbar">
+    <app-menu-config/>
+  </div>
+
+  <div class="full menu__items">
+    <app-menu-item-list [menuItems]="menuItems()" />
+  </div>
+</ion-content>

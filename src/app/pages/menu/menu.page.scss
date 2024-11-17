@@ -1,0 +1,25 @@
+.menu {
+  position: relative;
+  
+  &__title {
+    margin: 0;
+    width: fit-content;
+    padding: 0 0.7rem;
+    transition: all 0.3s;
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__items {
+    display: flex;
+    overflow: auto;
+  }
+
+  &__toolbar {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+}

@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
-import {IonButton} from "@ionic/angular/standalone"
-const imports = [
-  IonButton
-];
+import { Component, inject } from '@angular/core';
+import { IonButton } from '@ionic/angular/standalone';
+import { AppRoutes } from 'src/app/app.routes';
+import { NavigateService } from 'src/app/shared';
+const imports = [IonButton];
 
 @Component({
   selector: 'app-home-start',
   templateUrl: './home-start.component.html',
   styleUrls: ['./home-start.component.scss'],
   standalone: true,
-  imports
+  imports,
 })
-export class HomeStartComponent  {
+export class HomeStartComponent {
+  private navigateService = inject(NavigateService);
 
-  constructor() { }
-
+  navigateToMenu(): void {
+    this.navigateService.navigateTo(AppRoutes.menu);
+  }
 }
