@@ -1,0 +1,11 @@
+.title{
+  --title-spacing:5px;
+  --title-fw: 600;
+
+  letter-spacing: var(--title-spacing);
+
+  h1{
+    font-weight: var(--title-fw);
+    margin: 0;
+  }
+}
