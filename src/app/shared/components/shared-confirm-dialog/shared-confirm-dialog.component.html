@@ -1,0 +1,15 @@
+<app-shared-dialog-header [title]="title"/>
+<ion-content class="confirm-dialog">
+  <div class="ion-padding flex-center">
+    <ion-text class="title ion-text-center">
+      <h5>{{question}}</h5>
+    </ion-text>
+
+    @if(detail){
+      <ion-text class="ion-text-justify detail">
+        <p>{{detail}}</p>
+      </ion-text>
+    }
+  </div>
+</ion-content>
+<app-shared-dialog-footer [actionTxt]="confirmText" (confirm)="onConfirm()"/>

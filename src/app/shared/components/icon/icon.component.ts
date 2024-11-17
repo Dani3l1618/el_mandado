@@ -1,6 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { addIcons } from 'ionicons';
-import { cash, cart, bag, map, calendarClear, logoIonic, pin, wallet, list} from 'ionicons/icons';
+import { Component, computed, input, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { IonIcon, IonSelect } from '@ionic/angular/standalone';
 import { IconName } from '../../models/icon.model';
 import { NgClass } from '@angular/common';
@@ -14,11 +12,18 @@ import { NgClass } from '@angular/common';
   encapsulation: ViewEncapsulation.None
 })
 export class IconComponent {
-  @Input({required:true}) name: IconName = "logo-ionic";
-  @Input() cssClass: string = "";
-  @Input() slot: string = "";
-  @Input() color:string = "";
-  constructor() {
-    addIcons({ cash, cart, bag, map, calendarClear, logoIonic, pin, wallet, list });
-  }
+  private readonly iconPath = "assets/icon/";
+  
+  name = input<IconName>();
+  src = input<string>();
+  cssClass = input<string>();
+  slot = input<string>("");
+  color = input<string>("");
+
+  srcIcon = computed(()=>{
+    if(this.src()=== undefined) return undefined;
+
+    return `${this.iconPath}${this.src()}`
+  })
+
 }

@@ -10,3 +10,44 @@
     --icon-color: var(--ion-background-color);
   }
 }
+
+.menu{
+
+  .menu-item{
+    &__icon{
+      --icon-cont-width: 6rem;
+      --icon-cont-height: unset;
+      --icon-shape: 0;
+      aspect-ratio: 1;
+      --icon-width: 100%;
+      --icon-height:100%;
+      --icon-color: inherent;
+    }
+  }
+
+}
+
+
+ion-modal{
+  --height: 45%;
+  --width: 95%;
+  --border-radius: 16px;
+  backdrop-filter: blur(1px);
+
+  &.modal-md{
+    --height: 70%;
+  }
+ 
+  &.modal-sm{
+    --height: 30%;
+  }
+}
+
+ion-alert{
+  
+  &.input-select{
+    button.alert-button{
+      color: var(--ion-color-secondary);
+    }
+  }
+}
