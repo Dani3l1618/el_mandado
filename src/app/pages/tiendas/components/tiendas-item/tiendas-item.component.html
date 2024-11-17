@@ -1,0 +1,18 @@
+<ion-item-sliding>
+  <ion-item [button]="true" detail="false" class="item-list">
+    <ion-label class="item-list__label">
+      <ion-avatar>
+        <img [alt]="store().chain" [src]="store().img | mediaStore" />
+      </ion-avatar>
+      <strong class="title">{{ store().chain | titlecase }}</strong
+      ><br />
+      <ion-note color="medium" class="ion-text-wrap note">
+        {{store() | adress}}
+      </ion-note>
+    </ion-label>
+    <div class="metadata-end-wrapper" slot="end">
+      <ion-icon color="medium" name="chevron-forward"></ion-icon>
+    </div>
+  </ion-item>
+  <app-shared-list-options (delete)="onDelete()" (edit)="onEdit()"/>
+</ion-item-sliding>

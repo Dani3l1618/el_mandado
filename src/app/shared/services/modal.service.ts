@@ -15,7 +15,7 @@ export class ModalService {
 
     await currentModal.present();
 
-    const { data } = await currentModal.onWillDismiss<R>();
+    const { data } = await currentModal.onDidDismiss<R>();
 
     return data;
   }

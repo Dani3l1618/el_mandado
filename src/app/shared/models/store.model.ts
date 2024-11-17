@@ -7,7 +7,7 @@ export enum StoreChain {
   laComer = 'LaComer',
   bodegaAurrera = 'Bodega Aurrera',
   scorpion = 'Scorpion',
-  none = '',
+  none = 'Otro',
 }
 
 export enum StoreMedia {
@@ -19,5 +19,5 @@ export enum StoreMedia {
   laComer = 'lacomer.png',
   bodegaAurrera = 'ba.svg',
   scorpion = 'scorpion.jpeg',
-  none = '',
+  none = 'none.svg',
 }

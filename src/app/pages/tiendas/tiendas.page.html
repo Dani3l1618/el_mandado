@@ -1,0 +1,18 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="shadow menu__title" size="large">Mis tienditas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-shared-fab (action)="createStore()"/>
+  <ion-list>
+    @for (store of stores(); track store.id) {
+      <app-tiendas-item [store]="store" (delete)="deleteStore($event)" (edit)="editStore($event)"/>
+    }
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,75 @@
+<app-shared-dialog-header [title]="title()" />
+
+<ion-content>
+  <form [formGroup]="storeForm">
+    <ion-item>
+      <ion-select
+        [interfaceOptions]="interfaceOption"
+        label="Cadena Comercial"
+        placeholder="Bodega Aurrera"
+        label-placement="stacked"
+        color="secondary"
+        cancelText="Cancelar"
+        okText="Aceptar"
+        formControlName="chain"
+      >
+        @for (store of storeCatalog(); track store.value) {
+          <ion-select-option [value]="store.value">{{
+            store.text
+          }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        labelPlacement="stacked"
+        label="Calle"
+        placeholder="C. México"
+        formControlName="street"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        labelPlacement="stacked"
+        label="Delegación/Muninicio"
+        placeholder="La Paz"
+        formControlName="city"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        labelPlacement="stacked"
+        label="Colonia"
+        placeholder="Texcoco"
+        formControlName="colonia"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select
+        [interfaceOptions]="interfaceOption"
+        label="Estado"
+        placeholder="Estado de México"
+        label-placement="stacked"
+        color="secondary"
+        cancelText="Cancelar"
+        okText="Aceptar"
+        formControlName="state"
+      >
+        @for (state of stateCatalog(); track state.value) {
+          <ion-select-option [value]="state.value">{{
+            state.text
+          }}</ion-select-option>
+        }
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        labelPlacement="stacked"
+        label="C.P."
+        placeholder="56321"
+        formControlName="postalCode"
+      ></ion-input>
+    </ion-item>
+  </form>
+</ion-content>
+<app-shared-dialog-footer (confirm)="confirm()" [actionTxt]="confirmBtn()"/>
