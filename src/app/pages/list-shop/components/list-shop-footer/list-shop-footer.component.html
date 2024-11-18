@@ -1,0 +1,17 @@
+<ion-footer class="ion-no-border list-shop-footer">
+  <ion-toolbar color="secondary">
+    <div class="budget" slot="start">
+      <ion-text class="label"> Presupuesto </ion-text>
+      <ion-text>
+        {{ budget() | currency: "MXN" }} &VerticalLine;
+        <em class="rest">{{rest() | currency:"MXN"}}</em>
+      </ion-text>
+    </div>
+    <div class="total" slot="end">
+      <ion-text class="label"> Total </ion-text>
+      <ion-text class="total__price" [color]="colorTotal()">
+        {{ total() | currency: "MXN" }}
+      </ion-text>
+    </div>
+  </ion-toolbar>
+</ion-footer>
