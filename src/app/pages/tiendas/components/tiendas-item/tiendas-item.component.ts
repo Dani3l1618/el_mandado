@@ -8,9 +8,13 @@ import {
   IonLabel,
   IonNote,
 } from '@ionic/angular/standalone';
-import { MediaStorePipe, SharedListOptionsComponent } from 'src/app/shared';
+import {
+  AdressPipe,
+  MediaStorePipe,
+  SharedListOptionsComponent,
+} from 'src/app/shared';
 import { Store } from '../../models';
-import { AdressPipe } from '../../pipe';
+
 
 const imports = [
   IonItem,

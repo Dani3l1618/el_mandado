@@ -23,8 +23,12 @@ export * from './models/storage.model';
 export * from './models/store.model';
 
 //.- Pipes
+export { AdressPipe } from './pipes/adress.pipe';
 export { MediaStorePipe } from './pipes/media-store.pipe';
 
 //.- Constans
+export * from './constants/form.config';
 export { ICONS } from './constants/icons';
+export * from './constants/mask.options';
+export * from './constants/state.catalog';
 

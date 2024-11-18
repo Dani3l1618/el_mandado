@@ -5,13 +5,13 @@ export const MENU_ITEMS = [
   {
     iconSrc: IconSrc.addList,
     title: 'Nueva Lista',
-    url: AppRoutes.listShop,
+    url: AppRoutes.newList,
     id: '1',
   },
   {
     iconSrc: IconSrc.editList,
     title: 'Borrador',
-    url: AppRoutes.home,
+    url: AppRoutes.draftList,
     id: '2',
   },
   {

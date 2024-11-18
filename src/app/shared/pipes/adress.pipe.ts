@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Store } from '../models';
+import { Store } from '../../pages/tiendas/models';
 
 @Pipe({
   name: 'adress',

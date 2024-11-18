@@ -1,0 +1,32 @@
+.list-shop-header {
+  --avatar-bkg: var(--ion-color-secondary);
+
+  .list-avatar {
+    background: var(--avatar-bkg);
+    height: 2rem;
+    width: 2rem;
+    margin-left: 0.6rem;
+
+    &--loading {
+      --avatar-bkg: var(--ion-color-primary);
+    }
+  }
+
+  .list-info {
+    ion-text {
+      font-size: 0.65rem;
+      max-width: 10rem;
+      display: inline-block;
+    }
+  }
+
+  ion-skeleton-text {
+    --border-radius: 9999px;
+    --background: var(--ion-color-secondary);
+    --background-rgb: var(--ion-color-secondary-rgb);
+
+    &.sk-text{
+      width: 10rem;
+    }
+  }
+}

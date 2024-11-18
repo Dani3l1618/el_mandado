@@ -37,7 +37,11 @@ ion-modal{
   &.modal-md{
     --height: 70%;
   }
- 
+  
+  &.modal-35{
+    --height: 35%;
+  }
+
   &.modal-sm{
     --height: 30%;
   }

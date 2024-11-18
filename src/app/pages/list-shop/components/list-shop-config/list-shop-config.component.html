@@ -1,0 +1,35 @@
+<app-shared-dialog-header title="Nueva lista"/>
+  <ion-content>
+    <form [formGroup]="configForm">
+      <ion-item>
+        <ion-select
+          [interfaceOptions]="selectOptions"
+          label="Tienda"
+          placeholder="Bodega Aurrera"
+          label-placement="stacked"
+          color="secondary"
+          cancelText="Cancelar"
+          okText="Aceptar"
+          formControlName="storeId"
+        >
+          @for (store of stores(); track store.id) {
+            <ion-select-option [value]="store.id">
+              {{store | listShopStoreSelect}}
+            </ion-select-option>
+          }
+        </ion-select>
+      </ion-item>
+      
+      <ion-item>
+        <ion-input
+        labelPlacement="stacked"
+        label="Presupuesto"
+        placeholder="$2,300.00"
+        formControlName="budget"
+        [maskito]="maskOptions"
+        [maskitoElement]="maskPredicate"
+      ></ion-input>
+      </ion-item>
+    </form>
+  </ion-content>
+<app-shared-dialog-footer (confirm)="confirm()" actionTxt="Aceptar"/>

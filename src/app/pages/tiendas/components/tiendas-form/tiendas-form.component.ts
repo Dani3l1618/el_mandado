@@ -13,6 +13,7 @@ import {
   ModalController,
 } from '@ionic/angular/standalone';
 import {
+  SELECT_INTERFACE_OPTIONS,
   SharedDialogFooterComponent,
   SharedDialogHeaderComponent,
   StoreChain,
@@ -63,9 +64,7 @@ export class TiendasFormComponent {
     ]),
   });
 
-  protected interfaceOption = {
-    cssClass: 'input-select',
-  };
+  protected interfaceOption = SELECT_INTERFACE_OPTIONS;
 
   protected storeCatalog = signal(this.storeService.getStoreCatalog());
   protected stateCatalog = signal(this.storeService.getStateCatalog());

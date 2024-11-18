@@ -1,0 +1,21 @@
+@let store = config()?.store;
+<ion-header class="ion-no-border list-shop-header">
+  <ion-toolbar color="primary">
+    <ion-avatar slot="start" class="list-avatar" [ngClass]="{'list-avatar--loading': isLoading()}">
+      @if (store) {
+        <ion-img [src]="store.img | mediaStore"></ion-img>
+      } @else {
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      }
+    </ion-avatar>
+    <div class="list-info ion-padding-horizontal">
+      <ion-title class="ion-no-padding">{{title()}}</ion-title>
+      @if (store) {
+        <ion-text>{{store | adress}}</ion-text>
+      }@else {
+        <ion-skeleton-text [animated]="true" class="sk-text"></ion-skeleton-text>
+      }
+    </div>
+
+  </ion-toolbar>
+</ion-header>
