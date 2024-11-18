@@ -1,0 +1,16 @@
+<ion-fab slot="fixed" vertical="bottom" horizontal="start">
+  <ion-fab-button size="small">
+    <ion-icon name="chevron-up"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="top">
+    <ion-fab-button color="secondary" (click)="onExit()">
+      <ion-icon name="exit"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="secondary" (click)="onSave()">
+      <ion-icon name="save"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="secondary" (click)="onDone()">
+      <ion-icon name="checkmark-done-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
