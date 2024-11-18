@@ -6,10 +6,15 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { IonFooter, IonText, IonToolbar } from '@ionic/angular/standalone';
+import {
+  IonFooter,
+  IonRippleEffect,
+  IonText,
+  IonToolbar,
+} from '@ionic/angular/standalone';
 import { ListShopService } from '../../services/list-shop.service';
 
-const imports = [IonFooter, IonToolbar, IonText, CurrencyPipe];
+const imports = [IonFooter, IonToolbar, IonText, IonRippleEffect, CurrencyPipe];
 
 @Component({
   selector: 'app-list-shop-footer',
