@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IonChip, IonIcon, IonLabel } from '@ionic/angular/standalone';
-import { interval } from 'rxjs';
+import { interval, tap } from 'rxjs';
 import { TimerPipe } from 'src/app/shared';
 
 const imports = [IonChip, IonIcon, IonLabel, AsyncPipe, TimerPipe];
@@ -15,7 +15,12 @@ const imports = [IonChip, IonIcon, IonLabel, AsyncPipe, TimerPipe];
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListShopTimerComponent {
-  timeInStore = interval(1000);
+  protected timeInStore$ = interval(1000).pipe(tap(() => this._timeInStore++));
+  private _timeInStore = 0;
+
+  get timeInStore() {
+    return this._timeInStore;
+  }
 
   constructor() {
     console.log(
