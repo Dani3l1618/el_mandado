@@ -1,0 +1,4 @@
+<ion-chip color="secondary" class="chip">
+  <ion-icon name="timer" color="secondary"></ion-icon>
+  <ion-label class="chip-label">{{(timeInStore | async) ?? 0 | timer}}</ion-label>
+</ion-chip>

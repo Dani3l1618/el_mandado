@@ -8,7 +8,7 @@
         <ion-skeleton-text [animated]="true"></ion-skeleton-text>
       }
     </ion-avatar>
-    <div class="list-info ion-padding-horizontal">
+    <div slot="start" class="list-info ion-padding-horizontal">
       <ion-title class="ion-no-padding">{{title()}}</ion-title>
       @if (store) {
         <ion-text>{{store | adress}}</ion-text>
@@ -16,6 +16,8 @@
         <ion-skeleton-text [animated]="true" class="sk-text"></ion-skeleton-text>
       }
     </div>
+
+    <app-list-shop-timer slot="end"/>
 
   </ion-toolbar>
 </ion-header>

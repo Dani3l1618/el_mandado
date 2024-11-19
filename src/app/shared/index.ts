@@ -25,6 +25,7 @@ export * from './models/store.model';
 //.- Pipes
 export { AdressPipe } from './pipes/adress.pipe';
 export { MediaStorePipe } from './pipes/media-store.pipe';
+export { TimerPipe } from './pipes/timer.pipe';
 
 //.- Constans
 export * from './constants/form.config';

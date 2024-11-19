@@ -20,6 +20,7 @@ import {
   pencil,
   pin,
   save,
+  timer,
   trash,
   wallet,
 } from 'ionicons/icons';
@@ -48,4 +49,5 @@ export const ICONS = {
   save,
   trash,
   wallet,
+  timer,
 };

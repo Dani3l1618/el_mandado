@@ -11,6 +11,7 @@ import {
 } from '@ionic/angular/standalone';
 import { AdressPipe, MediaStorePipe } from 'src/app/shared';
 import { ListShopService } from '../../services/list-shop.service';
+import { ListShopTimerComponent } from '../list-shop-timer/list-shop-timer.component';
 
 const imports = [
   IonHeader,
@@ -25,6 +26,7 @@ const imports = [
 
   MediaStorePipe,
   AdressPipe,
+  ListShopTimerComponent,
 ];
 
 @Component({
