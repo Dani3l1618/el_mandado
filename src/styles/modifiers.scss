@@ -11,47 +11,56 @@
   }
 }
 
-.menu{
-
-  .menu-item{
-    &__icon{
+.menu {
+  .menu-item {
+    &__icon {
       --icon-cont-width: 6rem;
       --icon-cont-height: unset;
       --icon-shape: 0;
       aspect-ratio: 1;
       --icon-width: 100%;
-      --icon-height:100%;
+      --icon-height: 100%;
       --icon-color: inherent;
     }
   }
-
 }
 
-
-ion-modal{
+ion-modal {
   --height: 45%;
   --width: 95%;
   --border-radius: 16px;
   backdrop-filter: blur(1px);
 
-  &.modal-md{
+  &.modal-md {
     --height: 70%;
   }
-  
-  &.modal-35{
+
+  &.modal-35 {
     --height: 35%;
   }
 
-  &.modal-sm{
+  &.modal-sm {
     --height: 30%;
   }
 }
 
-ion-alert{
-  
-  &.input-select{
-    button.alert-button{
+ion-alert {
+  &.input-select {
+    button.alert-button {
       color: var(--ion-color-secondary);
+    }
+  }
+}
+
+.list-shop-item {
+  .item-btns {
+    .item-btn {
+      --icon-shape: 0;
+      &-minues {
+        // --icon-shape: 0 0 10px 0;
+        --icon-color: var(--ion-color-secondary);
+        --ion-icon-color: var(--ion-color-secondary-contrast);
+      }
     }
   }
 }

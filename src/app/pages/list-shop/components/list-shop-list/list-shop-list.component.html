@@ -1,0 +1,9 @@
+<ion-list lines="none" class="list-shop">
+
+  @for (item of listShop(); track item.id) {
+      <app-list-shop-item [item]="item"/>
+  }
+
+
+</ion-list>
+

@@ -1,0 +1,41 @@
+.list-shop-item {
+  padding: 2px 0;
+  margin-bottom: 5px;
+  --inner-padding-end: 0;
+  --border-color: var(--ion-color-primary);
+  --border-radius: 10px;
+  --border-style: solid;
+  --border-width: 2px;
+  --inner-padding-start:2px;
+  .item-price {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0px 5px;
+    border-radius: 10px;
+
+    .item-total {
+      color: var(--ion-text-color-step-200);
+      font-size: 0.75rem;
+
+      span {
+        font-style: normal;
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  .item-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0 10px 10px 0;
+  }
+
+  app-icon {
+    transition: all 0.2s ease-in-out;
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

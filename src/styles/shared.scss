@@ -39,3 +39,23 @@
     top: 100%;
   }
 }
+
+.separator-v{
+  --separator-v-height: 35px;
+
+  position: relative;
+
+  &::before{
+    content: "";
+    background-color: var(--ion-background-color-step-100);
+    // background-color: black;
+    width: 1px;
+    height: var(--separator-v-height);
+    left: 50%;
+    position: relative;
+    translate: -50%;
+    display: block;
+    top: 100%;
+  }
+}
+

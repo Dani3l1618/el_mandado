@@ -9,6 +9,8 @@ export type IconName =
   | 'wallet'
   | 'list'
   | 'add-outline'
+  | 'add'
+  | 'remove'
   | 'add';
 
 export enum IconSrc {

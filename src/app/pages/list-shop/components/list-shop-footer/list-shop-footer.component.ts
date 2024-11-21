@@ -4,7 +4,6 @@ import {
   Component,
   computed,
   inject,
-  signal,
 } from '@angular/core';
 import {
   IonFooter,
@@ -35,7 +34,7 @@ export class ListShopFooterComponent {
 
   rest = computed(() => this.budget() - this.total());
 
-  total = signal(0); // topar el valor a 9999
+  total = this.listShopService.listShopTotal; // topar el valor a 9999
 
   colorTotal = computed(() => {
     const porcent = (this.total() / this.budget()) * 100;

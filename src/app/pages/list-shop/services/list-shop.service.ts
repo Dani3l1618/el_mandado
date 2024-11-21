@@ -1,10 +1,22 @@
-import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import {
+  computed,
+  inject,
+  Injectable,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { LISTSHOP_ITEMS, SHOP } from 'mocks/mocks';
+import { timer } from 'rxjs';
 import { AppRoutes } from 'src/app/app.routes';
-import { DataService, ModalService } from 'src/app/shared';
+import {
+  DataService,
+  ModalService,
+  SharedConfirmDialogComponent,
+} from 'src/app/shared';
 import { Store } from '../../tiendas/models';
 import { ListShopConfigComponent } from '../components/list-shop-config/list-shop-config.component';
-import { ListShopConfig } from '../models/list-shop.model';
+import { ListShopConfig, ListShopItem } from '../models/list-shop.model';
 
 @Injectable()
 export class ListShopService {
@@ -12,34 +24,56 @@ export class ListShopService {
   private dataService = inject(DataService);
   private modalService = inject(ModalService);
   private stores = signal<Store[]>([]);
-  storeConfig = signal<ListShopConfig | undefined>(undefined);
 
+  storeConfig = signal<ListShopConfig | undefined>(undefined);
   listShopState: WritableSignal<'new' | 'draft'> = signal(
     this.router.url.includes('new-list') ? 'new' : 'draft',
   );
+  listShop = signal<ListShopItem[]>(LISTSHOP_ITEMS);
+  listShopTotal = computed(() => this.totalListShop(this.listShop()));
 
   constructor() {
-    // timer(1000).subscribe(() => {
-    //   this.storeConfig.set({
-    //     store: {
-    //       chain: StoreChain.bodegaAurrera,
-    //       street: 'Av. Texcoco',
-    //       city: 'La Paz',
-    //       colonia: 'Nezahualcoyotl',
-    //       state: 'MEX',
-    //       postalCode: '56514',
-    //       id: '1f74f9f5-4b86-40b9-8560-81df5fb9460a',
-    //       img: StoreMedia.bodegaAurrera,
-    //       lastUpdate: new Date('2024-11-15T23:30:17.440Z'),
-    //     },
-    //     budget: 4200,
-    //   });
-    // });
+    console.log('Constructor!!!');
+    timer(1000).subscribe(() => {
+      this.storeConfig.set(SHOP);
+    });
   }
 
   returnHome() {
     this.router.navigate([AppRoutes.menu]);
   }
+
+  handleListConfigResponse(response: ListShopConfig | undefined): void {
+    if (!response) {
+      this.returnHome();
+      return;
+    }
+
+    this.storeConfig.set(response);
+  }
+
+  //.- Item List management
+
+  addListShopItem(item: ListShopItem) {
+    this.listShop.update((items) => [...items, item]);
+  }
+
+  editListShopItem(itemId: string, newData: Partial<ListShopItem>) {
+    const item = this.listShop().find((item) => item.id === itemId);
+
+    if (!item) return;
+    const itemUpdated = { ...item, ...newData };
+
+    this.listShop.update((items) =>
+      items.map((item) => (item.id === itemId ? itemUpdated : item)),
+    );
+  }
+
+  totalListShop(listShop: ListShopItem[]): number {
+    return listShop.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  }
+
+  //.- Store management
 
   async getStores(): Promise<Store[]> {
     console.log(
@@ -58,6 +92,8 @@ export class ListShopService {
     return stores.find((store) => store.id === storeId);
   }
 
+  //.- Dialogs
+
   async openListConfig(): Promise<ListShopConfig | undefined> {
     const response: ListShopConfig | undefined =
       await this.modalService.openModal({
@@ -70,12 +106,26 @@ export class ListShopService {
     return response;
   }
 
-  handleListConfigResponse(response: ListShopConfig | undefined): void {
-    if (!response) {
-      this.returnHome();
-      return;
-    }
+  async hanldeExit() {
+    const exit = await this.modalService.openModal({
+      component: SharedConfirmDialogComponent,
+      componentProps: {
+        title: 'Cancelar compra',
+        question: '¿Cancelar compra y eliminar la lista?',
+        confirmText: 'Aceptar',
+      },
+      cssClass: 'modal-sm',
+    });
 
-    this.storeConfig.set(response);
+    if (exit) {
+      this.resetListShopState();
+      this.returnHome();
+    }
+  }
+
+  //.- Private
+  private resetListShopState() {
+    this.storeConfig.set(undefined);
+    this.stores.set([]);
   }
 }

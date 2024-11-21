@@ -19,6 +19,7 @@ import {
   map,
   pencil,
   pin,
+  remove,
   save,
   timer,
   trash,
@@ -27,6 +28,7 @@ import {
 
 export const ICONS = {
   add,
+  remove,
   addOutline,
   arrowBackCircle,
   bag,

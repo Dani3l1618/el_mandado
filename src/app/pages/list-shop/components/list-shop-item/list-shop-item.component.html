@@ -1,0 +1,20 @@
+<ion-item class="list-shop-item ion-no-padding">
+  <ion-input
+    placeholder="Artículo N unidad"
+    aria-label="Nombre"
+    [formControl]="itemName"
+  />
+  <span class="separator-v"></span>
+  <div class="item-price" slot="end">
+    <span class="flex-center">
+      {{item().price | currency:'MXN'}}
+      <em class="item-total"> <span>(x{{item().quantity}})&ThickSpace;</span>{{(item().price * item().quantity)| currency:'MXN'}}</em>
+    </span>
+  </div>
+ 
+
+  <div class="item-btns" slot="end">
+    <app-icon name="add" cssClass="item-btn" (click)="modifyQuantity(1)"/>
+    <app-icon name="remove" cssClass="item-btn item-btn-minues" (click)="modifyQuantity(-1)"/>
+  </div>
+</ion-item>
