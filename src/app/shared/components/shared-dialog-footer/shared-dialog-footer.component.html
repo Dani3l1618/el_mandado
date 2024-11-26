@@ -1,7 +1,10 @@
-<ion-footer class="ion-no-border">
+<ion-footer class="ion-no-border shared-footer">
   <ion-toolbar>
     <ion-buttons slot="end">
       <ion-button color="primary" fill="solid" shape="round" (click)="handleConfirm()">{{actionTxt()}}</ion-button>
+      @if (secondTxt()) {
+        <ion-button color="secondary" fill="solid" shape="round" (click)="handleSecondClick()">{{secondTxt()}}</ion-button>
+      }
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>

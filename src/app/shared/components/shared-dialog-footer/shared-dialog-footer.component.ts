@@ -19,8 +19,14 @@ const imports = [IonToolbar, IonButtons, IonButton, IonFooter];
 export class SharedDialogFooterComponent {
   actionTxt = input<string>('Agregar');
   confirm = output<void>();
+  secondClick = output<void>();
+  secondTxt = input<string | null>(null);
 
   handleConfirm() {
     this.confirm.emit();
+  }
+
+  handleSecondClick() {
+    this.secondClick.emit();
   }
 }

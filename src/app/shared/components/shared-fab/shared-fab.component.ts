@@ -13,6 +13,7 @@ export class SharedFabComponent {
   action = output<void>();
   icon = input<string>('add');
   color = input<string>('secondary');
+  size = input<'small' | undefined>(undefined);
 
   onClick() {
     this.action.emit();

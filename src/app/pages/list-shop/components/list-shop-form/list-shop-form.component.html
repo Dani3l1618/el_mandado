@@ -1,0 +1,54 @@
+<app-shared-dialog-header title="Al carrito" />
+<ion-content>
+  <form [formGroup]="itemForm" class="item-form">
+    <ion-item class="form-name">
+      <ion-input
+        labelPlacement="stacked"
+        label="Producto"
+        placeholder="Producto 1lt"
+        formControlName="name"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item class="form-price">
+      <ion-input
+        labelPlacement="stacked"
+        label="Precio"
+        placeholder="$100.00"
+        formControlName="price"
+        [maskito]="maskito.options"
+        [maskitoElement]="maskito.predicate"
+      ></ion-input>
+    </ion-item>
+
+    @if (!unitPrice()) {
+      <ion-item class="form-quantity">
+        <ion-input
+          labelPlacement="stacked"
+          label="Cantidad"
+          formControlName="quantity"
+          type="number"
+          inputmode="numeric"
+          min="1"
+          max="100"
+          step="1"
+        ></ion-input>
+      </ion-item>
+  
+    }
+    
+    <ion-item class="form-check" [class.form-check--checked]="!unitPrice()" lines="none">
+
+      <ion-checkbox
+        [(ngModel)]="unitPrice"
+        [ngModelOptions]="{ standalone: true }"
+        labelPlacement="end"
+        
+      >
+        Precio x unidad</ion-checkbox
+      >
+    </ion-item>
+  </form>
+</ion-content>
+
+<app-shared-dialog-footer actionTxt="Agregar" secondTxt="Siguiente" (confirm)="confirm()" (secondClick)="nexItem()"/>

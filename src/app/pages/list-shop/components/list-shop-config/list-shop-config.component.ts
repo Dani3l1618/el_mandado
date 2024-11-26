@@ -13,11 +13,11 @@ import {
   ModalController,
 } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
-import { MaskitoElementPredicate } from '@maskito/core';
 import { Store } from 'src/app/pages/tiendas/models';
 import {
   AdressPipe,
-  MASK_CURRECY,
+  DataService,
+  MASK_OPTIONS,
   SELECT_INTERFACE_OPTIONS,
   SharedDialogFooterComponent,
   SharedDialogHeaderComponent,
@@ -51,7 +51,8 @@ const imports = [
 export class ListShopConfigComponent {
   private modalController = inject(ModalController);
   private fb = inject(NonNullableFormBuilder);
-  maskOptions = MASK_CURRECY;
+  private dataService = inject(DataService);
+  protected maskitoOpt = MASK_OPTIONS;
 
   configForm = this.fb.group({
     storeId: this.fb.control('', Validators.required),
@@ -59,9 +60,6 @@ export class ListShopConfigComponent {
   });
 
   stores = signal<Store[]>([]);
-
-  readonly maskPredicate: MaskitoElementPredicate = async (el) =>
-    (el as HTMLIonInputElement).getInputElement();
 
   protected selectOptions = SELECT_INTERFACE_OPTIONS;
 
@@ -81,7 +79,7 @@ export class ListShopConfigComponent {
   private parseForm(): ListShopConfig | null {
     const { budget: bg, storeId } = this.configForm.getRawValue();
 
-    const budget = parseFloat(bg.replace(/[^0-9.]/g, ''));
+    const budget = this.dataService.priceStringToNumber(bg);
 
     if (isNaN(budget)) {
       this.configForm.get('budget')?.setErrors({ invalid: true });

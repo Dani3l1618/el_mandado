@@ -1,9 +1,13 @@
 <app-list-shop-header />
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" fixed-slot-placement="before">
   <app-list-shop-fab-actions />
-
-  <app-list-shop-info />
+  <app-shared-fab size="small" color="primary" (action)="openItemForm()"/>
+  @if (false) {
+    <app-list-shop-empty />
+  }@else {
+    <app-list-shop-list/>
+  }
 </ion-content>
 
 <app-list-shop-footer />

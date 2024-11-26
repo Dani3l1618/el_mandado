@@ -16,7 +16,12 @@ import {
 } from 'src/app/shared';
 import { Store } from '../../tiendas/models';
 import { ListShopConfigComponent } from '../components/list-shop-config/list-shop-config.component';
-import { ListShopConfig, ListShopItem } from '../models/list-shop.model';
+import { ListShopFormComponent } from '../components/list-shop-form/list-shop-form.component';
+import {
+  ListShopConfig,
+  ListShopItem,
+  ListShopItemForm,
+} from '../models/list-shop.model';
 
 @Injectable()
 export class ListShopService {
@@ -55,7 +60,7 @@ export class ListShopService {
   //.- Item List management
 
   addListShopItem(item: ListShopItem) {
-    this.listShop.update((items) => [...items, item]);
+    this.listShop.update((items) => [item, ...items]);
   }
 
   editListShopItem(itemId: string, newData: Partial<ListShopItem>) {
@@ -67,6 +72,15 @@ export class ListShopService {
     this.listShop.update((items) =>
       items.map((item) => (item.id === itemId ? itemUpdated : item)),
     );
+  }
+
+  addNewItem(item: ListShopItemForm) {
+    const newItem: ListShopItem = {
+      ...item,
+      id: this.dataService.generateId(),
+    };
+
+    this.addListShopItem(newItem);
   }
 
   totalListShop(listShop: ListShopItem[]): number {
@@ -121,6 +135,15 @@ export class ListShopService {
       this.resetListShopState();
       this.returnHome();
     }
+  }
+
+  async openItemForm() {
+    const newItem = await this.modalService.openModal({
+      component: ListShopFormComponent,
+      componentProps: {
+        listShopService: this,
+      },
+    });
   }
 
   //.- Private

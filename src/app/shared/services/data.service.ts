@@ -42,4 +42,8 @@ export class DataService {
   generateId(): string {
     return uuid.v4();
   }
+
+  priceStringToNumber(price: string): number {
+    return parseFloat(price.replace(/[^0-9.]/g, ''));
+  }
 }

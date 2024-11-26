@@ -9,6 +9,7 @@ export { SharedListOptionsComponent } from './components/shared-list-options/sha
 export { TitleComponent } from './components/title/title.component';
 
 //.- Services
+export { ComputeService } from './services/compute.service';
 export { DataService } from './services/data.service';
 export { MediaService } from './services/media.service';
 export { ModalService } from './services/modal.service';
@@ -18,6 +19,7 @@ export { StateService } from './services/state.service';
 //.- Models
 export * from './models/form.model';
 export * from './models/icon.model';
+export * from './models/maskito.model';
 export * from './models/pipe.model';
 export * from './models/storage.model';
 export * from './models/store.model';
