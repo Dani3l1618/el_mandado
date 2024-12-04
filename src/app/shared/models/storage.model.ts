@@ -1,1 +1,7 @@
-export type StorageKey = 'stores' | 'store' | 'state';
+export type StorageKey =
+  | 'stores'
+  | 'store'
+  | 'state'
+  | 'drafts'
+  | 'currentDraft'
+  | 'listsShop';

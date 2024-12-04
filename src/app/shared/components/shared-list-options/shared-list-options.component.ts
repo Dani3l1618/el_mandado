@@ -1,11 +1,12 @@
-import { Component, output } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, input, output } from '@angular/core';
 import {
   IonIcon,
   IonItemOption,
   IonItemOptions,
 } from '@ionic/angular/standalone';
 
-const imports = [IonItemOptions, IonItemOption, IonIcon];
+const imports = [IonItemOptions, IonItemOption, IonIcon, NgClass];
 @Component({
   selector: 'app-shared-list-options',
   templateUrl: './shared-list-options.component.html',
@@ -14,6 +15,13 @@ const imports = [IonItemOptions, IonItemOption, IonIcon];
   imports,
 })
 export class SharedListOptionsComponent {
+  btnToShow = input<{ delete?: boolean; edit?: boolean }>({
+    delete: true,
+    edit: true,
+  });
+
+  cssClass = input<string>('');
+
   delete = output<void>();
   edit = output<void>();
 
