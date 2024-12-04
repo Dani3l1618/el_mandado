@@ -19,23 +19,28 @@ import { ListShopConfigComponent } from '../components/list-shop-config/list-sho
 import { ListShopFormComponent } from '../components/list-shop-form/list-shop-form.component';
 import {
   ListShopConfig,
+  ListShopDraft,
   ListShopItem,
   ListShopItemForm,
 } from '../models/list-shop.model';
+import { ListShopDataManagerService } from './list-shop-data-manager.service';
 
 @Injectable()
 export class ListShopService {
   private router = inject(Router);
   private dataService = inject(DataService);
   private modalService = inject(ModalService);
+  private dataManager = inject(ListShopDataManagerService);
   private stores = signal<Store[]>([]);
 
-  storeConfig = signal<ListShopConfig | undefined>(undefined);
+  storeConfig = signal<ListShopConfig | undefined>(SHOP);
   listShopState: WritableSignal<'new' | 'draft'> = signal(
     this.router.url.includes('new-list') ? 'new' : 'draft',
   );
-  listShop = signal<ListShopItem[]>(LISTSHOP_ITEMS);
-  listShopTotal = computed(() => this.totalListShop(this.listShop()));
+
+  listItemShop = signal<ListShopItem[]>(LISTSHOP_ITEMS);
+  listShopTotal = computed(() => this.totalListShop(this.listItemShop()));
+  listSaved = this.dataManager.listSaved;
 
   constructor() {
     console.log('Constructor!!!');
@@ -45,6 +50,7 @@ export class ListShopService {
   }
 
   returnHome() {
+    this.resetListShopState();
     this.router.navigate([AppRoutes.menu]);
   }
 
@@ -60,17 +66,22 @@ export class ListShopService {
   //.- Item List management
 
   addListShopItem(item: ListShopItem) {
-    this.listShop.update((items) => [item, ...items]);
+    this.listItemShop.update((items) => [item, ...items]);
   }
 
   editListShopItem(itemId: string, newData: Partial<ListShopItem>) {
-    const item = this.listShop().find((item) => item.id === itemId);
+    const item = this.listItemShop().find((item) => item.id === itemId);
 
     if (!item) return;
     const itemUpdated = { ...item, ...newData };
-
-    this.listShop.update((items) =>
+    this.listItemShop.update((items) =>
       items.map((item) => (item.id === itemId ? itemUpdated : item)),
+    );
+  }
+
+  deleteItem(itemId: string) {
+    this.listItemShop.update((items) =>
+      items.filter((item) => item.id !== itemId),
     );
   }
 
@@ -90,10 +101,6 @@ export class ListShopService {
   //.- Store management
 
   async getStores(): Promise<Store[]> {
-    console.log(
-      '%ctodo: Crear un temporizador, apra ver cuento tiempo llevo en la tienda, e inicia al agregar el primer artículo',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
     const stores = (await this.dataService.getData<Store[]>('stores')) ?? [];
 
     this.stores.set(stores);
@@ -106,9 +113,33 @@ export class ListShopService {
     return stores.find((store) => store.id === storeId);
   }
 
+  async saveListShopOnDrafts() {
+    this.listItemShop.update((items) =>
+      items.filter((item) => item.quantity !== 0),
+    );
+
+    await this.saveDraft();
+
+    await this.dataManager.saveListShopOnDrafts();
+    this.returnHome();
+  }
+
+  async saveDraft() {
+    const listInfo: ListShopDraft = {
+      items: this.listItemShop(),
+      storeConfig: this.storeConfig()!,
+      total: this.listShopTotal(),
+    };
+    await this.dataManager.saveDraftList(listInfo);
+  }
+
   //.- Dialogs
 
   async openListConfig(): Promise<ListShopConfig | undefined> {
+    console.log(
+      '%ctodo: Manejar cuando no haya tiendas',
+      'color: #1a4704; background-color: #d0f0c0;',
+    );
     const response: ListShopConfig | undefined =
       await this.modalService.openModal({
         component: ListShopConfigComponent,
@@ -132,9 +163,21 @@ export class ListShopService {
     });
 
     if (exit) {
-      this.resetListShopState();
       this.returnHome();
     }
+  }
+
+  async openFinishShopConfirmation() {
+    const finish = await this.modalService.openModal({
+      component: SharedConfirmDialogComponent,
+      componentProps: {
+        title: 'Terminar compras',
+        question: '¿Finalizar día de shopping?',
+        confirmText: 'Aceptar',
+      },
+      cssClass: 'modal-sm',
+    });
+    return Boolean(finish);
   }
 
   async openItemForm() {
@@ -150,5 +193,7 @@ export class ListShopService {
   private resetListShopState() {
     this.storeConfig.set(undefined);
     this.stores.set([]);
+    this.listItemShop.set([]);
+    this.dataManager.reset();
   }
 }

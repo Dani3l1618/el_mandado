@@ -13,12 +13,14 @@
     <ion-item class="form-price">
       <ion-input
         labelPlacement="stacked"
-        label="Precio"
         placeholder="$100.00"
         formControlName="price"
         [maskito]="maskito.options"
         [maskitoElement]="maskito.predicate"
-      ></ion-input>
+      >
+      <div slot="label">Precio <ion-text>{{helperPrice()}}</ion-text></div>
+    </ion-input>
+
     </ion-item>
 
     @if (!unitPrice()) {

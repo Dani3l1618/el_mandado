@@ -3,7 +3,7 @@
 <ion-content class="ion-padding" fixed-slot-placement="before">
   <app-list-shop-fab-actions />
   <app-shared-fab size="small" color="primary" (action)="openItemForm()"/>
-  @if (false) {
+  @if (emptyList()) {
     <app-list-shop-empty />
   }@else {
     <app-list-shop-list/>

@@ -24,18 +24,19 @@ export class ListShopFabActionsComponent {
   }
 
   onSave() {
-    console.log(
-      '%ctodo: No hacer nada sino hay items',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
-    console.log('save');
+    if (this.listShopService.listItemShop().length === 0) return;
+    this.listShopService.saveDraft();
   }
+  
+  async onDone() {
+    if (this.listShopService.listItemShop().length === 0) return;
+    const finish = await this.listShopService.openFinishShopConfirmation();
 
-  onDone() {
-    console.log(
-      '%ctodo: No hacer nada sino hay items',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
-    console.log('done');
+    if (!finish) {
+      return this.onSave();
+    }
+
+    this.listShopService.saveListShopOnDrafts();
+
   }
 }

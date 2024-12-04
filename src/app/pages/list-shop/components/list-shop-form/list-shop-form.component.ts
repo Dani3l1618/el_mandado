@@ -1,4 +1,11 @@
-import { Component, effect, inject, model } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  model,
+  OnInit,
+  signal,
+} from '@angular/core';
 import {
   FormsModule,
   NonNullableFormBuilder,
@@ -10,9 +17,11 @@ import {
   IonContent,
   IonInput,
   IonItem,
+  IonText,
   ModalController,
 } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
+import { maskitoTransform } from '@maskito/core';
 import {
   ComputeService,
   DataService,
@@ -28,6 +37,7 @@ const imports = [
   IonCheckbox,
   IonInput,
   IonItem,
+  IonText,
 
   MaskitoDirective,
   ReactiveFormsModule,
@@ -44,12 +54,12 @@ const imports = [
   standalone: true,
   imports,
 })
-export class ListShopFormComponent {
-  private fb = inject(NonNullableFormBuilder);
-  private modalController = inject(ModalController);
+export class ListShopFormComponent implements OnInit {
+  private readonly modalController = inject(ModalController);
+  private readonly dataServce = inject(DataService);
+  private readonly computedService = inject(ComputeService);
+  private readonly fb = inject(NonNullableFormBuilder);
 
-  private dataServce = inject(DataService);
-  private computedService = inject(ComputeService);
   private listShopService!: ListShopService;
 
   protected itemForm = this.fb.group({
@@ -61,14 +71,23 @@ export class ListShopFormComponent {
 
   protected unitPrice = model(true);
   protected readonly maskito = MASK_OPTIONS;
+  protected helperPrice = signal('');
 
   constructor() {
-    effect(() => {
-      const unitPrice = this.unitPrice();
-      if (unitPrice) {
-        this.itemForm.controls.quantity.setValue(1);
-      }
-    });
+    effect(
+      () => {
+        const unitPrice = this.unitPrice();
+        if (unitPrice) {
+          this.itemForm.controls.quantity.setValue(1);
+          this.helperPrice.set('');
+        }
+      },
+      { allowSignalWrites: true },
+    );
+  }
+
+  ngOnInit(): void {
+    this.quantityListener();
   }
 
   confirm() {
@@ -79,6 +98,7 @@ export class ListShopFormComponent {
   nexItem() {
     if (!this.sendItem()) return;
     this.itemForm.reset();
+    this.unitPrice.set(true);
   }
 
   private sendItem(): boolean {
@@ -91,24 +111,59 @@ export class ListShopFormComponent {
 
     if (!newItem) return false;
 
-    this.listShopService.addNewItem({ ...newItem });
+    this.saveItem({ ...newItem });
+
     return true;
   }
 
   private generateItem(): ListShopItemForm | null {
     const { price: pr, ...rest } = this.itemForm.getRawValue();
 
-    let price = this.dataServce.priceStringToNumber(pr);
-
-    if (isNaN(price)) {
-      this.itemForm.get('price')?.setErrors({ invalid: true });
-      return null;
-    }
-
-    if (rest.quantity > 1) {
-      price = this.computedService.unitPrice(price, rest.quantity);
-    }
+    const price = this.getPrice(pr, rest.quantity, () =>
+      this.itemForm.get('price')?.setErrors({ invalid: true }),
+    );
 
     return { ...rest, price };
+  }
+
+  private saveItem(newItem: ListShopItemForm): void {
+    return this.listShopService.addNewItem(newItem);
+  }
+
+  private quantityListener() {
+    const priceForm = this.itemForm.controls.price;
+    const quantityForm = this.itemForm.controls.quantity;
+    this.itemForm.valueChanges.subscribe({
+      next: () => {
+        const quantity = quantityForm.value;
+
+        if (quantity === 1) {
+          this.helperPrice.set('');
+          return;
+        }
+        const price = this.getPrice(priceForm.value, quantity, () =>
+          this.helperPrice.set(''),
+        ).toString();
+
+        this.helperPrice.set(
+          `(${maskitoTransform(price, this.maskito.options)})`,
+        );
+      },
+    });
+  }
+
+  private getPrice(
+    priceStr: string,
+    quantity: number,
+    onError: () => void,
+  ): number {
+    let price = this.dataServce.priceStringToNumber(priceStr);
+
+    if (isNaN(price)) {
+      onError();
+      throw Error('price is not a number');
+    }
+
+    return this.computedService.unitPrice(price, quantity);
   }
 }

@@ -8,18 +8,22 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { IonInput, IonItem } from '@ionic/angular/standalone';
+import { IonInput, IonItem, IonItemSliding } from '@ionic/angular/standalone';
 import { debounceTime } from 'rxjs';
-import { IconComponent } from 'src/app/shared';
+import { IconComponent, SharedListOptionsComponent } from 'src/app/shared';
 import { ListShopItem } from '../../models/list-shop.model';
 import { ListShopService } from '../../services/list-shop.service';
 
 const imports = [
   IonInput,
-  CurrencyPipe,
   IonItem,
-  IconComponent,
+  IonItemSliding,
+
+  CurrencyPipe,
   ReactiveFormsModule,
+
+  IconComponent,
+  SharedListOptionsComponent,
 ];
 
 @Component({
@@ -65,5 +69,9 @@ export class ListShopItemComponent implements OnChanges {
     this.listShopService.editListShopItem(this.item().id, {
       name,
     });
+  }
+
+  deleteItem() {
+    this.listShopService.deleteItem(this.item().id);
   }
 }

@@ -15,5 +15,5 @@ const imports = [IonList, IonItem, ListShopItemComponent];
 export class ListShopListComponent {
   private listShopService = inject(ListShopService);
 
-  listShop = computed(() => this.listShopService.listShop());
+  listShop = computed(() => this.listShopService.listItemShop());
 }
