@@ -180,11 +180,12 @@ export class ListShopService {
     return Boolean(finish);
   }
 
-  async openItemForm() {
+  async openItemForm(item?: ListShopItem) {
     const newItem = await this.modalService.openModal({
       component: ListShopFormComponent,
       componentProps: {
         listShopService: this,
+        itemOnEdit: signal(item),
       },
     });
   }

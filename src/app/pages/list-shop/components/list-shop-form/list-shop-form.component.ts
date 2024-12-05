@@ -29,7 +29,7 @@ import {
   SharedDialogFooterComponent,
   SharedDialogHeaderComponent,
 } from 'src/app/shared';
-import { ListShopItemForm } from '../../models/list-shop.model';
+import { ListShopItem, ListShopItemForm } from '../../models/list-shop.model';
 import { ListShopService } from '../../services/list-shop.service';
 
 const imports = [
@@ -61,6 +61,7 @@ export class ListShopFormComponent implements OnInit {
   private readonly fb = inject(NonNullableFormBuilder);
 
   private listShopService!: ListShopService;
+  private itemOnEdit = signal<ListShopItem | undefined>(undefined);
 
   protected itemForm = this.fb.group({
     name: this.fb.control(''),
@@ -69,21 +70,15 @@ export class ListShopFormComponent implements OnInit {
     barcode: this.fb.control<string | undefined>(undefined),
   });
 
-  protected unitPrice = model(true);
+  protected divedPrice = model(false);
   protected readonly maskito = MASK_OPTIONS;
   protected helperPrice = signal('');
 
   constructor() {
-    effect(
-      () => {
-        const unitPrice = this.unitPrice();
-        if (unitPrice) {
-          this.itemForm.controls.quantity.setValue(1);
-          this.helperPrice.set('');
-        }
-      },
-      { allowSignalWrites: true },
-    );
+    effect(() => {
+      this.divedPrice();
+      this.itemForm.updateValueAndValidity({ emitEvent: true });
+    });
   }
 
   ngOnInit(): void {
@@ -98,7 +93,7 @@ export class ListShopFormComponent implements OnInit {
   nexItem() {
     if (!this.sendItem()) return;
     this.itemForm.reset();
-    this.unitPrice.set(true);
+    this.divedPrice.set(false);
   }
 
   private sendItem(): boolean {
@@ -119,7 +114,7 @@ export class ListShopFormComponent implements OnInit {
   private generateItem(): ListShopItemForm | null {
     const { price: pr, ...rest } = this.itemForm.getRawValue();
 
-    const price = this.getPrice(pr, rest.quantity, () =>
+    const price = this.getPrice(() =>
       this.itemForm.get('price')?.setErrors({ invalid: true }),
     );
 
@@ -131,39 +126,42 @@ export class ListShopFormComponent implements OnInit {
   }
 
   private quantityListener() {
-    const priceForm = this.itemForm.controls.price;
-    const quantityForm = this.itemForm.controls.quantity;
     this.itemForm.valueChanges.subscribe({
-      next: () => {
-        const quantity = quantityForm.value;
-
+      next: ({ quantity }) => {
+        let price = 0;
         if (quantity === 1) {
           this.helperPrice.set('');
           return;
         }
-        const price = this.getPrice(priceForm.value, quantity, () =>
-          this.helperPrice.set(''),
-        ).toString();
+
+        price = this.getPrice(() => this.helperPrice.set(''));
+
+        if (!this.divedPrice()) {
+          price = price * quantity!;
+        }
 
         this.helperPrice.set(
-          `(${maskitoTransform(price, this.maskito.options)})`,
+          `(${maskitoTransform(price.toString(), this.maskito.options)})`,
         );
       },
     });
   }
 
-  private getPrice(
-    priceStr: string,
-    quantity: number,
-    onError: () => void,
-  ): number {
+  private getPrice(onError: () => void): number {
+    const priceStr = this.itemForm.controls.price.value;
+    const quantity = this.itemForm.controls.quantity.value;
+
     let price = this.dataServce.priceStringToNumber(priceStr);
 
     if (isNaN(price)) {
       onError();
-      throw Error('price is not a number');
+      throw Error('Price is not a number');
     }
 
-    return this.computedService.unitPrice(price, quantity);
+    if (this.divedPrice()) {
+      return this.computedService.unitPrice(price, quantity);
+    }
+
+    return price;
   }
 }

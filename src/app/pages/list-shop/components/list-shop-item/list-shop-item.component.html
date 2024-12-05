@@ -1,11 +1,12 @@
 <ion-item-sliding class="list-shop-item-slide">
   <ion-item class="list-shop-item ion-no-padding">
-    <ion-input
-      placeholder="Artículo N unidad"
-      aria-label="Nombre"
-      [formControl]="itemName"
-    />
+
+    <span class="item-name" [class.item-name--empty]="item().name === ''">
+      {{ item().name || "Incierto" }}
+    </span>
+
     <span class="separator-v"></span>
+    
     <div class="item-price" slot="end">
       <span class="flex-center">
         {{ item().price | currency: "MXN" }}
@@ -26,5 +27,9 @@
     </div>
   </ion-item>
 
-  <app-shared-list-options [btnToShow]="{ delete: true }" cssClass="item-delete" (delete)="deleteItem()"/>
+  <app-shared-list-options
+    [btnToShow]="{ delete: true }"
+    cssClass="item-delete"
+    (delete)="deleteItem()"
+  />
 </ion-item-sliding>

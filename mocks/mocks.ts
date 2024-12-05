@@ -3,16 +3,16 @@ import { StoreChain, StoreMedia } from 'src/app/shared';
 export const LISTSHOP_ITEMS = [
   {
     barcode: '7501031311309',
-    name: 'Leche Entera',
-    quantity: 2,
-    price: 18.5,
+    name: 'Leche Entera Deslactosada 1lt',
+    quantity: 4,
+    price: 150,
     id: 'item1',
   },
   {
     barcode: '7501001504013',
     name: 'Arroz Blanco',
-    quantity: 1,
-    price: 25.0,
+    quantity: 4,
+    price: 100.0,
     id: 'item2',
   },
   {
