@@ -11,7 +11,6 @@ export { TitleComponent } from './components/title/title.component';
 //.- Services
 export { ComputeService } from './services/compute.service';
 export { DataService } from './services/data.service';
-export { GestureService } from './services/gesture.service';
 export { MediaService } from './services/media.service';
 export { ModalService } from './services/modal.service';
 export { NavigateService } from './services/navigate.service';

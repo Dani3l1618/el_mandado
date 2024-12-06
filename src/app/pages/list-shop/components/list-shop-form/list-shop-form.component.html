@@ -37,21 +37,33 @@
       ></ion-input>
     </ion-item>
 
-    <ion-item class="form-check" lines="none">
-      <ion-checkbox
-        [(ngModel)]="divedPrice"
-        [ngModelOptions]="{ standalone: true }"
-        labelPlacement="end"
-      >
-        Dividir&nbsp;precio</ion-checkbox
-      >
-    </ion-item>
+    @if(!editMode()){
+
+      <ion-item class="form-check" lines="none">
+        <ion-checkbox
+          [(ngModel)]="divedPrice"
+          [ngModelOptions]="{ standalone: true }"
+          labelPlacement="end"
+        >
+          Dividir&nbsp;precio</ion-checkbox
+        >
+      </ion-item>
+    }
   </form>
 </ion-content>
 
-<app-shared-dialog-footer
+@if(editMode()){
+  <app-shared-dialog-footer
+  actionTxt="Editar"
+  (confirm)="edit()"
+/>
+
+}@else{
+  <app-shared-dialog-footer
   actionTxt="Agregar"
   secondTxt="Siguiente"
   (confirm)="confirm()"
   (secondClick)="nexItem()"
 />
+
+}

@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, viewChild } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonItem, IonItemSliding } from '@ionic/angular/standalone';
 import { IconComponent, SharedListOptionsComponent } from 'src/app/shared';
@@ -26,7 +26,9 @@ const imports = [
 })
 export class ListShopItemComponent {
   private listShopService = inject(ListShopService);
+  private sliding = viewChild(IonItemSliding);
   item = input.required<ListShopItem>();
+
   //todo: pasar la tupla a un objeto.
 
   modifyQuantity(quantity: 1 | -1) {
@@ -39,5 +41,10 @@ export class ListShopItemComponent {
 
   deleteItem() {
     this.listShopService.deleteItem(this.item().id);
+  }
+
+  async editItem() {
+    await this.listShopService.openItemForm(this.item());
+    this.sliding()?.closeOpened();
   }
 }

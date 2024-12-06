@@ -188,6 +188,8 @@ export class ListShopService {
         itemOnEdit: signal(item),
       },
     });
+
+    return newItem;
   }
 
   //.- Private

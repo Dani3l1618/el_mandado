@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   effect,
   inject,
   model,
@@ -62,6 +63,7 @@ export class ListShopFormComponent implements OnInit {
 
   private listShopService!: ListShopService;
   private itemOnEdit = signal<ListShopItem | undefined>(undefined);
+  editMode = computed(() => this.itemOnEdit() !== undefined);
 
   protected itemForm = this.fb.group({
     name: this.fb.control(''),
@@ -78,6 +80,10 @@ export class ListShopFormComponent implements OnInit {
     effect(() => {
       this.divedPrice();
       this.itemForm.updateValueAndValidity({ emitEvent: true });
+
+      if (this.editMode()) {
+        this.updateForm();
+      }
     });
   }
 
@@ -155,7 +161,7 @@ export class ListShopFormComponent implements OnInit {
 
     if (isNaN(price)) {
       onError();
-      throw Error('Price is not a number');
+      return 0;
     }
 
     if (this.divedPrice()) {
@@ -163,5 +169,32 @@ export class ListShopFormComponent implements OnInit {
     }
 
     return price;
+  }
+
+  //.- Edit Mode
+  edit() {
+    if (!this.editMode()) return;
+
+    const { price: pr, ...rest } = this.itemForm.getRawValue();
+    const price = this.getPrice(() =>
+      this.itemForm.get('price')?.setErrors({ invalid: true }),
+    );
+
+    this.listShopService.editListShopItem(this.itemOnEdit()!.id, {
+      price,
+      ...rest,
+    });
+
+    this.modalController.dismiss();
+  }
+
+  private updateForm(): void {
+    if (!this.editMode()) return;
+
+    const { name, quantity, price: pr } = this.itemOnEdit()!;
+
+    const price = maskitoTransform(pr.toString(), MASK_OPTIONS.options);
+
+    this.itemForm.patchValue({ name, price, quantity });
   }
 }

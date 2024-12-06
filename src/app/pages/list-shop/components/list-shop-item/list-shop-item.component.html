@@ -6,8 +6,8 @@
     </span>
 
     <span class="separator-v"></span>
-    
-    <div class="item-price" slot="end">
+
+    <div class="item-price" slot="end" #itemPrice >
       <span class="flex-center">
         {{ item().price | currency: "MXN" }}
         <em class="item-total">
@@ -28,8 +28,8 @@
   </ion-item>
 
   <app-shared-list-options
-    [btnToShow]="{ delete: true }"
     cssClass="item-delete"
     (delete)="deleteItem()"
+    (edit)="editItem()"
   />
 </ion-item-sliding>
