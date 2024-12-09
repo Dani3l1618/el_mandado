@@ -6,8 +6,6 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { LISTSHOP_ITEMS, SHOP } from 'mocks/mocks';
-import { timer } from 'rxjs';
 import { AppRoutes } from 'src/app/app.routes';
 import {
   DataService,
@@ -17,7 +15,9 @@ import {
 import { Store } from '../../tiendas/models';
 import { ListShopConfigComponent } from '../components/list-shop-config/list-shop-config.component';
 import { ListShopFormComponent } from '../components/list-shop-form/list-shop-form.component';
+import { ListShopSelectDraftComponent } from '../components/list-shop-select-draft/list-shop-select-draft.component';
 import {
+  ListShop,
   ListShopConfig,
   ListShopDraft,
   ListShopItem,
@@ -33,21 +33,17 @@ export class ListShopService {
   private dataManager = inject(ListShopDataManagerService);
   private stores = signal<Store[]>([]);
 
-  storeConfig = signal<ListShopConfig | undefined>(SHOP);
+  timeInStore = signal(0);
+  storeConfig = signal<ListShopConfig | undefined>(undefined);
   listShopState: WritableSignal<'new' | 'draft'> = signal(
     this.router.url.includes('new-list') ? 'new' : 'draft',
   );
 
-  listItemShop = signal<ListShopItem[]>(LISTSHOP_ITEMS);
+  listItemShop = signal<ListShopItem[]>([]);
   listShopTotal = computed(() => this.totalListShop(this.listItemShop()));
   listSaved = this.dataManager.listSaved;
 
-  constructor() {
-    console.log('Constructor!!!');
-    timer(1000).subscribe(() => {
-      this.storeConfig.set(SHOP);
-    });
-  }
+  listDrafts = signal<ListShop[]>([]);
 
   returnHome() {
     this.resetListShopState();
@@ -129,8 +125,15 @@ export class ListShopService {
       items: this.listItemShop(),
       storeConfig: this.storeConfig()!,
       total: this.listShopTotal(),
+      time: this.timeInStore(),
     };
     await this.dataManager.saveDraftList(listInfo);
+  }
+
+  async getDrafts(): Promise<void> {
+    const drafts = await this.dataManager.getDrafts();
+
+    this.listDrafts.set(drafts);
   }
 
   //.- Dialogs
@@ -147,6 +150,23 @@ export class ListShopService {
           stores: this.stores,
         },
       });
+
+    return response;
+  }
+
+  async openDraftConfig(): Promise<ListShop | undefined> {
+    console.log(
+      '%ctodo: Manejar cuando no haya draft',
+      'color: #1a4704; background-color: #d0f0c0;',
+    );
+    this.getDrafts();
+    const response: ListShop | undefined = await this.modalService.openModal({
+      component: ListShopSelectDraftComponent,
+      componentProps: {
+        listShopService: this,
+      },
+      cssClass: ['modal-25'],
+    });
 
     return response;
   }

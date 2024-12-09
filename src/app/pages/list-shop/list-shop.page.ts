@@ -40,23 +40,14 @@ export class ListShopPage {
   listShopState = this.listShopService.listShopState;
 
   ionViewDidEnter() {
-    // console.warn('Formulario de lista de compras desactivado!!!');
-    // if (this.listShopState() === 'new') {
-    //   this.getStores();
-    //   this.setListConfig();
-    // }
+    if (this.listShopState() === 'new') {
+      this.getStores();
+      this.setListConfig();
+    } else {
+      this.listShopService.openDraftConfig();
+    }
   }
 
-  constructor() {
-    console.log(
-      '%ctodo: Guardar el tiempo en tienda',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
-    console.log(
-      '%ctodo: Modo edición',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
-  }
 
   protected openItemForm() {
     this.listShopService.openItemForm();

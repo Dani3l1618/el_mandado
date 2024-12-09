@@ -42,6 +42,10 @@ ion-modal {
   &.modal-sm {
     --height: 30%;
   }
+  
+  &.modal-25 {
+    --height: 25%;
+  }
 }
 
 ion-alert {

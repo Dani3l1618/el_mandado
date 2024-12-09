@@ -13,15 +13,15 @@ export interface ListShop {
   storeId: string;
   budget: number;
   total: number;
+  time: number; //Seconds
 }
 
 export interface ListShopDraft {
-  storeConfig: ListShopConfig,
-  items: ListShopItem[],
-  total: number
+  storeConfig: ListShopConfig;
+  items: ListShopItem[];
+  total: number;
+  time: number; //seconds
 }
-
-// export type PartialListShop = Omit<ListShop, 'id'>;
 
 export interface ListShopItem {
   barcode?: string;

@@ -30,6 +30,8 @@ export class ListShopFooterComponent {
     { max: 100, color: 'warning' },
   ];
 
+  listShopState = this.listShopService.listShopState;
+
   budget = computed(() => this.listShopService.storeConfig()?.budget ?? 0.001);
 
   rest = computed(() => this.budget() - this.total());

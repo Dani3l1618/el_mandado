@@ -34,6 +34,7 @@ export class ListShopDataManagerService {
     storeConfig,
     items,
     total,
+    time,
   }: ListShopDraft): ListShop {
     const id = this.currentDraft()?.id ?? this.dataService.generateId();
     const name =
@@ -43,7 +44,7 @@ export class ListShopDataManagerService {
     const storeId = storeConfig.store.id ?? '';
     const budget = storeConfig.budget ?? 0;
 
-    return { id, name, shopDate, storeId, budget, total, items };
+    return { id, name, shopDate, storeId, budget, total, items, time };
   }
 
   reset() {

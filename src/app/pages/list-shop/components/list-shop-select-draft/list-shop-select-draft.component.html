@@ -1,0 +1,23 @@
+<app-shared-dialog-header title="Nueva lista"/>
+  <ion-content>
+      <ion-item>
+        <ion-select
+          [interfaceOptions]="selectOptions"
+          label="Tienda"
+          placeholder="Bodega Aurrera"
+          label-placement="stacked"
+          color="secondary"
+          cancelText="Cancelar"
+          okText="Aceptar"
+          [(ngModel)]="draft"
+          
+        >
+          @for (draft of drafts(); track draft.id) {
+            <ion-select-option   [value]="draft.id">
+              {{draft.name}}
+            </ion-select-option>
+          }
+        </ion-select>
+      </ion-item>
+  </ion-content>
+<app-shared-dialog-footer (confirm)="confirm()" actionTxt="Aceptar"/>
