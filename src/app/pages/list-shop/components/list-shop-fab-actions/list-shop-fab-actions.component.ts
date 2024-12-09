@@ -20,18 +20,19 @@ const imports = [IonFab, IonFabButton, IonFabList, IonIcon];
 export class ListShopFabActionsComponent {
   private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
+  listItemShop = this.state.listItemShop.asReadonly();
 
   onExit() {
     this.listShopService.hanldeExit();
   }
 
   onSave() {
-    if (this.state.listItemShop().length === 0) return;
+    if (this.listItemShop().length === 0) return;
     this.listShopService.saveDraft();
   }
 
   async onDone() {
-    if (this.state.listItemShop().length === 0) return;
+    if (this.listItemShop().length === 0) return;
     const finish = await this.listShopService.openFinishShopConfirmation();
 
     if (!finish) {

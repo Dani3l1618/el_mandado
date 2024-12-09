@@ -12,7 +12,6 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { ListShopStateService } from '../../services/list-shop-state.service';
-import { ListShopService } from '../../services/list-shop.service';
 
 const imports = [IonFooter, IonToolbar, IonText, IonRippleEffect, CurrencyPipe];
 
@@ -25,14 +24,15 @@ const imports = [IonFooter, IonToolbar, IonText, IonRippleEffect, CurrencyPipe];
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListShopFooterComponent {
-  private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
+  private storeConfig = this.state.storeConfig.asReadonly();
+
   private totalColor = [
     { max: 85, color: 'white' },
     { max: 100, color: 'warning' },
   ];
 
-  budget = computed(() => this.state.storeConfig()?.budget ?? 0.001);
+  budget = computed(() => this.storeConfig()?.budget ?? 0.001);
 
   rest = computed(() => this.budget() - this.total());
 

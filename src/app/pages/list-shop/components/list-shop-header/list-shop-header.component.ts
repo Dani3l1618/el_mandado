@@ -38,10 +38,11 @@ const imports = [
 })
 export class ListShopHeaderComponent {
   private state = inject(ListShopStateService);
+  public config = this.state.storeConfig.asReadonly();
+  private mode = this.state.mode.asReadonly();
 
-  config = this.state.storeConfig;
   isLoading = computed(() => this.config() === undefined);
   title = computed(() =>
-    this.state.mode() === 'new' ? 'De compras' : 'Revisando ticket',
+    this.mode() === 'new' ? 'De compras' : 'Revisando ticket',
   );
 }

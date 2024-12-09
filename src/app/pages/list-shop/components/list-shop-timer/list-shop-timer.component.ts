@@ -22,6 +22,7 @@ const imports = [IonChip, IonIcon, IonLabel, AsyncPipe, TimerPipe];
 })
 export class ListShopTimerComponent {
   private state = inject(ListShopStateService);
+
   protected timeInStore$ = interval(1000).pipe(
     tap(() => this.state.timeInStore.update((t) => t + 1)),
   );

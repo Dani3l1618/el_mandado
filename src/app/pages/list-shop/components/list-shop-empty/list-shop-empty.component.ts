@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonImg, IonText } from '@ionic/angular/standalone';
 
 const imports = [IonImg, IonText];
@@ -9,8 +9,4 @@ const imports = [IonImg, IonText];
   standalone: true,
   imports,
 })
-export class ListShopEmptyComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class ListShopEmptyComponent {}
