@@ -10,7 +10,7 @@ import {
   IonToolbar,
 } from '@ionic/angular/standalone';
 import { AdressPipe, MediaStorePipe } from 'src/app/shared';
-import { ListShopService } from '../../services/list-shop.service';
+import { ListShopStateService } from '../../services/list-shop-state.service';
 import { ListShopTimerComponent } from '../list-shop-timer/list-shop-timer.component';
 
 const imports = [
@@ -37,13 +37,11 @@ const imports = [
   imports,
 })
 export class ListShopHeaderComponent {
-  private listShopService = inject(ListShopService);
+  private state = inject(ListShopStateService);
 
-  config = this.listShopService.storeConfig;
+  config = this.state.storeConfig;
   isLoading = computed(() => this.config() === undefined);
   title = computed(() =>
-    this.listShopService.listShopState() === 'new'
-      ? 'De compras'
-      : 'Revisando ticket',
+    this.state.mode() === 'new' ? 'De compras' : 'Revisando ticket',
   );
 }

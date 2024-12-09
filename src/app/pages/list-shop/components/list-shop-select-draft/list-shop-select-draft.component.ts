@@ -12,6 +12,7 @@ import {
   SharedDialogHeaderComponent,
 } from 'src/app/shared';
 import { ListShop } from '../../models/list-shop.model';
+import { ListShopStateService } from '../../services/list-shop-state.service';
 import { ListShopService } from '../../services/list-shop.service';
 
 const imports = [
@@ -35,6 +36,7 @@ const imports = [
 })
 export class ListShopSelectDraftComponent implements OnInit {
   private listShopService!: ListShopService;
+  private state!: ListShopStateService;
   private fb = inject(NonNullableFormBuilder);
   protected selectOptions = SELECT_INTERFACE_OPTIONS;
 
@@ -42,7 +44,7 @@ export class ListShopSelectDraftComponent implements OnInit {
   drafts = signal<ListShop[]>([]);
 
   ngOnInit(): void {
-    this.drafts = this.listShopService.listDrafts;
+    this.drafts = this.state.listDrafts;
   }
 
   confirm() {

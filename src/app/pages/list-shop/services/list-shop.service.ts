@@ -1,85 +1,49 @@
-import {
-  computed,
-  inject,
-  Injectable,
-  signal,
-  WritableSignal,
-} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppRoutes } from 'src/app/app.routes';
-import {
-  DataService,
-  ModalService,
-  SharedConfirmDialogComponent,
-} from 'src/app/shared';
+import { DataService } from 'src/app/shared';
 import { Store } from '../../tiendas/models';
-import { ListShopConfigComponent } from '../components/list-shop-config/list-shop-config.component';
-import { ListShopFormComponent } from '../components/list-shop-form/list-shop-form.component';
-import { ListShopSelectDraftComponent } from '../components/list-shop-select-draft/list-shop-select-draft.component';
 import {
   ListShop,
   ListShopConfig,
-  ListShopDraft,
   ListShopItem,
   ListShopItemForm,
 } from '../models/list-shop.model';
 import { ListShopDataManagerService } from './list-shop-data-manager.service';
+import { ListShopDialogsService } from './list-shop-dialogs.service';
+import { ListShopStateService } from './list-shop-state.service';
 
 @Injectable()
 export class ListShopService {
   private router = inject(Router);
   private dataService = inject(DataService);
-  private modalService = inject(ModalService);
+
   private dataManager = inject(ListShopDataManagerService);
-  private stores = signal<Store[]>([]);
+  private dialogService = inject(ListShopDialogsService);
+  private state = inject(ListShopStateService);
 
-  timeInStore = signal(0);
-  storeConfig = signal<ListShopConfig | undefined>(undefined);
-  listShopState: WritableSignal<'new' | 'draft'> = signal(
-    this.router.url.includes('new-list') ? 'new' : 'draft',
-  );
-
-  listItemShop = signal<ListShopItem[]>([]);
-  listShopTotal = computed(() => this.totalListShop(this.listItemShop()));
-  listSaved = this.dataManager.listSaved;
-
-  listDrafts = signal<ListShop[]>([]);
+  constructor() {
+    this.state.mode.set(this.router.url.includes('new-list') ? 'new' : 'draft');
+  }
 
   returnHome() {
     this.resetListShopState();
     this.router.navigate([AppRoutes.menu]);
   }
 
-  handleListConfigResponse(response: ListShopConfig | undefined): void {
-    if (!response) {
+  async initNewMode(): Promise<void> {
+    await this.getStores();
+    const storeConfig = await this.openListConfig();
+
+    if (!storeConfig) {
       this.returnHome();
       return;
     }
 
-    this.storeConfig.set(response);
+    this.state.storeConfig.set(storeConfig);
   }
 
   //.- Item List management
-
-  addListShopItem(item: ListShopItem) {
-    this.listItemShop.update((items) => [item, ...items]);
-  }
-
-  editListShopItem(itemId: string, newData: Partial<ListShopItem>) {
-    const item = this.listItemShop().find((item) => item.id === itemId);
-
-    if (!item) return;
-    const itemUpdated = { ...item, ...newData };
-    this.listItemShop.update((items) =>
-      items.map((item) => (item.id === itemId ? itemUpdated : item)),
-    );
-  }
-
-  deleteItem(itemId: string) {
-    this.listItemShop.update((items) =>
-      items.filter((item) => item.id !== itemId),
-    );
-  }
 
   addNewItem(item: ListShopItemForm) {
     const newItem: ListShopItem = {
@@ -90,16 +54,33 @@ export class ListShopService {
     this.addListShopItem(newItem);
   }
 
-  totalListShop(listShop: ListShopItem[]): number {
-    return listShop.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  editListShopItem(itemId: string, newData: Partial<ListShopItem>) {
+    const item = this.state.listItemShop().find((item) => item.id === itemId);
+
+    if (!item) return;
+
+    const itemUpdated = { ...item, ...newData };
+    this.state.listItemShop.update((items) =>
+      items.map((item) => (item.id === itemId ? itemUpdated : item)),
+    );
   }
 
-  //.- Store management
+  deleteItem(itemId: string) {
+    this.state.listItemShop.update((items) =>
+      items.filter((item) => item.id !== itemId),
+    );
+  }
+
+  private addListShopItem(item: ListShopItem) {
+    this.state.listItemShop.update((items) => [item, ...items]);
+  }
+
+  //.- Data management
 
   async getStores(): Promise<Store[]> {
     const stores = (await this.dataService.getData<Store[]>('stores')) ?? [];
 
-    this.stores.set(stores);
+    this.state.stores.set(stores);
 
     return stores;
   }
@@ -110,9 +91,7 @@ export class ListShopService {
   }
 
   async saveListShopOnDrafts() {
-    this.listItemShop.update((items) =>
-      items.filter((item) => item.quantity !== 0),
-    );
+    this.deleteEmptyItem();
 
     await this.saveDraft();
 
@@ -121,19 +100,15 @@ export class ListShopService {
   }
 
   async saveDraft() {
-    const listInfo: ListShopDraft = {
-      items: this.listItemShop(),
-      storeConfig: this.storeConfig()!,
-      total: this.listShopTotal(),
-      time: this.timeInStore(),
-    };
-    await this.dataManager.saveDraftList(listInfo);
+    const list = await this.dataManager.saveDraftList();
+
+    this.state.currentDraft.set(list);
   }
 
   async getDrafts(): Promise<void> {
     const drafts = await this.dataManager.getDrafts();
 
-    this.listDrafts.set(drafts);
+    this.state.listDrafts.set(drafts);
   }
 
   //.- Dialogs
@@ -143,15 +118,7 @@ export class ListShopService {
       '%ctodo: Manejar cuando no haya tiendas',
       'color: #1a4704; background-color: #d0f0c0;',
     );
-    const response: ListShopConfig | undefined =
-      await this.modalService.openModal({
-        component: ListShopConfigComponent,
-        componentProps: {
-          stores: this.stores,
-        },
-      });
-
-    return response;
+    return this.dialogService.openListConfig(this.state.stores);
   }
 
   async openDraftConfig(): Promise<ListShop | undefined> {
@@ -160,27 +127,11 @@ export class ListShopService {
       'color: #1a4704; background-color: #d0f0c0;',
     );
     this.getDrafts();
-    const response: ListShop | undefined = await this.modalService.openModal({
-      component: ListShopSelectDraftComponent,
-      componentProps: {
-        listShopService: this,
-      },
-      cssClass: ['modal-25'],
-    });
-
-    return response;
+    return this.dialogService.openDraftConfig(this, this.state);
   }
 
   async hanldeExit() {
-    const exit = await this.modalService.openModal({
-      component: SharedConfirmDialogComponent,
-      componentProps: {
-        title: 'Cancelar compra',
-        question: '¿Cancelar compra y eliminar la lista?',
-        confirmText: 'Aceptar',
-      },
-      cssClass: 'modal-sm',
-    });
+    const exit = await this.dialogService.hanldeExit();
 
     if (exit) {
       this.returnHome();
@@ -188,35 +139,24 @@ export class ListShopService {
   }
 
   async openFinishShopConfirmation() {
-    const finish = await this.modalService.openModal({
-      component: SharedConfirmDialogComponent,
-      componentProps: {
-        title: 'Terminar compras',
-        question: '¿Finalizar día de shopping?',
-        confirmText: 'Aceptar',
-      },
-      cssClass: 'modal-sm',
-    });
-    return Boolean(finish);
+    return this.dialogService.openFinishShopConfirmation();
   }
 
   async openItemForm(item?: ListShopItem) {
-    const newItem = await this.modalService.openModal({
-      component: ListShopFormComponent,
-      componentProps: {
-        listShopService: this,
-        itemOnEdit: signal(item),
-      },
-    });
+    const newItem = await this.dialogService.openItemForm(this, item);
 
     return newItem;
   }
 
   //.- Private
   private resetListShopState() {
-    this.storeConfig.set(undefined);
-    this.stores.set([]);
-    this.listItemShop.set([]);
+    this.state.reset();
     this.dataManager.reset();
+  }
+
+  private deleteEmptyItem() {
+    this.state.listItemShop.update((items) =>
+      items.filter((item) => item.quantity !== 0),
+    );
   }
 }

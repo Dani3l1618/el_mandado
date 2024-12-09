@@ -17,6 +17,7 @@ export { NavigateService } from './services/navigate.service';
 export { StateService } from './services/state.service';
 
 //.- Models
+export * from './models/dialog.model';
 export * from './models/form.model';
 export * from './models/icon.model';
 export * from './models/maskito.model';

@@ -11,6 +11,7 @@ import {
   IonText,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import { ListShopStateService } from '../../services/list-shop-state.service';
 import { ListShopService } from '../../services/list-shop.service';
 
 const imports = [IonFooter, IonToolbar, IonText, IonRippleEffect, CurrencyPipe];
@@ -25,18 +26,17 @@ const imports = [IonFooter, IonToolbar, IonText, IonRippleEffect, CurrencyPipe];
 })
 export class ListShopFooterComponent {
   private listShopService = inject(ListShopService);
+  private state = inject(ListShopStateService);
   private totalColor = [
     { max: 85, color: 'white' },
     { max: 100, color: 'warning' },
   ];
 
-  listShopState = this.listShopService.listShopState;
-
-  budget = computed(() => this.listShopService.storeConfig()?.budget ?? 0.001);
+  budget = computed(() => this.state.storeConfig()?.budget ?? 0.001);
 
   rest = computed(() => this.budget() - this.total());
 
-  total = this.listShopService.listShopTotal; // topar el valor a 9999
+  total = this.state.listShopTotal; // topar el valor a 9999
 
   colorTotal = computed(() => {
     const porcent = (this.total() / this.budget()) * 100;

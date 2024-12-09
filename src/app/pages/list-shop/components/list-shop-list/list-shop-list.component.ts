@@ -1,6 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { IonItem, IonList } from '@ionic/angular/standalone';
-import { ListShopService } from '../../services/list-shop.service';
+import { ListShopStateService } from '../../services/list-shop-state.service';
 import { ListShopItemComponent } from '../list-shop-item/list-shop-item.component';
 
 const imports = [IonList, IonItem, ListShopItemComponent];
@@ -13,7 +13,7 @@ const imports = [IonList, IonItem, ListShopItemComponent];
   imports,
 })
 export class ListShopListComponent {
-  private listShopService = inject(ListShopService);
+  private state = inject(ListShopStateService);
 
-  listShop = computed(() => this.listShopService.listItemShop());
+  listShop = computed(() => this.state.listItemShop());
 }

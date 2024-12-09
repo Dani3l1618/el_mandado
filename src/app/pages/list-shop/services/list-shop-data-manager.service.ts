@@ -1,14 +1,15 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ComputeService, DataService } from 'src/app/shared';
 import { ListShop, ListShopDraft } from '../models/list-shop.model';
+import { ListShopStateService } from './list-shop-state.service';
 
 @Injectable()
 export class ListShopDataManagerService {
   private dataService = inject(DataService);
+  private state = inject(ListShopStateService);
   private computeService = inject(ComputeService);
 
-  currentDraft = signal<ListShop | null>(null);
-  listSaved = computed(() => this.currentDraft() !== null);
+  private currentDraft = this.state.currentDraft.asReadonly();
 
   async getDrafts(): Promise<ListShop[]> {
     return (await this.dataService.getData('drafts')) ?? [];
@@ -22,12 +23,19 @@ export class ListShopDataManagerService {
     await this.dataService.saveData('drafts', [this.currentDraft(), ...drafts]);
   }
 
-  public async saveDraftList(infoList: ListShopDraft): Promise<void> {
+  public async saveDraftList(): Promise<ListShop> {
+    const infoList: ListShopDraft = {
+      items: this.state.listItemShop(),
+      storeConfig: this.state.storeConfig()!,
+      total: this.state.listShopTotal(),
+      time: this.state.timeInStore(),
+    };
+
     const list = this.generateListShop(infoList);
 
     await this.dataService.saveData('currentDraft', list);
 
-    this.currentDraft.set(list);
+    return list;
   }
 
   private generateListShop({
@@ -48,7 +56,6 @@ export class ListShopDataManagerService {
   }
 
   reset() {
-    this.currentDraft.set(null);
     this.dataService.removeData('currentDraft');
   }
 }

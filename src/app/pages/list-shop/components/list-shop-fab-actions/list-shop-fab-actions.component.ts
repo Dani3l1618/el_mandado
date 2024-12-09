@@ -5,6 +5,7 @@ import {
   IonFabList,
   IonIcon,
 } from '@ionic/angular/standalone';
+import { ListShopStateService } from '../../services/list-shop-state.service';
 import { ListShopService } from '../../services/list-shop.service';
 
 const imports = [IonFab, IonFabButton, IonFabList, IonIcon];
@@ -18,18 +19,19 @@ const imports = [IonFab, IonFabButton, IonFabList, IonIcon];
 })
 export class ListShopFabActionsComponent {
   private listShopService = inject(ListShopService);
+  private state = inject(ListShopStateService);
 
   onExit() {
     this.listShopService.hanldeExit();
   }
 
   onSave() {
-    if (this.listShopService.listItemShop().length === 0) return;
+    if (this.state.listItemShop().length === 0) return;
     this.listShopService.saveDraft();
   }
-  
+
   async onDone() {
-    if (this.listShopService.listItemShop().length === 0) return;
+    if (this.state.listItemShop().length === 0) return;
     const finish = await this.listShopService.openFinishShopConfirmation();
 
     if (!finish) {
@@ -37,6 +39,5 @@ export class ListShopFabActionsComponent {
     }
 
     this.listShopService.saveListShopOnDrafts();
-
   }
 }
