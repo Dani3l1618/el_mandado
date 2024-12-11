@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { IonContent } from '@ionic/angular/standalone';
 import { SharedFabComponent } from 'src/app/shared';
@@ -13,6 +14,8 @@ import { ListShopService } from './services/list-shop.service';
 
 const imports = [
   IonContent,
+
+  DatePipe,
 
   ListShopHeaderComponent,
   ListShopFooterComponent,
@@ -38,6 +41,7 @@ const imports = [
 export class ListShopPage {
   private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
+  shopDate = computed(() => this.state.listOnEdit()?.shopDate);
 
   protected emptyList = computed(() => this.state.listItemShop().length === 0);
 
@@ -45,7 +49,7 @@ export class ListShopPage {
     if (this.state.mode() === 'new') {
       this.listShopService.initNewMode();
     } else {
-      this.listShopService.openDraftConfig();
+      this.listShopService.initDraftMode();
     }
   }
 

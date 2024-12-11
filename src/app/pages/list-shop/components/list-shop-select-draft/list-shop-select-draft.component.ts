@@ -1,10 +1,11 @@
 import { Component, inject, model, OnInit, signal } from '@angular/core';
-import { FormsModule, NonNullableFormBuilder } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import {
   IonContent,
   IonItem,
   IonSelect,
   IonSelectOption,
+  ModalController,
 } from '@ionic/angular/standalone';
 import {
   SELECT_INTERFACE_OPTIONS,
@@ -37,8 +38,8 @@ const imports = [
 export class ListShopSelectDraftComponent implements OnInit {
   private listShopService!: ListShopService;
   private state!: ListShopStateService;
-  private fb = inject(NonNullableFormBuilder);
   protected selectOptions = SELECT_INTERFACE_OPTIONS;
+  private modalController = inject(ModalController);
 
   draft = model<string>();
   drafts = signal<ListShop[]>([]);
@@ -48,6 +49,16 @@ export class ListShopSelectDraftComponent implements OnInit {
   }
 
   confirm() {
-    console.log('xd');
+    const id = this.draft();
+
+    if (!id) return;
+
+    const list = this.getList(id);
+
+    this.modalController.dismiss(list);
+  }
+
+  private getList(id: string): ListShop {
+    return this.drafts().find((item) => item.id === id)!;
   }
 }

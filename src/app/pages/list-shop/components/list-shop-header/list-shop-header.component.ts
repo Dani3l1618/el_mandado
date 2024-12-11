@@ -40,7 +40,6 @@ export class ListShopHeaderComponent {
   private state = inject(ListShopStateService);
   public config = this.state.storeConfig.asReadonly();
   private mode = this.state.mode.asReadonly();
-
   isLoading = computed(() => this.config() === undefined);
   title = computed(() =>
     this.mode() === 'new' ? 'De compras' : 'Revisando ticket',

@@ -21,6 +21,8 @@ export class ListShopStateService {
   currentDraft = signal<ListShop | null>(null);
   listSaved = computed(() => this.currentDraft() !== null);
 
+  listOnEdit = signal<ListShop | null>(null);
+
   private totalListShop(listShop: ListShopItem[]): number {
     return listShop.reduce((acc, item) => acc + item.price * item.quantity, 0);
   }

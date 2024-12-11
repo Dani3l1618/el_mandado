@@ -1,6 +1,9 @@
 <app-list-shop-header />
 
 <ion-content class="ion-padding" fixed-slot-placement="before">
+  @if (shopDate()) {
+    <span class="shopdate">{{shopDate() | date:"dd MMM YYYY" }}</span>
+  }
   <app-list-shop-fab-actions />
   <app-shared-fab size="small" color="primary" (action)="openItemForm()"/>
   @if (emptyList()) {

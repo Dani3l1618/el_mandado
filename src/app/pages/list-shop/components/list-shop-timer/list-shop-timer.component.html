@@ -2,7 +2,9 @@
   <ion-icon name="timer" color="secondary"></ion-icon>
   @if (emptyList()) {
     <ion-label class="chip-label">{{ 0 | timer}}</ion-label>
-  }@else {
+  }@else if (mode() === "new") {
     <ion-label class="chip-label">{{(timeInStore$ | async) ?? 0 | timer}}</ion-label>
+  }@else {
+    <ion-label class="chip-label">{{ timeInStore() | timer}}</ion-label>
   }
 </ion-chip>

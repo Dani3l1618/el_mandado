@@ -43,6 +43,19 @@ export class ListShopService {
     this.state.storeConfig.set(storeConfig);
   }
 
+  async initDraftMode(): Promise<void> {
+    await this.getDrafts();
+    const listOnEdit = await this.openDraftConfig();
+
+    if (!listOnEdit) {
+      return this.returnHome();
+    }
+
+    this.state.listOnEdit.set(listOnEdit);
+
+    this.setDraftMode();
+  }
+
   //.- Item List management
 
   addNewItem(item: ListShopItemForm) {
@@ -113,7 +126,7 @@ export class ListShopService {
 
   //.- Dialogs
 
-  async openListConfig(): Promise<ListShopConfig | undefined> {
+  private async openListConfig(): Promise<ListShopConfig | undefined> {
     console.log(
       '%ctodo: Manejar cuando no haya tiendas',
       'color: #1a4704; background-color: #d0f0c0;',
@@ -121,12 +134,12 @@ export class ListShopService {
     return this.dialogService.openListConfig(this.state.stores);
   }
 
-  async openDraftConfig(): Promise<ListShop | undefined> {
+  private async openDraftConfig(): Promise<ListShop | undefined> {
     console.log(
       '%ctodo: Manejar cuando no haya draft',
       'color: #1a4704; background-color: #d0f0c0;',
     );
-    this.getDrafts();
+
     return this.dialogService.openDraftConfig(this, this.state);
   }
 
@@ -146,6 +159,22 @@ export class ListShopService {
     const newItem = await this.dialogService.openItemForm(this, item);
 
     return newItem;
+  }
+
+  //.- Draft mode config
+
+  private async setDraftMode() {
+    const listOnEdit = this.state.listOnEdit()!;
+
+    const { budget, storeId, items, time } = listOnEdit;
+    const store = await this.getStoreBy(storeId);
+
+    if (!store) return;
+
+    this.state.storeConfig.set({ budget, store });
+    this.state.listItemShop.set(items);
+    this.state.timeInStore.set(time);
+    this.state.currentDraft.set(listOnEdit);
   }
 
   //.- Private
