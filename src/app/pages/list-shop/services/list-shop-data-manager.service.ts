@@ -23,6 +23,17 @@ export class ListShopDataManagerService {
     await this.dataService.saveData('drafts', [this.currentDraft(), ...drafts]);
   }
 
+  public async updateListShopOnDrafts() {
+    if (!this.currentDraft()) return;
+
+    const drafts = await this.getDrafts();
+    const updatedDrafts = drafts.map((item) =>
+      item.id === this.currentDraft()!.id ? this.currentDraft()! : item,
+    );
+
+    await this.dataService.saveData('drafts', updatedDrafts);
+  }
+
   public async saveDraftList(): Promise<ListShop> {
     const infoList: ListShopDraft = {
       items: this.state.listItemShop(),
@@ -34,8 +45,35 @@ export class ListShopDataManagerService {
     const list = this.generateListShop(infoList);
 
     await this.dataService.saveData('currentDraft', list);
-
+    console.log(
+      '%ctodo: ¿Cómo identificas un new draft de un edit draft?',
+      'color: #1a4704; background-color: #d0f0c0;',
+    );
     return list;
+  }
+
+  public async deleteDraftOfList(id: string) {
+    const drafts = await this.getDrafts();
+    const newDrafts = drafts.filter((item) => item.id !== id);
+
+    await this.dataService.saveData('drafts', newDrafts);
+  }
+
+  public async archiveList() {
+    const listShop = await this.saveDraftList();
+
+    const oldArchives = await this.getArchives();
+    const newArchives = [listShop, ...oldArchives];
+
+    await this.dataService.saveData('archives', newArchives);
+    await this.deleteDraftOfList(listShop.id);
+  }
+
+  public async getArchives(): Promise<ListShop[]> {
+    const history =
+      (await this.dataService.getData<ListShop[]>('archives')) ?? [];
+
+    return history;
   }
 
   private generateListShop({
@@ -48,7 +86,7 @@ export class ListShopDataManagerService {
     const name =
       this.currentDraft()?.name ??
       this.computeService.generateDateName(storeConfig.store.chain);
-    const shopDate = new Date().toJSON();
+    const shopDate = this.currentDraft()?.shopDate ?? new Date().toJSON();
     const storeId = storeConfig.store.id ?? '';
     const budget = storeConfig.budget ?? 0;
 

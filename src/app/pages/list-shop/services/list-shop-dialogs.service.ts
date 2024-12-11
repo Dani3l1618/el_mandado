@@ -9,9 +9,17 @@ import { ListShopConfigComponent } from '../components/list-shop-config/list-sho
 import { ListShopFormComponent } from '../components/list-shop-form/list-shop-form.component';
 import { ListShopSelectDraftComponent } from '../components/list-shop-select-draft/list-shop-select-draft.component';
 import {
+  LS_DF_WARN_ARCHIVE,
+  LS_DF_WARN_EXIT,
+  LS_DF_WARN_FINISH,
+  LS_NW_WARN_EXIT,
+  LS_NW_WARN_FINISH,
+} from '../constants/list-shop.config';
+import {
   ListShop,
   ListShopConfig,
   ListShopItem,
+  ListShopMode,
 } from '../models/list-shop.model';
 import { ListShopStateService } from './list-shop-state.service';
 import { ListShopService } from './list-shop.service';
@@ -49,22 +57,20 @@ export class ListShopDialogsService {
     return response;
   }
 
-  async hanldeExit(): Promise<boolean> {
-    const props = {
-      title: 'Cancelar compra',
-      question: '¿Cancelar compra y eliminar la lista?',
-      confirmText: 'Aceptar',
-    };
+  async hanldeExit(mode: ListShopMode): Promise<boolean> {
+    const props = mode === 'new' ? LS_NW_WARN_EXIT : LS_DF_WARN_EXIT;
 
     return await this.openConfirmDialog(props);
   }
 
-  async openFinishShopConfirmation() {
-    const props = {
-      title: 'Terminar compras',
-      question: '¿Finalizar día de shopping?',
-      confirmText: 'Aceptar',
-    };
+  async openFinishShopConfirmation(mode: ListShopMode) {
+    const props = mode === 'new' ? LS_NW_WARN_FINISH : LS_DF_WARN_FINISH;
+
+    return this.openConfirmDialog(props);
+  }
+
+  async openArchiveShopConfirmation() {
+    const props = LS_DF_WARN_ARCHIVE;
 
     return this.openConfirmDialog(props);
   }

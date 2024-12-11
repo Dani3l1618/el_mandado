@@ -12,5 +12,20 @@
     <ion-fab-button color="secondary" (click)="onDone()">
       <ion-icon name="checkmark-done-circle"></ion-icon>
     </ion-fab-button>
+
+    @if (mode() ==='draft') {
+      <ion-fab-button color="secondary" (click)="onArchive()">
+        <ion-icon name="book"></ion-icon>
+      </ion-fab-button>
+    }
+  </ion-fab-list>
+
+  <ion-fab-list side="end">
+    <ion-fab-button color="primary">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="primary">
+      <ion-icon name="pencil"></ion-icon>
+    </ion-fab-button>
   </ion-fab-list>
 </ion-fab>

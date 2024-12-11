@@ -4,11 +4,12 @@ import {
   ListShop,
   ListShopConfig,
   ListShopItem,
+  ListShopMode,
 } from '../models/list-shop.model';
 
 @Injectable()
 export class ListShopStateService {
-  mode = signal<'new' | 'draft'>('new');
+  mode = signal<ListShopMode>('new');
 
   stores = signal<Store[]>([]);
   storeConfig = signal<ListShopConfig | undefined>(undefined);

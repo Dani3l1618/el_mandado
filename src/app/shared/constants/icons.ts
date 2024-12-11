@@ -3,6 +3,7 @@ import {
   addOutline,
   arrowBackCircle,
   bag,
+  book,
   calendarClear,
   cart,
   cash,
@@ -28,10 +29,10 @@ import {
 
 export const ICONS = {
   add,
-  remove,
   addOutline,
   arrowBackCircle,
   bag,
+  book,
   calendarClear,
   cart,
   cash,
@@ -48,8 +49,9 @@ export const ICONS = {
   map,
   pencil,
   pin,
+  remove,
   save,
+  timer,
   trash,
   wallet,
-  timer,
 };

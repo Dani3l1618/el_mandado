@@ -108,7 +108,11 @@ export class ListShopService {
 
     await this.saveDraft();
 
-    await this.dataManager.saveListShopOnDrafts();
+    if (this.state.mode() === 'new') {
+      await this.dataManager.saveListShopOnDrafts();
+    } else {
+      await this.dataManager.updateListShopOnDrafts();
+    }
     this.returnHome();
   }
 
@@ -144,7 +148,7 @@ export class ListShopService {
   }
 
   async hanldeExit() {
-    const exit = await this.dialogService.hanldeExit();
+    const exit = await this.dialogService.hanldeExit(this.state.mode());
 
     if (exit) {
       this.returnHome();
@@ -152,7 +156,7 @@ export class ListShopService {
   }
 
   async openFinishShopConfirmation() {
-    return this.dialogService.openFinishShopConfirmation();
+    return this.dialogService.openFinishShopConfirmation(this.state.mode());
   }
 
   async openItemForm(item?: ListShopItem) {
@@ -175,6 +179,16 @@ export class ListShopService {
     this.state.listItemShop.set(items);
     this.state.timeInStore.set(time);
     this.state.currentDraft.set(listOnEdit);
+  }
+
+  public async archiveDraft() {
+    const confirmation = await this.dialogService.openArchiveShopConfirmation();
+    if (!confirmation) return;
+
+    this.dataManager.archiveList();
+
+    this.returnHome();
+    this.resetListShopState();
   }
 
   //.- Private

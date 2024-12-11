@@ -1,5 +1,7 @@
 import { Store } from '../../tiendas/models';
 
+export type ListShopMode = 'new' | 'draft';
+
 export interface ListShopConfig {
   store: Store;
   budget: number;

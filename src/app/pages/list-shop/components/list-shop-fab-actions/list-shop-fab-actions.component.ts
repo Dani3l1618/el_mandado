@@ -21,6 +21,7 @@ export class ListShopFabActionsComponent {
   private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
   listItemShop = this.state.listItemShop.asReadonly();
+  mode = this.state.mode.asReadonly();
 
   onExit() {
     this.listShopService.hanldeExit();
@@ -40,5 +41,9 @@ export class ListShopFabActionsComponent {
     }
 
     this.listShopService.saveListShopOnDrafts();
+  }
+
+  onArchive() {
+    this.listShopService.archiveDraft();
   }
 }
