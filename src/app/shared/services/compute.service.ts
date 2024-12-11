@@ -11,15 +11,14 @@ export class ComputeService {
   }
 
   /** Genera el nombre con la fecha de hoy mas sufijo: 22-03-2025-sufix */
-  public generateDateName(sufix: string): string {
-    const currentDate = new Date();
+  public generateDateName(sufix: string, prefix = new Date()): string {
     const options: Intl.DateTimeFormatOptions = {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
     };
 
-    const localDate = currentDate
+    const localDate = prefix
       .toLocaleDateString('es-MX', options)
       .replace(/\//g, '-');
 

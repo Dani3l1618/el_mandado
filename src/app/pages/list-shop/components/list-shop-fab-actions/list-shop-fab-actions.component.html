@@ -20,12 +20,15 @@
     }
   </ion-fab-list>
 
+  @if(mode()==='draft'){
   <ion-fab-list side="end">
-    <ion-fab-button color="primary">
-      <ion-icon name="trash"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-button color="primary">
-      <ion-icon name="pencil"></ion-icon>
-    </ion-fab-button>
-  </ion-fab-list>
+      <ion-fab-button color="primary">
+        <ion-icon name="trash" (click)="onDelete()"></ion-icon>
+      </ion-fab-button>
+      
+      <ion-fab-button color="primary">
+        <ion-icon name="pencil" (click)="onEdit()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  }
 </ion-fab>

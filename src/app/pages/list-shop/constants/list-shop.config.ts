@@ -27,3 +27,9 @@ export const LS_DF_WARN_ARCHIVE = {
   question: 'Al guardar la lista, ya no podrá ser modificada',
   confirmText: 'Aceptar',
 };
+
+export const LS_DF_WARN_DELETE = {
+  title: 'Eliminar borrador',
+  question: 'Al eliminar el borrador, no se podrá recuperar',
+  confirmText: 'Aceptar',
+};

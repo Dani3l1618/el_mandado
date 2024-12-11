@@ -46,4 +46,12 @@ export class ListShopFabActionsComponent {
   onArchive() {
     this.listShopService.archiveDraft();
   }
+
+  onDelete() {
+    this.listShopService.deleteDrafr();
+  }
+
+  onEdit() {
+    this.listShopService.editListConfig();
+  }
 }

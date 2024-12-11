@@ -10,6 +10,7 @@ import { ListShopFormComponent } from '../components/list-shop-form/list-shop-fo
 import { ListShopSelectDraftComponent } from '../components/list-shop-select-draft/list-shop-select-draft.component';
 import {
   LS_DF_WARN_ARCHIVE,
+  LS_DF_WARN_DELETE,
   LS_DF_WARN_EXIT,
   LS_DF_WARN_FINISH,
   LS_NW_WARN_EXIT,
@@ -30,11 +31,13 @@ export class ListShopDialogsService {
 
   async openListConfig(
     stores: Signal<Store[]>,
+    currentConfig: Signal<ListShopConfig | undefined> = signal(undefined),
   ): Promise<ListShopConfig | undefined> {
     const response = await this.modalService.openModal<ListShopConfig>({
       component: ListShopConfigComponent,
       componentProps: {
         stores,
+        currentConfig,
       },
     });
 
@@ -71,6 +74,12 @@ export class ListShopDialogsService {
 
   async openArchiveShopConfirmation() {
     const props = LS_DF_WARN_ARCHIVE;
+
+    return this.openConfirmDialog(props);
+  }
+
+  async openDeleteDraftConfirmation() {
+    const props = LS_DF_WARN_DELETE;
 
     return this.openConfirmDialog(props);
   }

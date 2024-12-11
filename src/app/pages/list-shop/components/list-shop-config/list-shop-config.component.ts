@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import {
   NonNullableFormBuilder,
   ReactiveFormsModule,
@@ -13,6 +13,7 @@ import {
   ModalController,
 } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
+import { maskitoTransform } from '@maskito/core';
 import { Store } from 'src/app/pages/tiendas/models';
 import {
   AdressPipe,
@@ -53,6 +54,8 @@ export class ListShopConfigComponent {
   private fb = inject(NonNullableFormBuilder);
   private dataService = inject(DataService);
   protected maskitoOpt = MASK_OPTIONS;
+  private currentConfig = signal<ListShopConfig | undefined>(undefined);
+  editMode = computed(() => this.currentConfig() !== undefined);
 
   configForm = this.fb.group({
     storeId: this.fb.control('', Validators.required),
@@ -76,6 +79,13 @@ export class ListShopConfigComponent {
     this.modalController.dismiss(config);
   }
 
+  constructor() {
+    effect(() => {
+      if (this.editMode()) {
+        this.setForm();
+      }
+    });
+  }
   private parseForm(): ListShopConfig | null {
     const { budget: bg, storeId } = this.configForm.getRawValue();
 
@@ -96,5 +106,13 @@ export class ListShopConfigComponent {
 
   private getStoreSelected(storeId: string): Store {
     return this.stores().find((store) => store.id === storeId)!;
+  }
+
+  private setForm() {
+    const { budget: bg, store } = this.currentConfig()!;
+    const budget = maskitoTransform(`${bg}`, MASK_OPTIONS.options);
+    const storeId = store.id;
+
+    this.configForm.setValue({ budget, storeId });
   }
 }

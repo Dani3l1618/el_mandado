@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppRoutes } from 'src/app/app.routes';
 import { DataService } from 'src/app/shared';
@@ -54,6 +54,14 @@ export class ListShopService {
     this.state.listOnEdit.set(listOnEdit);
 
     this.setDraftMode();
+  }
+
+  async editListConfig() {
+    const newListConfig = await this.openListConfig(true);
+
+    if (!newListConfig) return;
+
+    this.state.storeConfig.set(newListConfig);
   }
 
   //.- Item List management
@@ -130,12 +138,19 @@ export class ListShopService {
 
   //.- Dialogs
 
-  private async openListConfig(): Promise<ListShopConfig | undefined> {
+  private async openListConfig(
+    editMode = false,
+  ): Promise<ListShopConfig | undefined> {
     console.log(
       '%ctodo: Manejar cuando no haya tiendas',
       'color: #1a4704; background-color: #d0f0c0;',
     );
-    return this.dialogService.openListConfig(this.state.stores);
+
+    const listConfig = editMode
+      ? this.state.storeConfig.asReadonly()
+      : signal(undefined);
+
+    return this.dialogService.openListConfig(this.state.stores, listConfig);
   }
 
   private async openDraftConfig(): Promise<ListShop | undefined> {
@@ -187,6 +202,16 @@ export class ListShopService {
 
     this.dataManager.archiveList();
 
+    this.returnHome();
+    this.resetListShopState();
+  }
+
+  public async deleteDrafr() {
+    const confirmation = await this.dialogService.openDeleteDraftConfirmation();
+
+    if (!confirmation) return;
+
+    await this.dataManager.deleteDraftOfList(this.state.listOnEdit()!.id);
     this.returnHome();
     this.resetListShopState();
   }

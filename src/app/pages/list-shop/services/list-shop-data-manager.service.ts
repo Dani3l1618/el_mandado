@@ -83,10 +83,11 @@ export class ListShopDataManagerService {
     time,
   }: ListShopDraft): ListShop {
     const id = this.currentDraft()?.id ?? this.dataService.generateId();
-    const name =
-      this.currentDraft()?.name ??
-      this.computeService.generateDateName(storeConfig.store.chain);
     const shopDate = this.currentDraft()?.shopDate ?? new Date().toJSON();
+    const name = this.computeService.generateDateName(
+      storeConfig.store.chain,
+      new Date(shopDate),
+    );
     const storeId = storeConfig.store.id ?? '';
     const budget = storeConfig.budget ?? 0;
 
