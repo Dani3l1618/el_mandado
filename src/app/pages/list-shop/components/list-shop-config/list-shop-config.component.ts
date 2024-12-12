@@ -56,6 +56,7 @@ export class ListShopConfigComponent {
   protected maskitoOpt = MASK_OPTIONS;
   private currentConfig = signal<ListShopConfig | undefined>(undefined);
   editMode = computed(() => this.currentConfig() !== undefined);
+  title = computed(() => (this.editMode() ? 'Editando' : 'Nueva lista'));
 
   configForm = this.fb.group({
     storeId: this.fb.control('', Validators.required),
