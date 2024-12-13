@@ -6,32 +6,21 @@ import {
   viewChild,
   WritableSignal,
 } from '@angular/core';
-import {
-  IonBackButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonList,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/angular/standalone';
+import { IonContent, IonList } from '@ionic/angular/standalone';
 import { AppRoutes } from 'src/app/app.routes';
 import { ModalService, SharedFabComponent } from 'src/app/shared';
+import { SharedHeaderPageComponent } from 'src/app/shared/components/shared-header-page/shared-header-page.component';
 import { TiendasFormComponent, TiendasItemComponent } from './components';
 import { Store } from './models';
 import { TiendaService } from './service/tienda.service';
 
 const imports = [
   IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-  IonButtons,
-  IonBackButton,
   IonList,
 
   TiendasItemComponent,
   SharedFabComponent,
+  SharedHeaderPageComponent,
 ];
 
 @Component({
