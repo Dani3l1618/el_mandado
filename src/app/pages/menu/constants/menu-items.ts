@@ -17,7 +17,7 @@ export const MENU_ITEMS = [
   {
     iconSrc: IconSrc.history,
     title: 'Historial',
-    url: AppRoutes.home,
+    url: AppRoutes.history,
     id: '3',
   },
   {

@@ -1,0 +1,5 @@
+<ion-list lines="none" class="mandado-list">
+  @for (item of list(); track item.id) {
+    <app-history-item [list]="item"/>
+  }
+</ion-list>

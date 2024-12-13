@@ -6,6 +6,7 @@ export enum AppRoutes {
   stores = 'tiendas',
   newList = 'list-shop/new-list',
   draftList = 'list-shop/draft-list',
+  history = 'history',
 }
 
 export const routes: Routes = [
@@ -34,6 +35,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/list-shop/list-shop.page').then((m) => m.ListShopPage),
   },
+  {
+    path: AppRoutes.history,
+    loadComponent: () =>
+      import('./pages/history/history.page').then((c) => c.HistoryPage),
+  },
 
   {
     path: '',
@@ -49,5 +55,10 @@ export const routes: Routes = [
     path: 'list-shop',
     loadComponent: () =>
       import('./pages/list-shop/list-shop.page').then((m) => m.ListShopPage),
+  },
+  {
+    path: 'history',
+    loadComponent: () =>
+      import('./pages/history/history.page').then((m) => m.HistoryPage),
   },
 ];
