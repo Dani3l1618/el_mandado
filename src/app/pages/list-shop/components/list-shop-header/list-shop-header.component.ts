@@ -1,15 +1,13 @@
-import { NgClass } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import {
-  IonAvatar,
   IonHeader,
-  IonImg,
   IonSkeletonText,
   IonText,
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
-import { AdressPipe, MediaStorePipe } from 'src/app/shared';
+import { AdressPipe } from 'src/app/shared';
+import { SharedStoreImgComponent } from 'src/app/shared/components/shared-store-img/shared-store-img.component';
 import { ListShopStateService } from '../../services/list-shop-state.service';
 import { ListShopTimerComponent } from '../list-shop-timer/list-shop-timer.component';
 
@@ -17,16 +15,12 @@ const imports = [
   IonHeader,
   IonTitle,
   IonToolbar,
-  IonAvatar,
-  IonImg,
   IonText,
   IonSkeletonText,
 
-  NgClass,
-
-  MediaStorePipe,
   AdressPipe,
   ListShopTimerComponent,
+  SharedStoreImgComponent,
 ];
 
 @Component({

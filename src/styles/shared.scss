@@ -77,3 +77,10 @@
     --inner-padding-start:2px;
   }
 }
+
+
+ion-skeleton-text.ui {
+  --border-radius: 9999px;
+  --background: var(--ion-color-secondary);
+  --background-rgb: var(--ion-color-secondary-rgb);
+}

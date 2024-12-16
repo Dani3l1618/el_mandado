@@ -1,0 +1,7 @@
+<ion-avatar [slot]="slot()" class="store" [ngClass]="{'store--loading': loading()}">
+  @if (loading()) {
+    <ion-skeleton-text class="ui" [animated]="true"></ion-skeleton-text>
+  } @else {
+    <ion-img [src]="(storeImg()?? DEFAULT_IMG) | mediaStore"></ion-img>
+  }
+</ion-avatar>
