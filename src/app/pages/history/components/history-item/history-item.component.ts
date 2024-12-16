@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { IonItem } from '@ionic/angular/standalone';
 import { ListShop } from 'src/app/pages/list-shop';
+import { HistoryService } from '../../services/history.service';
 
 const imports = [IonItem];
 @Component({
@@ -11,5 +12,11 @@ const imports = [IonItem];
   imports,
 })
 export class HistoryItemComponent {
+  private historyService = inject(HistoryService);
+
   list = input.required<ListShop>();
+
+  store = computed(
+    async () => await this.historyService.getStoreById(this.list().id),
+  );
 }

@@ -1,3 +1,29 @@
 .history-item {
+  display: flex;
 
+  &::part(native){
+    flex-direction: column;
+  }
+
+  .header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 1rem;
+    .store{}
+    .date{}
+  }
+
+  .content{
+    display: flex;
+    width: 100%;
+    padding: 0 1rem;
+    gap: 2rem;
+    .total{
+      flex: 1 1 50%;
+    }
+    .items{
+      flex: 1 1 50%;
+    }
+  }
 }
