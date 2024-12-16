@@ -4,12 +4,11 @@ import { IonIcon } from '@ionic/angular/standalone';
 import { IconName } from '../../models/icon.model';
 
 @Component({
-  selector: 'app-icon',
-  templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
-  standalone: true,
-  imports: [IonIcon, NgClass],
-  encapsulation: ViewEncapsulation.None,
+    selector: 'app-icon',
+    templateUrl: './icon.component.html',
+    styleUrls: ['./icon.component.scss'],
+    imports: [IonIcon, NgClass],
+    encapsulation: ViewEncapsulation.None
 })
 export class IconComponent {
   private readonly iconPath = 'assets/icon/';

@@ -3,10 +3,9 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { MediaService } from './shared';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  standalone: true,
-  imports: [IonApp, IonRouterOutlet],
+    selector: 'app-root',
+    templateUrl: 'app.component.html',
+    imports: [IonApp, IonRouterOutlet]
 })
 export class AppComponent {
   private mediaService = inject(MediaService);
