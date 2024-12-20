@@ -1,22 +1,24 @@
 <ion-item class="history-item mandado-item ion-no-padding" button="true">
+  @let localStore = store.value();
+  @let loading  = store.isLoading();
 
   <div class="header">
     <div class="store">
-      <span>🛒</span>
-      <span>Soriana</span>
+      <app-shared-store-img [loading]="loading" [storeImg]="localStore?.img" />
+      <span>{{store.value()?.chain}}</span>
     </div>
     <div class="date">
-      <span>17/05/24</span>
+      <span>{{list().shopDate | date: 'dd/MM/YY'}}</span>
     </div>
   </div>
   <div class="content">
-    <div class="total">
-      <span>Total</span>
-      <span>$2156.00</span>
+    <div class="total content-item">
+      <span class="title">Total</span>
+      <span class="data">{{list().total | currency: 'MXN'}}</span>
     </div>
-    <div class="items">
-      <span>Artículos</span>
-      <span>22</span>
+    <div class="items content-item">
+      <span class="title">Artículos</span>
+      <span class="data">{{list().items.length}}</span>
     </div>
   </div>
 
