@@ -1,0 +1,47 @@
+<div class="history-filter">
+  <div class="date-filter">
+    <div class="date-filter__item">
+      <span>Desde:&nbsp;</span>
+      <app-shared-date-picker-btn
+        (dateSelectedChange)="onDateChange($event, 'start')"
+        [minYear]="minDateFirstFilter()"
+        [dateSelected]="minDateFirstFilter()"
+        class="start-filter"
+      />
+    </div>
+    <div class="date-filter__item">
+      <span>Hasta:&nbsp;</span>
+      <app-shared-date-picker-btn
+        (dateSelectedChange)="onDateChange($event, 'end')"
+        [minYear]="minDateSecondFilter()"
+        [dateSelected]="today"
+      />
+    </div>
+  </div>
+
+  <div class="store-filter">
+    <ion-select
+      interface="popover"
+      label="Tiendita"
+      labelPlacement="stacked"
+      placeholder="Filtrar por tienda"
+      (ionChange)="filtering({ storeId: $event.detail.value })"
+      #select
+    >
+      @for (store of stores(); track store.id) {
+        <ion-select-option [value]="store.id">{{
+          store.chain
+        }}</ion-select-option>
+      }
+    </ion-select>
+    <ion-button
+      shape="round"
+      fill="outline"
+      (click)="select.value = null; clearFilter(); resetDateFilters()"
+      color="secondary"
+      size="small"
+    >
+      <ion-icon slot="icon-only" src="assets/icon/filter_off.svg" />
+    </ion-button>
+  </div>
+</div>

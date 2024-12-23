@@ -1,0 +1,21 @@
+<div class="shared-datetime-picker">
+  <ion-datetime-button [datetime]="pickerId" />
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime
+        color="secondary"
+        [id]="pickerId"
+        showDefaultButtons="true"
+        doneText="OK"
+        cancelText="Cancelar"
+        [presentation]="presentation()"
+        [min]="minYear()"
+        [max]="maxYear()"
+        [(ngModel)]="dateSelected"
+        locale="es-Mx"
+        #picker
+      />
+    </ng-template>
+  </ion-modal>
+</div>

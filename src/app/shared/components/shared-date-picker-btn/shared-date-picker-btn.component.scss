@@ -1,0 +1,12 @@
+.shared-datetime-picker {
+
+  ion-datetime-button::part(native) {
+    background: var(--picker-btn-bg, var(--ion-color-primary));
+    font-size: var(--picker-btn-fz, 1rem);
+  }
+
+}
+ion-datetime {
+  --background: var(--picker-calendar-bg, var(--ion-color-white));
+  --background-rgb: var(--picker-calendarbg-rgb, var(--ion-color-white-rgb));
+}

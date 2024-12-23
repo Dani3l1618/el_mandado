@@ -24,6 +24,10 @@ export class ListShopService {
 
   constructor() {
     this.state.mode.set(this.router.url.includes('new-list') ? 'new' : 'draft');
+    console.log(
+      '%ctodo: Guardar la fecha con hora 00:00',
+      'color: #1a4704; background-color: #d0f0c0;',
+    );
   }
 
   returnHome() {
