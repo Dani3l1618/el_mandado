@@ -17,14 +17,17 @@
       </span>
     </div>
 
-    <div class="item-btns" slot="end">
-      <app-icon name="add" cssClass="item-btn" (click)="modifyQuantity(1)" />
-      <app-icon
-        name="remove"
-        cssClass="item-btn item-btn-minues"
-        (click)="modifyQuantity(-1)"
-      />
-    </div>
+    @if (showIncrements()) {
+
+      <div class="item-btns" slot="end">
+        <app-icon name="add" cssClass="item-btn" (click)="modifyQuantity(1)" />
+        <app-icon
+          name="remove"
+          cssClass="item-btn item-btn-minues"
+          (click)="modifyQuantity(-1)"
+        />
+      </div>
+    }
   </ion-item>
 
   <app-shared-list-options

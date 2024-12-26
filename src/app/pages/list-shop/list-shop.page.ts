@@ -42,18 +42,25 @@ export class ListShopPage {
   private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
   shopDate = computed(() => this.state.listOnEdit()?.shopDate);
+  mode = this.state.mode.asReadonly();
 
   protected emptyList = computed(() => this.state.listItemShop().length === 0);
 
   ionViewDidEnter() {
     if (this.state.mode() === 'new') {
       this.listShopService.initNewMode();
-    } else {
+    } else if (this.state.mode() === 'draft') {
       this.listShopService.initDraftMode();
+    } else {
+      this.listShopService.initViewMode();
     }
   }
 
   protected openItemForm() {
     this.listShopService.openItemForm();
+  }
+
+  protected returnArchive() {
+    this.listShopService.returnHistory();
   }
 }

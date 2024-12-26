@@ -1,4 +1,4 @@
-<ion-fab horizontal="end" vertical="bottom" slot="fixed">
+<ion-fab [horizontal]="horizontal()" vertical="bottom" slot="fixed">
   <ion-fab-button [color]="color()" (click)="onClick()" [size]="size()">
     <ion-icon [name]="icon()"></ion-icon>
   </ion-fab-button>

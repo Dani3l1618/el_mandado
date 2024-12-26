@@ -25,10 +25,6 @@ export class HistoryPage implements OnInit {
   defaultHref = AppRoutes.menu;
 
   ngOnInit(): void {
-    console.log(
-      '%ctodo: Al seleccionar un item, redirigir a pantalla de detalle',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
     this.historyService.getArchiveLists();
   }
 }

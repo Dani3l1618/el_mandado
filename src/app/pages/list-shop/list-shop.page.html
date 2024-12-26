@@ -2,14 +2,27 @@
 
 <ion-content class="ion-padding" fixed-slot-placement="before">
   @if (shopDate()) {
-    <span class="shopdate">{{shopDate() | date:"dd MMM YYYY" }}</span>
+    <span class="shopdate">{{ shopDate() | date: "dd MMM YYYY" }}</span>
   }
-  <app-list-shop-fab-actions />
-  <app-shared-fab size="small" color="primary" (action)="openItemForm()"/>
+  @if (mode() === "view") {
+    <app-shared-fab
+      size="small"
+      color="primary"
+      icon="exit"
+      horizontal="start"
+      (action)="returnArchive()"
+    />
+  } @else {
+    <app-list-shop-fab-actions />
+  }
+
+  @if (mode() !== "view") {
+    <app-shared-fab size="small" color="primary" (action)="openItemForm()" />
+  }
   @if (emptyList()) {
     <app-list-shop-empty />
-  }@else {
-    <app-list-shop-list/>
+  } @else {
+    <app-list-shop-list />
   }
 </ion-content>
 

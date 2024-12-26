@@ -26,4 +26,8 @@ export class HistoryItemComponent {
   });
 
   readonly defaultImg: StoreMedia = StoreMedia.none;
+
+  viewDetail() {
+    this.historyService.navigateToDetail(this.list().id);
+  }
 }

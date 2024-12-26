@@ -1,13 +1,15 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppRoutes } from 'src/app/app.routes';
 import { DataService } from 'src/app/shared';
 import { Store } from '../../tiendas/models';
+import { LS_MODE } from '../constants/list-shop.config';
 import {
   ListShop,
   ListShopConfig,
   ListShopItem,
   ListShopItemForm,
+  ListShopMode,
 } from '../models/list-shop.model';
 import { ListShopDataManagerService } from './list-shop-data-manager.service';
 import { ListShopDialogsService } from './list-shop-dialogs.service';
@@ -17,13 +19,15 @@ import { ListShopStateService } from './list-shop-state.service';
 export class ListShopService {
   private router = inject(Router);
   private dataService = inject(DataService);
+  private route = inject(ActivatedRoute);
 
   private dataManager = inject(ListShopDataManagerService);
   private dialogService = inject(ListShopDialogsService);
   private state = inject(ListShopStateService);
 
   constructor() {
-    this.state.mode.set(this.router.url.includes('new-list') ? 'new' : 'draft');
+    const url = this.router.url;
+    this.state.mode.set(this.getMode(url));
     console.log(
       '%ctodo: Guardar la fecha con hora 00:00',
       'color: #1a4704; background-color: #d0f0c0;',
@@ -33,6 +37,11 @@ export class ListShopService {
   returnHome() {
     this.resetListShopState();
     this.router.navigate([AppRoutes.menu]);
+  }
+
+  returnHistory() {
+    this.resetListShopState();
+    this.router.navigate([AppRoutes.history]);
   }
 
   async initNewMode(): Promise<void> {
@@ -57,7 +66,19 @@ export class ListShopService {
 
     this.state.listOnEdit.set(listOnEdit);
 
-    this.setDraftMode();
+    this.setListShop(this.state.listOnEdit()!);
+  }
+
+  async initViewMode() {
+    const listShopId = this.route.snapshot.paramMap.get('id');
+
+    if (!listShopId) return this.returnHome();
+
+    const archiveList = await this.dataManager.getArchiveById(listShopId);
+
+    this.state.listOnEdit.set(archiveList);
+
+    this.setListShop(archiveList);
   }
 
   async editListConfig() {
@@ -186,8 +207,8 @@ export class ListShopService {
 
   //.- Draft mode config
 
-  private async setDraftMode() {
-    const listOnEdit = this.state.listOnEdit()!;
+  private async setListShop(listShop: ListShop) {
+    const listOnEdit = listShop;
 
     const { budget, storeId, items, time } = listOnEdit;
     const store = await this.getStoreBy(storeId);
@@ -230,5 +251,12 @@ export class ListShopService {
     this.state.listItemShop.update((items) =>
       items.filter((item) => item.quantity !== 0),
     );
+  }
+
+  private getMode(url: string): ListShopMode {
+    const modes = Object.keys(LS_MODE);
+    const mode = modes.find((m) => url.includes(m)) ?? 'new-list';
+
+    return LS_MODE[mode];
   }
 }

@@ -1,3 +1,5 @@
+import { ListShopMode } from '../models/list-shop.model';
+
 export const LS_NW_WARN_EXIT = {
   title: 'Cancelar compra',
   question: '¿Cancelar compra y eliminar la lista?',
@@ -32,4 +34,10 @@ export const LS_DF_WARN_DELETE = {
   title: 'Eliminar borrador',
   question: 'Al eliminar el borrador, no se podrá recuperar',
   confirmText: 'Aceptar',
+};
+
+export const LS_MODE: Record<string, ListShopMode> = {
+  'new-list': 'new',
+  'draft-list': 'draft',
+  'view-list': 'view',
 };

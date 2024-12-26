@@ -1,6 +1,6 @@
 import { Store } from '../../tiendas/models';
 
-export type ListShopMode = 'new' | 'draft';
+export type ListShopMode = 'new' | 'draft' | 'view';
 
 export interface ListShopConfig {
   store: Store;

@@ -14,6 +14,7 @@ export class SharedFabComponent {
   icon = input<string>('add');
   color = input<string>('secondary');
   size = input<'small' | undefined>(undefined);
+  horizontal = input<'end' | 'start' | 'center' | undefined>('end');
 
   onClick() {
     this.action.emit();

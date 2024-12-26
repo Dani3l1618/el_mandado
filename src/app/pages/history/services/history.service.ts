@@ -1,4 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppRoutes } from 'src/app/app.routes';
 import { DataService, DateService } from 'src/app/shared';
 import { ListShop } from '../../list-shop';
 import { Store } from '../../tiendas/models';
@@ -8,6 +10,7 @@ import { HistoryFilter } from '../models/history-filter.model';
 export class HistoryService {
   private dataService = inject(DataService);
   private dateService = inject(DateService);
+  private router = inject(Router);
   #shoplist = signal<ListShop[]>([]);
 
   shopList = signal<ListShop[]>([]);
@@ -59,6 +62,10 @@ export class HistoryService {
     }
 
     this.shopList.set(listFiltered);
+  }
+
+  navigateToDetail(id: string) {
+    this.router.navigateByUrl(AppRoutes.viewList.replace(':id', id));
   }
 
   private getMinDate(list: ListShop[]): string {

@@ -76,6 +76,12 @@ export class ListShopDataManagerService {
     return history;
   }
 
+  public async getArchiveById(id: string): Promise<ListShop> {
+    const history = await this.getArchives();
+
+    return history.find((item) => item.id === id)!;
+  }
+
   private generateListShop({
     storeConfig,
     items,
