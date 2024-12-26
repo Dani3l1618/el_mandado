@@ -17,6 +17,7 @@
         formControlName="price"
         [maskito]="maskito.options"
         [maskitoElement]="maskito.predicate"
+        #priceInput
       >
         <div slot="label">
           Precio <ion-text>{{ helperPrice() }}</ion-text>

@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   computed,
   effect,
@@ -6,6 +7,7 @@ import {
   model,
   OnInit,
   signal,
+  viewChild,
 } from '@angular/core';
 import {
   FormsModule,
@@ -55,7 +57,7 @@ const imports = [
   standalone: true,
   imports,
 })
-export class ListShopFormComponent implements OnInit {
+export class ListShopFormComponent implements OnInit, AfterViewInit {
   private readonly modalController = inject(ModalController);
   private readonly dataServce = inject(DataService);
   private readonly computedService = inject(ComputeService);
@@ -71,6 +73,8 @@ export class ListShopFormComponent implements OnInit {
     quantity: this.fb.control(1, [Validators.min(1), Validators.max(20)]),
     barcode: this.fb.control<string | undefined>(undefined),
   });
+
+  private priceInput = viewChild<IonInput>('priceInput');
 
   protected divedPrice = model(false);
   protected readonly maskito = MASK_OPTIONS;
@@ -95,6 +99,11 @@ export class ListShopFormComponent implements OnInit {
     this.quantityListener();
   }
 
+  ngAfterViewInit(): void {
+    console.log(this.priceInput());
+    setTimeout(() => this.priceInput()?.setFocus(), 100);
+  }
+
   confirm() {
     if (!this.sendItem()) return;
     this.modalController.dismiss();
@@ -104,11 +113,13 @@ export class ListShopFormComponent implements OnInit {
     if (!this.sendItem()) return;
     this.itemForm.reset();
     this.divedPrice.set(false);
+    this.priceInput()?.setFocus();
   }
 
   private sendItem(): boolean {
     if (this.itemForm.invalid) {
       this.itemForm.markAllAsTouched();
+      this.priceInput()?.setFocus();
       return false;
     }
 
