@@ -29,7 +29,7 @@ export const MENU_ITEMS = [
   {
     iconSrc: IconSrc.search,
     title: 'Buscador',
-    url: AppRoutes.home,
+    url: AppRoutes.search,
     id: '5',
   },
   {

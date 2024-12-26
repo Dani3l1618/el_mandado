@@ -8,6 +8,7 @@ export enum AppRoutes {
   draftList = 'list-shop/draft-list',
   viewList = 'list-shop/view-list/:id',
   history = 'history',
+  search = 'search',
 }
 
 export const routes: Routes = [
@@ -46,6 +47,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/history/history.page').then((c) => c.HistoryPage),
   },
+  {
+    path: AppRoutes.search,
+    loadComponent: () =>
+      import('./pages/search/search.page').then((c) => c.SearchPage),
+  },
 
   {
     path: '',
@@ -66,5 +72,10 @@ export const routes: Routes = [
     path: 'history',
     loadComponent: () =>
       import('./pages/history/history.page').then((m) => m.HistoryPage),
+  },
+  {
+    path: 'search',
+    loadComponent: () =>
+      import('./pages/search/search.page').then((m) => m.SearchPage),
   },
 ];
