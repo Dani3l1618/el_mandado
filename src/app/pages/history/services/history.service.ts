@@ -65,7 +65,13 @@ export class HistoryService {
   }
 
   navigateToDetail(id: string) {
-    this.router.navigateByUrl(AppRoutes.viewList.replace(':id', id));
+    this.router.navigateByUrl(AppRoutes.viewList.replace(':id', id), {
+      replaceUrl: false,
+    });
+  }
+
+  returnHome() {
+    this.router.navigate([AppRoutes.menu]);
   }
 
   private getMinDate(list: ListShop[]): string {
