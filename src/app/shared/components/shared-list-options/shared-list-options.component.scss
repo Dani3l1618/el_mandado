@@ -1,0 +1,9 @@
+ion-item-option[edit]{
+  background-color: var(--option-edit-bg,var(--ion-color-primary));
+  color: var(--option-edit-cl,var(--ion-color-primary-contrast));
+}
+
+ion-item-option[delete]{
+  background-color: var(--option-delete-bg,var(--ion-color-secondary));
+  color: var(--option-delete-cl,var(--ion-color-secondary-contrast));
+}

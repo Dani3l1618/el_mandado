@@ -1,12 +1,12 @@
 <ion-item-options slot="end" [ngClass]="cssClass()" >
   @if (btnToShow().edit) {
-    <ion-item-option color="primary" (click)="onEdit()">
+    <ion-item-option edit="" (click)="onEdit()" expandable="false">
       <ion-icon slot="icon-only" name="pencil"></ion-icon>
     </ion-item-option>
   }
 
   @if (btnToShow().delete) {
-    <ion-item-option color="secondary" expandable="true" (click)="onDelete()" >
+    <ion-item-option delete="" expandable="true" (click)="onDelete()" expandable="false">
       <ion-icon slot="icon-only" name="trash"></ion-icon>
     </ion-item-option>
   }

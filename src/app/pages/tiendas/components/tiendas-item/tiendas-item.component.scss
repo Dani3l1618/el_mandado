@@ -1,3 +1,11 @@
+:host{
+  --option-edit-bg: var(--ion-background-color);
+  --option-edit-cl:  var(--ion-color-secondary);
+
+  --option-delete-bg: var(--ion-background-color);
+  --option-delete-cl:  var(--ion-color-danger);
+}
+
 .item-list {
   &__label {
     display: flex;

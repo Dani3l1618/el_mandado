@@ -2,7 +2,7 @@
 
 <ion-content [fullscreen]="true">
   <app-shared-fab (action)="createStore()"/>
-  <ion-list>
+  <ion-list lines="none" class="mandado-list ion-padding">
     @for (store of stores(); track store.id) {
       <app-tiendas-item [store]="store" (delete)="deleteStore($event)" (edit)="editStore($event)"/>
     }
