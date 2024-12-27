@@ -1,0 +1,21 @@
+<ion-item class="mandado-item ion-no-padding product">
+  @let localstore = store.value();
+  @let loading  = store.isLoading();
+
+  <div class="store-img">
+    <app-shared-store-img [loading]="loading" [storeImg]="localstore?.img" />
+  </div>
+
+  <div class="product-info">
+    <span class="name">{{product().name}}</span>
+    @if (localstore) {
+      <span class="adress">{{localstore!| adress}}</span>
+    }
+  </div>
+
+  <div class="product-price">
+    <span class="price">{{product().price | currency: 'MXN'}}</span>
+    <span class="date">{{product().shopDate|date:"dd/MM/YY"}}</span>
+  </div>
+
+</ion-item>

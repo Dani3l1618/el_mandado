@@ -1,5 +1,11 @@
 <app-shared-header-page [defaultHref]="defaultHref" title="Un vistazo al pasado"/>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding search">
+  <div class="search-filters">
+    <app-search-bar/>
+  </div>
 
+  <div class="search-results">
+    <app-search-list/>
+  </div>
 </ion-content>

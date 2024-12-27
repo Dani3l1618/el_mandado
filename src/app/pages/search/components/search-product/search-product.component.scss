@@ -1,0 +1,36 @@
+.product {
+  color: var(--ion-text-color);
+  font-size: 1rem;
+  --desc-color: var(--ion-text-color-step-500);
+  --background: var(--product-item-bk, var( --ion-background-color));
+
+  .store-img {
+    --avatar-bkg: var(--ion-color-white);
+  }
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    .name {
+      font-size: 1.1em;
+    }
+    .adress {
+      font-size: 0.7em;
+      color: var(--desc-color);
+    }
+  }
+  .product-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 8rem;
+    .price {
+      font-size: 1.3em;
+    }
+
+    .date {
+      font-size: 0.8em;
+      color: var(--desc-color);
+    }
+  }
+}

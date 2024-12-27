@@ -9,6 +9,7 @@ export { SharedListOptionsComponent } from './components/shared-list-options/sha
 export { TitleComponent } from './components/title/title.component';
 
 //.- Services
+export { AppStorageService } from './services/app-storage.service';
 export { ComputeService } from './services/compute.service';
 export { DataService } from './services/data.service';
 export { DateService } from './services/date.service';
@@ -32,6 +33,7 @@ export { MediaStorePipe } from './pipes/media-store.pipe';
 export { TimerPipe } from './pipes/timer.pipe';
 
 //.- Constans
+export * from './constants/defaults';
 export * from './constants/form.config';
 export { ICONS } from './constants/icons';
 export * from './constants/mask.options';

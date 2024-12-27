@@ -1,8 +1,7 @@
 
 .store {
-  --avatar-bkg: var(--ion-color-secondary);
 
-  background: var(--avatar-bkg);
+  background: var(--avatar-bkg, var(--ion-color-secondary));
   height: 2rem;
   width: 2rem;
   margin-left: 0.6rem;

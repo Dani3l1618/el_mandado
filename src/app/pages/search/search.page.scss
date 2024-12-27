@@ -1,0 +1,12 @@
+.search{
+  --filter-height: 100px;
+  --result-height: calc(100% - var(--filter-height));
+
+  &-filters{
+    height: var(--filter-height);
+  }
+
+  &-results{
+    height: var(--result-height);
+  }
+}

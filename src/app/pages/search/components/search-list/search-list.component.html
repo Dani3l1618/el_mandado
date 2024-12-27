@@ -1,0 +1,5 @@
+<ion-list lines="none" class="mandado-list">
+  @for (item of products(); track item.id) {
+    <app-search-product [product]="item"/>
+  }
+</ion-list>
