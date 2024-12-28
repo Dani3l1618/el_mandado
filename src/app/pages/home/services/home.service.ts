@@ -71,20 +71,30 @@ export class HomeService {
   getListItems(): Signal<HomeListItem[]> {
     const items: HomeListItem[] = [
       {
-        title:"Total gastado",
-        label:"6 meses",
-        data:"12560",
-        icon:"list",
+        title: 'Total gastado',
+        label: '6 meses',
+        data: '12560',
+        icon: 'list',
         id: 1,
+        pipe: 'currency',
       },
       {
-        title:"Gasto mensual",
-        label:"promedio",
-        data:"4560",
-        icon:"wallet",
-        id:2
-      }
-    ]
+        title: 'Gasto mensual',
+        label: 'promedio',
+        data: '4560',
+        icon: 'wallet',
+        id: 2,
+        pipe: 'currency',
+      },
+      {
+        title: 'Tiempo',
+        label: 'promedio',
+        data: '4560',
+        icon: 'time',
+        id: 3,
+        pipe: 'time',
+      },
+    ];
     return signal(items);
   }
 }

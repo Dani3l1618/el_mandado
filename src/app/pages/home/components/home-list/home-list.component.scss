@@ -14,4 +14,7 @@ ion-item{
   margin-bottom: 1rem;;
   --background: var(--ion-color-primary);
   --border-radius: 2rem;
+  &::part(native){
+    height: 3rem;
+  }
 }

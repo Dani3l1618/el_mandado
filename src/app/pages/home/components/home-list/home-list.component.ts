@@ -6,10 +6,10 @@ import {
   IonList
 } from '@ionic/angular/standalone';
 
-import { IconComponent } from 'src/app/shared';
+import { IconComponent, TimerPipe } from 'src/app/shared';
+import { HomeListItem } from '../../models';
 import { HomeListLabelPipe } from '../../pipes';
 import { HomeService } from '../../services';
-import { HomeListItem } from '../../models';
 
 const imports = [
   IonList,
@@ -19,6 +19,7 @@ const imports = [
 
   IconComponent,
   HomeListLabelPipe,
+  TimerPipe,
 ];
 
 @Component({

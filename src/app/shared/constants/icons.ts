@@ -25,6 +25,7 @@ import {
   remove,
   save,
   swapVertical,
+  time,
   timer,
   trash,
   wallet,
@@ -58,6 +59,7 @@ export const ICONS = {
   save,
   swapVertical,
   timer,
+  time,
   trash,
   wallet,
 };

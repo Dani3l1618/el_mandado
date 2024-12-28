@@ -9,8 +9,15 @@
           <h3>{{item.title}}</h3>
           <p class="home-list__label">{{item.label|homeListLabel}}</p>
         </ion-label>
-        <span class="home-list__data" slot="end">{{item.data|currency:'USD': 'symbol':'1.2-2':'en-US'}}</span>
-
+        @switch (item.pipe) {
+          @case ("currency") {
+            <span class="home-list__data" slot="end">{{item.data|currency:'USD': 'symbol':'1.2-2':'en-US'}}</span>
+          }
+          @case ("time") {
+            <span class="home-list__data" slot="end">{{+item.data|timer}}</span>
+          }
+        }
+        
       </ion-item>
     }
   </ion-list>

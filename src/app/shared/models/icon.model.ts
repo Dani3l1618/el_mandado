@@ -11,7 +11,8 @@ export type IconName =
   | 'add-outline'
   | 'add'
   | 'remove'
-  | 'add';
+  | 'add'
+  | 'time';
 
 export enum IconSrc {
   addList = 'add-list-g.svg',
