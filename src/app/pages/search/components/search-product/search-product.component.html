@@ -2,20 +2,17 @@
   @let localstore = store.value();
   @let loading  = store.isLoading();
 
-  <div class="store-img">
+  <div class="store-img" slot="start">
     <app-shared-store-img [loading]="loading" [storeImg]="localstore?.img" />
   </div>
 
   <div class="product-info">
     <span class="name">{{product().name}}</span>
-    @if (localstore) {
-      <span class="adress">{{localstore!| adress}}</span>
-    }
+    <span class="date">{{product().shopDate|date:"dd-MMM-YYYY"}}</span>
   </div>
 
-  <div class="product-price">
+  <div class="product-price" slot="end">
     <span class="price">{{product().price | currency: 'MXN'}}</span>
-    <span class="date">{{product().shopDate|date:"dd/MM/YY"}}</span>
   </div>
 
 </ion-item>

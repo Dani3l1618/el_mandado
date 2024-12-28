@@ -1,3 +1,14 @@
-<div>
-  <ion-searchbar placeholder="Buscar" (ionChange)="search($event.detail.value ?? '')"></ion-searchbar>
+<div class="search-bar">
+  <ion-searchbar
+  [debounce]="DEBOUNCE_TIME"
+  inputmode="search" 
+  placeholder="Buscar" 
+  (ionInput)="search($event)"
+  color="primary"
+
+  ></ion-searchbar>
+  <div class="sorts">
+    <app-shared-chip-toggle label="Precio" (stateChange)="sort($event, 'price')"/>
+    <app-shared-chip-toggle label="Fecha" (stateChange)="sort($event, 'shopDate')"/>
+  </div>
 </div>

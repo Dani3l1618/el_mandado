@@ -1,0 +1,12 @@
+.search-bar{
+  height: 100%;
+  ion-searchbar{
+    --box-shadow:none;
+  }
+
+  .sorts{
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+}

@@ -1,6 +1,7 @@
 
 //.- Components
 export { IconComponent } from './components/icon/icon.component';
+export { SharedChipToggleComponent } from './components/shared-chip-toggle/shared-chip-toggle.component';
 export { SharedConfirmDialogComponent } from './components/shared-confirm-dialog/shared-confirm-dialog.component';
 export { SharedDialogFooterComponent } from './components/shared-dialog-footer/shared-dialog-footer.component';
 export { SharedDialogHeaderComponent } from './components/shared-dialog-header/shared-dialog-header.component';
@@ -24,8 +25,10 @@ export * from './models/form.model';
 export * from './models/icon.model';
 export * from './models/maskito.model';
 export * from './models/pipe.model';
+export * from './models/sort.model';
 export * from './models/storage.model';
 export * from './models/store.model';
+export * from './models/toggle.model';
 
 //.- Pipes
 export { AdressPipe } from './pipes/adress.pipe';

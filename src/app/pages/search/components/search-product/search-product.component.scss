@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
+    min-width: 10rem;
     .name {
       font-size: 1.1em;
     }
@@ -18,12 +19,16 @@
       font-size: 0.7em;
       color: var(--desc-color);
     }
+    .date {
+      font-size: 0.8em;
+      color: var(--desc-color);
+    }
   }
   .product-price {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 8rem;
+    padding-right: 5px;
     .price {
       font-size: 1.3em;
     }
