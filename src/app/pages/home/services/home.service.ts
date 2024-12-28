@@ -1,71 +1,24 @@
-import { Injectable, signal, Signal } from '@angular/core';
-import { HomeRows } from '../models/home-card.model';
+import { inject, Injectable, signal, Signal } from '@angular/core';
+import { AppStorageService } from 'src/app/shared';
+import { ListShop } from '../../list-shop';
+import {
+  HOME_CARD_NULL_INFO,
+  HOME_CARDS,
+} from '../constants/home-cards.config';
+import { HomeCardInfo, HomeRows } from '../models/home-card.model';
 import { HomeListItem } from '../models/home-list.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HomeService {
+  private readonly appStorage = inject(AppStorageService);
+  public homeInfoCards = signal<HomeRows[]>(HOME_CARDS(HOME_CARD_NULL_INFO));
 
-  getResume(): Signal<HomeRows[]>{
-
-    const rows: HomeRows[] = [
-      {
-        id: 1,
-        data: [
-          {
-            id: 'expensive',
-            data: '2328',
-            title: 'Gasto total del mes',
-            icon: 'cash',
-            pipe: {
-              dataType: 'currency',
-              format: '1.2-2',
-            },
-          },
-          {
-            id: 'products',
-            data: '22',
-            title: 'Productos comprados',
-            icon: 'cart',
-            pipe: {
-              dataType: 'str',
-              format: '',
-            },
-          },
-        ],
-      },
-  
-      {
-        id: 2,
-        data: [
-          {
-            id: 'expensive',
-            data: ['Papel de baño', '51'],
-            title: 'Productos más caro',
-            icon: 'bag',
-            pipe: {
-              dataType: 'home-expensive',
-              format: '1.2-2',
-            },
-            cssClass: 'card--sm',
-          },
-          {
-            id: 'location',
-            data: [new Date(2024, 0, 12).toJSON(), 'Aurrera'],
-            title: 'Ubicación',
-            icon: 'pin',
-            pipe: {
-              dataType: 'home-location',
-              format: 'dd/LLL',
-            },
-            cssClass: 'card--sm',
-          },
-        ],
-      },
-    ];
-
-    return signal(rows)
+  public async getResume(): Promise<void> {
+    const info = await this.getCardInfo();
+    const rows: HomeRows[] = HOME_CARDS(info);
+    this.homeInfoCards.set(rows);
   }
 
   getListItems(): Signal<HomeListItem[]> {
@@ -96,5 +49,29 @@ export class HomeService {
       },
     ];
     return signal(items);
+  }
+
+  private async getCardInfo(): Promise<HomeCardInfo> {
+    const lastArchive = await this.getLastArchive();
+    if (!lastArchive) return HOME_CARD_NULL_INFO;
+
+    const info: HomeCardInfo = {
+      expensive: [this.getExpensiveItem(lastArchive)],
+    };
+
+    return HOME_CARD_NULL_INFO;
+  }
+
+  private async getLastArchive(): Promise<ListShop | undefined> {
+    const archives = await this.appStorage.getArchives();
+    const lastArchive = archives.sort(
+      (a, b) => new Date(a.shopDate).getTime() - new Date(b.shopDate).getTime(),
+    );
+    return lastArchive.at(-1);
+  }
+
+  private getExpensiveItem(list: ListShop): string {
+    const prices = list.items.map((item) => item.price);
+    return `${Math.max(...prices)}`;
   }
 }

@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { IonContent } from '@ionic/angular/standalone';
 import { TitleComponent } from 'src/app/shared';
-import { HomeListComponent, HomeStartComponent, LastShopingComponent } from './components';
-
-
+import {
+  HomeListComponent,
+  HomeStartComponent,
+  LastShopingComponent,
+} from './components';
+import { HomeService } from './services';
 
 const imports = [
   IonContent,
@@ -21,4 +24,10 @@ const imports = [
   standalone: true,
   imports,
 })
-export class HomePage {}
+export class HomePage implements OnInit {
+  private readonly homeService = inject(HomeService);
+
+  ngOnInit(): void {
+    this.homeService.getResume();
+  }
+}

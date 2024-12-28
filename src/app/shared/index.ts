@@ -29,6 +29,7 @@ export * from './models/sort.model';
 export * from './models/storage.model';
 export * from './models/store.model';
 export * from './models/toggle.model';
+export * from './models/utilities.model';
 
 //.- Pipes
 export { AdressPipe } from './pipes/adress.pipe';

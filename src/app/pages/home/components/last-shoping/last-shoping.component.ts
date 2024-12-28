@@ -1,20 +1,9 @@
-import { Component, inject, Signal } from '@angular/core';
-import {
-  IonCol,
-  IonGrid, IonRow
-} from '@ionic/angular/standalone';
+import { Component, inject } from '@angular/core';
+import { IonCol, IonGrid, IonRow } from '@ionic/angular/standalone';
 import { HomeCardComponent } from '..';
 import { HomeService } from '../../services';
-import { HomeRows } from '../../models';
 
-
-const imports = [
-  IonGrid,
-  IonRow,
-  IonCol,
-
-  HomeCardComponent,
-];
+const imports = [IonGrid, IonRow, IonCol, HomeCardComponent];
 
 @Component({
   selector: 'app-last-shoping',
@@ -26,8 +15,5 @@ const imports = [
 export class LastShopingComponent {
   private homeService = inject(HomeService);
 
-  rows: Signal<HomeRows[]>;
-  constructor() {
-    this.rows = this.homeService.getResume();
-  }
+  rows = this.homeService.homeInfoCards.asReadonly();
 }

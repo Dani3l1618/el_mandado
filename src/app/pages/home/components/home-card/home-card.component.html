@@ -1,20 +1,26 @@
 <div class="card flex-center" [ngClass]="cssClass()">
   <app-icon [name]="info().icon" cssClass="home-icon" />
   <ion-text class="ion-text-center card__data">
-    @switch (info().pipe.dataType) {
-      @case ("currency") {
-        <span>{{ getData(info().data) | currency:'USD': 'symbol':info().pipe.format:'en-US' }} </span>
-      }
-      @case ("home-expensive") {
-        <span>{{getData(info().data) | homeExpensive: info().pipe.format }} </span>
-      }
-      @case ("home-location") {
-        <span>{{getData(info().data) | homeLocation: info().pipe.format }} </span>
-      }
-      @default {
-        <span>{{ info().data }} </span>
+    @let data = info().data;
+    @if(data === null){
+      <span> NA </span>
+    }@else {
+      @switch (info().pipe.dataType) {
+        @case ("currency") {
+          <span>{{ data![0] | currency:'MXN' }} </span>
+        }
+        @case ("home-expensive") {
+          <span>{{data! | homeExpensive: info().pipe.format }} </span>
+        }
+        @case ("home-location") {
+          <span>{{data! | homeLocation: info().pipe.format }} </span>
+        }
+        @default {
+          <span>{{ data }} </span>
+        }
       }
     }
+   
   </ion-text>
   <ion-text class="ion-text-center card__title">
     <span>{{info().title}}</span>
