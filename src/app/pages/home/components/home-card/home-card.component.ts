@@ -1,5 +1,12 @@
 import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
-import { Component, input } from '@angular/core';
+import {
+  Component,
+  input,
+  linkedSignal,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+} from '@angular/core';
 import { IonText } from '@ionic/angular/standalone';
 
 import { IconComponent } from 'src/app/shared';
@@ -24,11 +31,26 @@ const imports = [
   imports,
   providers: [CurrencyPipe, DatePipe],
 })
-export class HomeCardComponent {
+export class HomeCardComponent implements OnChanges, OnDestroy {
   info = input.required<HomeCard>();
   cssClass = input<string>();
+  data = linkedSignal(() => this.info().data());
+  private interval?: ReturnType<typeof setInterval>;
 
-  // getData<T>(data: string|string[]): T{
-  //   return data as T
-  // }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['info'].firstChange) {
+      if (this.info().updateData) this.updateData();
+    }
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
+  }
+
+  private updateData() {
+    this.interval = setInterval(() => {
+      const newData = this.info().data();
+      this.data.set(newData);
+    }, 4000);
+  }
 }

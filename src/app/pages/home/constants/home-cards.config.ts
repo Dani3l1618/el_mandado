@@ -1,10 +1,10 @@
 import { HomeCardInfo, HomeRows } from '../models';
 
 export const HOME_CARD_NULL_INFO: HomeCardInfo = {
-  expensive: null,
-  lastShop: null,
-  location: null,
-  totalItems: null,
+  expensive: () => null,
+  totalShop: () => null,
+  location: () => null,
+  totalItems: () => null,
 };
 
 export const HOME_CARDS: (info: HomeCardInfo) => HomeRows[] = (info) => [
@@ -13,7 +13,8 @@ export const HOME_CARDS: (info: HomeCardInfo) => HomeRows[] = (info) => [
     data: [
       {
         id: 'expensive',
-        data: info.lastShop,
+        data: info.totalShop,
+        updateData: false,
         title: 'Gasto última compra',
         icon: 'cash',
         pipe: {
@@ -24,7 +25,8 @@ export const HOME_CARDS: (info: HomeCardInfo) => HomeRows[] = (info) => [
       {
         id: 'products',
         data: info.totalItems,
-        title: 'Productos comprados',
+        title: 'Total prod. comprados',
+        updateData: false,
         icon: 'cart',
         pipe: {
           dataType: 'str',
@@ -40,7 +42,8 @@ export const HOME_CARDS: (info: HomeCardInfo) => HomeRows[] = (info) => [
       {
         id: 'expensive',
         data: info.expensive,
-        title: 'Productos más caro',
+        updateData: true,
+        title: 'Prod. comprados',
         icon: 'bag',
         pipe: {
           dataType: 'home-expensive',
@@ -51,6 +54,7 @@ export const HOME_CARDS: (info: HomeCardInfo) => HomeRows[] = (info) => [
       {
         id: 'location',
         data: info.location,
+        updateData: false,
         title: 'Ubicación',
         icon: 'pin',
         pipe: {

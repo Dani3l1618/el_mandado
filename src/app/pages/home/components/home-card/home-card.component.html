@@ -1,22 +1,21 @@
 <div class="card flex-center" [ngClass]="cssClass()">
   <app-icon [name]="info().icon" cssClass="home-icon" />
   <ion-text class="ion-text-center card__data">
-    @let data = info().data;
-    @if(data === null){
+    @if(data() === null){
       <span> NA </span>
     }@else {
       @switch (info().pipe.dataType) {
         @case ("currency") {
-          <span>{{ data![0] | currency:'MXN' }} </span>
+          <span>{{ data()![0] | currency:'MXN' }} </span>
         }
         @case ("home-expensive") {
-          <span>{{data! | homeExpensive: info().pipe.format }} </span>
+          <span>{{data()! | homeExpensive: info().pipe.format }} </span>
         }
         @case ("home-location") {
-          <span>{{data! | homeLocation: info().pipe.format }} </span>
+          <span>{{data()! | homeLocation: info().pipe.format }} </span>
         }
         @default {
-          <span>{{ data }} </span>
+          <span>{{ data() }} </span>
         }
       }
     }

@@ -1,9 +1,9 @@
-import { Nullable } from 'src/app/shared';
 import { IconName } from 'src/app/shared/models/icon.model';
 import { PipeDefinition } from 'src/app/shared/models/pipe.model';
 
 export interface HomeCard {
-  data: string[] | null;
+  data: () => string[] | null;
+  updateData: boolean;
   title: string;
   icon: IconName;
   pipe: PipeDefinition;
@@ -16,9 +16,11 @@ export type HomeRows = {
   data: [HomeCard, HomeCard];
 };
 
+export type HomeCardInfoFunc<T> = () => T | null;
+
 export interface HomeCardInfo {
-  lastShop: Nullable<[string]>;
-  totalItems: Nullable<[string]>;
-  expensive: Nullable<[string, string]>;
-  location: Nullable<[string, string]>;
+  totalShop: HomeCardInfoFunc<[string]>;
+  totalItems: HomeCardInfoFunc<[string]>;
+  expensive: HomeCardInfoFunc<[string, string] | null>;
+  location: HomeCardInfoFunc<[string, string]>;
 }
