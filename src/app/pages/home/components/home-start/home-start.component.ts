@@ -1,18 +1,28 @@
-import { Component, inject } from '@angular/core';
-import { IonButton } from '@ionic/angular/standalone';
+import { Component, computed, inject, model } from '@angular/core';
+import {
+  IonButton,
+  IonContent,
+  IonIcon,
+  IonPopover,
+} from '@ionic/angular/standalone';
 import { AppRoutes } from 'src/app/app.routes';
 import { NavigateService } from 'src/app/shared';
-const imports = [IonButton];
+
+const imports = [IonButton, IonIcon, IonPopover, IonContent];
 
 @Component({
   selector: 'app-home-start',
   templateUrl: './home-start.component.html',
   styleUrls: ['./home-start.component.scss'],
-  standalone: true,
   imports,
 })
 export class HomeStartComponent {
-  private navigateService = inject(NavigateService);
+  private readonly navigateService = inject(NavigateService);
+  protected showMenu = model(false);
+  protected btnColor = computed(() =>
+    this.showMenu() ? 'primary' : 'secondary',
+  );
+  // private inputView = viewChild<ElementRef<HTMLInputElement>>('active');
 
   navigateToMenu(): void {
     this.navigateService.navigateTo(AppRoutes.menu);

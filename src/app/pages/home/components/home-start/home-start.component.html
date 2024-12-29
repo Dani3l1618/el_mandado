@@ -1,5 +1,18 @@
 
 <div class="w100" class="home-start">
-  <ion-button color="secondary" expand="block" shape="round" (click)="navigateToMenu()">Comenzar</ion-button>
+  <input type="checkbox" #active [checked]="showMenu()" hidden/>
+  <ion-button [color]="btnColor()" expand="block" shape="round" (click)="showMenu.set(true)" id="trigger-showmenu">
+    @if (showMenu()) {
+      <ion-icon slot="icon-only" name="grid"></ion-icon>
+    }@else {
+      Comenzar
+    }
+  </ion-button>
+  <ion-popover #popover trigger="trigger-showmenu" (didDismiss)="showMenu.set(false)" side="top" alignment="end" class="el-mandado-home-popover">
+    <ng-template>
+      <ion-content class="ion-padding">Hello World!</ion-content>
+    </ng-template>
+  </ion-popover>
+  
 </div>
 
