@@ -36,6 +36,7 @@ export class HomeCardComponent implements OnChanges, OnDestroy {
   cssClass = input<string>();
   data = linkedSignal(() => this.info().data());
   private interval?: ReturnType<typeof setInterval>;
+  private readonly INTERVAL_TIME = 4000;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['info'].firstChange) {
@@ -51,6 +52,6 @@ export class HomeCardComponent implements OnChanges, OnDestroy {
     this.interval = setInterval(() => {
       const newData = this.info().data();
       this.data.set(newData);
-    }, 4000);
+    }, this.INTERVAL_TIME);
   }
 }

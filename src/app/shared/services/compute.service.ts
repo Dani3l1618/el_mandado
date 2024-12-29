@@ -28,4 +28,10 @@ export class ComputeService {
   public getRandomIntInclusive(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
+
+  public getAverage(...values: number[]): number {
+    const items = values.length;
+
+    return values.reduce((p, c) => p + c, 0) / items;
+  }
 }

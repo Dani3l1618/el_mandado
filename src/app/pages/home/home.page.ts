@@ -29,5 +29,6 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     this.homeService.getResume();
+    this.homeService.getListItems();
   }
 }

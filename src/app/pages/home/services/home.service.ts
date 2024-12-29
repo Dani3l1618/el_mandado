@@ -1,9 +1,11 @@
-import { inject, Injectable, signal, Signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { addMonths, compareAsc, startOfToday } from 'date-fns';
 import { AppStorageService, ComputeService } from 'src/app/shared';
 import { ListShop, ListShopItem } from '../../list-shop';
 import {
   HOME_CARD_NULL_INFO,
   HOME_CARDS,
+  HOME_LIST,
 } from '../constants/home-cards.config';
 import { HomeCardInfo, HomeRows } from '../models/home-card.model';
 import { HomeListItem } from '../models/home-list.model';
@@ -14,7 +16,9 @@ import { HomeListItem } from '../models/home-list.model';
 export class HomeService {
   private readonly appStorage = inject(AppStorageService);
   private readonly computeService = inject(ComputeService);
+  private readonly MONTH_AGO = 6;
   public homeInfoCards = signal<HomeRows[]>(HOME_CARDS(HOME_CARD_NULL_INFO));
+  public homeInfoList = signal<HomeListItem[]>(HOME_LIST([0, 0, 0]));
 
   public async getResume(): Promise<void> {
     const info = await this.getCardInfo();
@@ -22,34 +26,10 @@ export class HomeService {
     this.homeInfoCards.set(rows);
   }
 
-  getListItems(): Signal<HomeListItem[]> {
-    const items: HomeListItem[] = [
-      {
-        title: 'Total gastado',
-        label: '6 meses',
-        data: '12560',
-        icon: 'list',
-        id: 1,
-        pipe: 'currency',
-      },
-      {
-        title: 'Gasto mensual',
-        label: 'promedio',
-        data: '4560',
-        icon: 'wallet',
-        id: 2,
-        pipe: 'currency',
-      },
-      {
-        title: 'Tiempo',
-        label: 'promedio',
-        data: '4560',
-        icon: 'time',
-        id: 3,
-        pipe: 'time',
-      },
-    ];
-    return signal(items);
+  public async getListItems(): Promise<void> {
+    const info = await this.getListInfo();
+
+    this.homeInfoList.set(HOME_LIST(info));
   }
 
   private async getCardInfo(): Promise<HomeCardInfo> {
@@ -77,11 +57,44 @@ export class HomeService {
     return info;
   }
 
+  private async getListInfo(): Promise<[number, number, number]> {
+    const archives = await this.appStorage.getArchives();
+    const totalMonthsAgo = this.getTotalLastMonths(archives);
+    const avgTotal = this.getAverageTotal(archives);
+    const avgTimes = this.getAverageTime(archives);
+
+    return [totalMonthsAgo, avgTotal, avgTimes];
+  }
+
   private async getLastArchive(): Promise<ListShop | undefined> {
     const archives = await this.appStorage.getArchives();
     const lastArchive = archives.sort(
       (a, b) => new Date(a.shopDate).getTime() - new Date(b.shopDate).getTime(),
     );
     return lastArchive.at(-1);
+  }
+
+  private getTotalLastMonths(
+    archives: ListShop[],
+    monthAgo = this.MONTH_AGO,
+  ): number {
+    const dateAgo = addMonths(startOfToday(), -1 * monthAgo);
+    const totals = archives
+      .filter(({ shopDate }) => compareAsc(new Date(shopDate), dateAgo) === 1)
+      .map((item) => item.total);
+
+    return totals.reduce((p, c) => p + c, 0);
+  }
+
+  private getAverageTotal(archives: ListShop[]): number {
+    const totals = archives.map((item) => item.total);
+
+    return this.computeService.getAverage(...totals);
+  }
+
+  private getAverageTime(archives: ListShop[]): number {
+    const times = archives.map((item) => item.time);
+
+    return this.computeService.getAverage(...times);
   }
 }

@@ -1,13 +1,8 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject, Signal } from '@angular/core';
-import {
-  IonItem,
-  IonLabel,
-  IonList
-} from '@ionic/angular/standalone';
+import { Component, inject } from '@angular/core';
+import { IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
 
 import { IconComponent, TimerPipe } from 'src/app/shared';
-import { HomeListItem } from '../../models';
 import { HomeListLabelPipe } from '../../pipes';
 import { HomeService } from '../../services';
 
@@ -30,11 +25,7 @@ const imports = [
   imports,
 })
 export class HomeListComponent {
-  homeService = inject(HomeService);
+  private readonly homeService = inject(HomeService);
 
-  info: Signal<HomeListItem[]>;
-
-  constructor() {
-    this.info = this.homeService.getListItems();
-  }
+  info = this.homeService.homeInfoList.asReadonly();
 }

@@ -11,7 +11,7 @@
         </ion-label>
         @switch (item.pipe) {
           @case ("currency") {
-            <span class="home-list__data" slot="end">{{item.data|currency:'USD': 'symbol':'1.2-2':'en-US'}}</span>
+            <span class="home-list__data" slot="end">{{item.data|currency:'MXN'}}</span>
           }
           @case ("time") {
             <span class="home-list__data" slot="end">{{+item.data|timer}}</span>

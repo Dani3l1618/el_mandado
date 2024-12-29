@@ -1,4 +1,4 @@
-import { HomeCardInfo, HomeRows } from '../models';
+import { HomeCardInfo, HomeListItem, HomeRows } from '../models';
 
 export const HOME_CARD_NULL_INFO: HomeCardInfo = {
   expensive: () => null,
@@ -64,5 +64,36 @@ export const HOME_CARDS: (info: HomeCardInfo) => HomeRows[] = (info) => [
         cssClass: 'card--sm',
       },
     ],
+  },
+];
+
+export const HOME_LIST: (data: [number, number, number]) => HomeListItem[] = ([
+  total,
+  budget,
+  time,
+]) => [
+  {
+    title: 'Total gastado',
+    label: '6 meses',
+    data: total.toString(),
+    icon: 'list',
+    id: 1,
+    pipe: 'currency',
+  },
+  {
+    title: 'Gasto mensual',
+    label: 'promedio',
+    data: budget.toString(),
+    icon: 'wallet',
+    id: 2,
+    pipe: 'currency',
+  },
+  {
+    title: 'Tiempo',
+    label: 'promedio',
+    data: time.toString(),
+    icon: 'time',
+    id: 3,
+    pipe: 'time',
   },
 ];
