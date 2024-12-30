@@ -81,7 +81,15 @@ ion-alert {
 
 ion-popover.el-mandado-home-popover{
   --offset-y: -1rem;
+  --background: transparent;
+  --box-shadow:none;
+
+  backdrop-filter: grayscale(0.5);
   &::part(backdrop){
     background-color: unset;
+  }
+
+  &::part(content){
+    width: fit-content;
   }
 }

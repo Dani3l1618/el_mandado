@@ -23,7 +23,7 @@ const imports = [
 export class HistoryPage implements OnInit {
   private historyService = inject(HistoryService);
   private backButton = inject(Platform).backButton;
-  defaultHref = AppRoutes.menu;
+  defaultHref = AppRoutes.home;
 
   constructor() {
     this.backButton.subscribeWithPriority(10, () => {

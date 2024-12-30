@@ -1,0 +1,21 @@
+.menu-item{
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+
+  &__btn{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+    background-color: var(--ion-color-secondary);
+    color: var(--ion-color-secondary-contrast);
+    border-radius: 10px;
+    padding: 3px 5px;
+
+    &:active{
+      transform: scale(1.1);
+    }
+  }
+}

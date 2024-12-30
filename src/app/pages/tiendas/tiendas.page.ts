@@ -31,7 +31,7 @@ const imports = [
   imports,
 })
 export class TiendasPage implements OnInit {
-  defaultHref = AppRoutes.menu;
+  defaultHref = AppRoutes.home;
   private modalService = inject(ModalService);
   private tiendaService = inject(TiendaService);
   private list = viewChild(IonList);

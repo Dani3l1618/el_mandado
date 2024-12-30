@@ -21,7 +21,7 @@ const imports = [
 })
 export class SearchPage implements OnInit {
   private readonly searchService = inject(SearchService);
-  defaultHref = AppRoutes.menu;
+  defaultHref = AppRoutes.home;
   searchables = this.searchService.searchProducts.asReadonly();
 
   ngOnInit(): void {

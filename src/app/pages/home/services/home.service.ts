@@ -1,6 +1,11 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { addMonths, compareAsc, startOfToday } from 'date-fns';
-import { AppStorageService, ComputeService } from 'src/app/shared';
+import { AppRoutes } from 'src/app/app.routes';
+import {
+  AppStorageService,
+  ComputeService,
+  NavigateService,
+} from 'src/app/shared';
 import { ListShop, ListShopItem } from '../../list-shop';
 import {
   HOME_CARD_NULL_INFO,
@@ -16,6 +21,7 @@ import { HomeListItem } from '../models/home-list.model';
 export class HomeService {
   private readonly appStorage = inject(AppStorageService);
   private readonly computeService = inject(ComputeService);
+  private readonly navigateService = inject(NavigateService);
   private readonly MONTH_AGO = 6;
   public homeInfoCards = signal<HomeRows[]>(HOME_CARDS(HOME_CARD_NULL_INFO));
   public homeInfoList = signal<HomeListItem[]>(HOME_LIST([0, 0, 0]));
@@ -30,6 +36,10 @@ export class HomeService {
     const info = await this.getListInfo();
 
     this.homeInfoList.set(HOME_LIST(info));
+  }
+
+  public navigateTo(url: AppRoutes) {
+    this.navigateService.navigateTo(url);
   }
 
   private async getCardInfo(): Promise<HomeCardInfo> {

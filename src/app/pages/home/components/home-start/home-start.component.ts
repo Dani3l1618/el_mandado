@@ -1,14 +1,10 @@
 import { Component, computed, inject, model } from '@angular/core';
-import {
-  IonButton,
-  IonContent,
-  IonIcon,
-  IonPopover,
-} from '@ionic/angular/standalone';
+import { IonButton, IonIcon, IonPopover } from '@ionic/angular/standalone';
 import { AppRoutes } from 'src/app/app.routes';
 import { NavigateService } from 'src/app/shared';
+import { HomeMenuComponent } from '../home-menu/home-menu.component';
 
-const imports = [IonButton, IonIcon, IonPopover, IonContent];
+const imports = [IonButton, IonIcon, IonPopover, HomeMenuComponent];
 
 @Component({
   selector: 'app-home-start',
@@ -22,7 +18,6 @@ export class HomeStartComponent {
   protected btnColor = computed(() =>
     this.showMenu() ? 'primary' : 'secondary',
   );
-  // private inputView = viewChild<ElementRef<HTMLInputElement>>('active');
 
   navigateToMenu(): void {
     this.navigateService.navigateTo(AppRoutes.menu);

@@ -1,6 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { IonContent, IonText } from '@ionic/angular/standalone';
-import { MenuConfigComponent, MenuItemListComponent } from './components';
+
+import { MenuConfigComponent } from './components/menu-config/menu-config.component';
+import { MenuItemListComponent } from './components/menu-item-list/menu-item-list.component';
 import { MenuItem } from './models';
 import { MenuService } from './services';
 

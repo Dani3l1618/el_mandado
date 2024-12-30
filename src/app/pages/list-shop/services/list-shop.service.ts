@@ -36,7 +36,7 @@ export class ListShopService {
 
   returnHome() {
     this.resetListShopState();
-    this.router.navigate([AppRoutes.menu]);
+    this.router.navigate([AppRoutes.home]);
   }
 
   returnHistory() {

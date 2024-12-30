@@ -8,9 +8,9 @@
       Comenzar
     }
   </ion-button>
-  <ion-popover #popover trigger="trigger-showmenu" (didDismiss)="showMenu.set(false)" side="top" alignment="end" class="el-mandado-home-popover">
+  <ion-popover #popover trigger="trigger-showmenu" (didDismiss)="showMenu.set(false)" side="top" alignment="end" class="el-mandado-home-popover" [dismissOnSelect]="true">
     <ng-template>
-      <ion-content class="ion-padding">Hello World!</ion-content>
+      <app-home-menu/>
     </ng-template>
   </ion-popover>
   

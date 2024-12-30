@@ -1,0 +1,11 @@
+<div class="menu-item">
+  @for (item of menuItems(); track item.id) {
+
+    <div class="menu-item__btn" (click)="navigate(item.url)">
+      <app-icon cssClass="menu-item__icon" [src]="item.iconSrc"/>
+      <ion-text class="ion-text-center">
+        <span class="menu-item__title">{{item.title}}</span>
+      </ion-text>
+    </div>
+  }
+</div>
