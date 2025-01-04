@@ -1,15 +1,14 @@
 import dotenv from 'dotenv';
-import express, { Express, Request, Response } from 'express';
+import App from './app';
 
 dotenv.config();
+const APP_PORT = process.env.PORT || 3000;
+const MONGO_URI = process.env.MONGO_URI;
+const MONGO_DB = process.env.MONGO_DB;
+const mongoUri = `${MONGO_URI}/${MONGO_DB}`;
 
-const app: Express = express();
-const port = process.env.PORT || 3000;
+const app = new App(mongoUri).app;
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript El mandado');
-});
-
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+app.listen(APP_PORT, () => {
+  console.log(`Server running on port ${APP_PORT}`);
 });

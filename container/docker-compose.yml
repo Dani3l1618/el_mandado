@@ -9,6 +9,20 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: elmandado
+    networks:
+      - elmandado_network
+  
+  sync-service:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: sync-service
+    ports:
+      - '3000:3000'
+    environment:
+      MONGO_URI: mongodb://root:example@mongodb:27017
+      MONGO_DB: el_mandado_test
     networks:
       - elmandado_network
 
