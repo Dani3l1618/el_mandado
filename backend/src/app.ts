@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
+import { errorHanlder } from './common/functions/errorhandler';
 import ShopController from './controller/shop/ShopController';
 import StoreController from './controller/store/StoreController';
 import UserController from './controller/user/UserController';
@@ -21,12 +22,14 @@ class App {
   private config() {
     this.app.use(express.json());
     this.app.use(cors());
+    this.app.use(errorHanlder);
   }
 
   private registerControllers() {
     this.controllers.forEach((controller) => {
       controller.registerRoutes();
     });
+    this.app.use(errorHanlder);
   }
 
   private connectToDatabase() {
