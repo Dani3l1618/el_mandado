@@ -23,8 +23,8 @@ class StoreController implements IControllerCommon {
   public registerControllerRoute(): void {
     this.app
       .route(this.PATH)
-      .post(this.storeService.saveStores)
-      .get(this.storeService.getAllStores);
+      .post(this.storeService.saveBackup)
+      .get(this.storeService.getLastBackup);
   }
 }
 

@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import BackupSchema from './backup.model';
 
 const ItemSchema = new Schema({
   id: { type: String, required: true },
@@ -16,8 +17,9 @@ const ShopSchema = new Schema({
   budget: { type: Number, required: true },
   total: { type: Number, required: true },
   items: { type: [ItemSchema], required: true },
-  time: { type: Number, required: true },
-  type: { type: String, required: true }
+  time: { type: Number, required: true }
 });
 
-export const Shop = model('Shop', ShopSchema);
+const ShopBkupSchema = BackupSchema(ShopSchema);
+
+export const Shop = model('Shop', ShopBkupSchema);
