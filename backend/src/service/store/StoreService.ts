@@ -49,7 +49,7 @@ class StoreService implements IStoreService {
       const response: ResponseDTO<any> = {
         message: 'Backup recuperado',
         status: 200,
-        response: stores[0]
+        response: stores[0] ?? []
       };
 
       res.json(response);

@@ -23,13 +23,19 @@ class ShopController implements IControllerCommon {
   public registerControllerRoute(): void {
     this.app
       .route(`${this.PATH}/drafts`)
-      .post((req, res) => this.shopService.saveDrafts(req, res))
-      .get((req, res) => this.shopService.getAllDrafts(req, res));
+      .post((req, res, next) =>
+        this.shopService.saveBackupDrafts(req, res, next)
+      )
+      .get((req, res, next) => this.shopService.getLastDraft(req, res, next));
 
     this.app
       .route(`${this.PATH}/archives`)
-      .post((req, res) => this.shopService.saveArchives(req, res))
-      .get((req, res) => this.shopService.getAllArchives(req, res));
+      .post((req, res, next) =>
+        this.shopService.saveBackupArchives(req, res, next)
+      )
+      .get((req, res, next) =>
+        this.shopService.getLastArchives(req, res, next)
+      );
   }
 }
 

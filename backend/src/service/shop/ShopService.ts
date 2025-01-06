@@ -1,52 +1,88 @@
-import { Request, Response } from 'express';
-import { Shop } from '../../models/shop.model';
+import { NextFunction, Request, Response } from 'express';
+import { Shop, ShopDTO } from '../../models/shop.model';
 
+import { BackupResponse } from '../../common/interface/IBackupResponse';
+import { BackupDTO } from '../../models/backup.model';
+import { ResponseDTO } from '../../models/response.model';
 import { IShopService } from './IShopService';
 
 class ShopService implements IShopService {
-  public async saveDrafts(req: Request, res: Response) {
-    await this.saveShop(req.body, 'draft', res);
+  public async saveBackupDrafts(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    await this.saveShop(req.body, 'draft', res, next);
   }
 
-  public async getAllDrafts(req: Request, res: Response) {
-    await this.getAllShops('draft', res);
+  public async getLastDraft(req: Request, res: Response, next: NextFunction) {
+    await this.getLastShop('draft', res, next);
   }
 
-  public saveArchives(req: Request, res: Response) {
-    this.saveShop(req.body, 'archive', res);
+  public saveBackupArchives(req: Request, res: Response, next: NextFunction) {
+    this.saveShop(req.body, 'archive', res, next);
   }
 
-  public getAllArchives(req: Request, res: Response) {
-    this.getAllShops('archive', res);
+  public getLastArchives(req: Request, res: Response, next: NextFunction) {
+    this.getLastShop('archive', res, next);
   }
 
-  private async saveShop(data: any, type: 'draft' | 'archive', res: Response) {
+  private async saveShop(
+    data: ShopDTO,
+    type: 'draft' | 'archive',
+    res: Response,
+    next: NextFunction
+  ) {
     try {
       if (!Array.isArray(data)) {
         throw new Error('Invalid format');
       }
-      await Shop.deleteMany({ type });
-      const newShops = data.map((shop: any) => ({ ...shop, type }));
-      const result = await Shop.insertMany(newShops, {
-        throwOnValidationError: true
-      });
+      const today = new Date();
 
-      res.status(201).json({
-        message: 'Archivos reemplazados exitosamente.',
-        count: result.length,
-        stores: result
-      });
+      const backup: BackupDTO<ShopDTO> = {
+        date: today,
+        data: data,
+        type
+      };
+
+      const newBackup = new Shop(backup);
+
+      const mongoRes = await newBackup.save();
+
+      const response: ResponseDTO<BackupResponse> = {
+        message: 'Backup realizado',
+        status: 201,
+        response: {
+          date: today,
+          backupID: mongoRes._id.toString()
+        }
+      };
+
+      res.status(201).send(response);
     } catch (error) {
-      res.status(500).send(error);
+      next(error);
     }
   }
 
-  private async getAllShops(type: 'draft' | 'archive', res: Response) {
+  private async getLastShop(
+    type: 'draft' | 'archive',
+    res: Response,
+    next: NextFunction
+  ) {
     try {
-      const shops = await Shop.find({ type });
-      res.json(shops);
+      const stores = await Shop.find({ type }).sort({
+        date: 'desc'
+      });
+
+      const response: ResponseDTO<any> = {
+        message: 'Backup recuperado',
+        status: 200,
+        response: stores[0] ?? []
+      };
+
+      res.json(response);
     } catch (error) {
-      res.status(500).send(error);
+      next(error);
     }
   }
 }

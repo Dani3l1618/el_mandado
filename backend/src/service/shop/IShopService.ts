@@ -1,9 +1,9 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
 export interface IShopService {
-  saveDrafts: (req: Request, res: Response) => void;
-  getAllDrafts: (req: Request, res: Response) => void;
+  saveBackupDrafts: (req: Request, res: Response, next: NextFunction) => void;
+  getLastDraft: (req: Request, res: Response, next: NextFunction) => void;
 
-  saveArchives: (req: Request, res: Response) => void;
-  getAllArchives: (req: Request, res: Response) => void;
+  saveBackupArchives: (req: Request, res: Response, next: NextFunction) => void;
+  getLastArchives: (req: Request, res: Response, next: NextFunction) => void;
 }

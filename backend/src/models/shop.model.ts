@@ -10,7 +10,7 @@ const ItemSchema = new Schema({
 });
 
 const ShopSchema = new Schema({
-  id: { type: String, required: true, unique: true },
+  id: { type: String, required: true },
   name: { type: String, required: true },
   shopDate: { type: Date, required: true },
   storeId: { type: String, required: true },
@@ -23,3 +23,22 @@ const ShopSchema = new Schema({
 const ShopBkupSchema = BackupSchema(ShopSchema);
 
 export const Shop = model('Shop', ShopBkupSchema);
+
+export interface ItemDTO {
+  id: string;
+  name: string;
+  quantity: number;
+  barcode: string;
+  price: number;
+}
+
+export interface ShopDTO {
+  id: string;
+  name: string;
+  shopDate: string;
+  storeId: string;
+  budget: number;
+  total: number;
+  items: ItemDTO[];
+  time: number;
+}
