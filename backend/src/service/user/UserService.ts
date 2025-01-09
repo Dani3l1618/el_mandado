@@ -1,5 +1,5 @@
+import { Usuario } from '@models/user.model';
 import { Request, Response } from 'express';
-import { Usuario } from '../../models/user.model';
 import { IUserService } from './IUserService';
 
 class UserService implements IUserService {

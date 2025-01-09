@@ -1,5 +1,5 @@
+import { ResponseDTO } from '@models/response.model';
 import { NextFunction, Request, Response } from 'express';
-import { ResponseDTO } from 'src/models/response.model';
 
 export const errorHanlder = (
   err: Error,

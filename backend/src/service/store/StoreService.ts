@@ -1,8 +1,8 @@
+import { BackupResponse } from '@common/interface/IBackupResponse';
+import { BackupDTO } from '@models/backup.model';
+import { ResponseDTO } from '@models/response.model';
+import { Store, StoreDTO } from '@models/store.model';
 import { NextFunction, Request, Response } from 'express';
-import { BackupResponse } from '../../common/interface/IBackupResponse';
-import { BackupDTO } from '../../models/backup.model';
-import { ResponseDTO } from '../../models/response.model';
-import { Store, StoreDTO } from '../../models/store.model';
 import { IStoreService } from './IStoreService';
 
 class StoreService implements IStoreService {

@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "outDir": "./dist",
     "strict": true,
     "noImplicitReturns": true,
@@ -11,8 +11,14 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@service/*": ["src/service/*"],
+      "@common/*": ["src/common/*"],
+      "@controller/*": ["src/controller/*"],
+      "@models/*": ["src/models/*"]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/*.spec.ts"]
+  "include": ["src"],
+  "exclude": ["**/*.spec.ts", "node_modules/*"]
 }

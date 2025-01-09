@@ -1,11 +1,12 @@
+import { IControllerCommon } from '@common/interface/IControllerCommon';
+import { IUserService } from '@service/user/IUserService';
+import UserService from '@service/user/UserService';
 import { Express, Request, Response } from 'express';
-import { IUserService } from '../../service/user/IUserService';
-import UserService from '../../service/user/UserService';
-import IUserController from './IUserController';
 
-class UserController implements IUserController {
+class UserController implements IControllerCommon {
   private readonly userService: IUserService = new UserService();
   public readonly PATH = '/api/users';
+  public readonly controllerName = 'UserController';
 
   constructor(private readonly app: Express) {}
 

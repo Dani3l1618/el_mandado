@@ -1,17 +1,20 @@
+import { errorHanlder } from '@common/functions/errorhandler';
+import { IControllerCommon } from '@common/interface/IControllerCommon';
+import BackupController from '@controller/backup/BackupController';
+import ShopController from '@controller/shop/ShopController';
+import StoreController from '@controller/store/StoreController';
+import UserController from '@controller/user/UserController';
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
-import { errorHanlder } from './common/functions/errorhandler';
-import ShopController from './controller/shop/ShopController';
-import StoreController from './controller/store/StoreController';
-import UserController from './controller/user/UserController';
 
 class App {
   public readonly app = express();
-  private readonly controllers = [
+  private readonly controllers: IControllerCommon[] = [
     new UserController(this.app),
     new StoreController(this.app),
-    new ShopController(this.app)
+    new ShopController(this.app),
+    new BackupController(this.app)
   ];
   constructor(private readonly mongoUri: string) {
     this.config();

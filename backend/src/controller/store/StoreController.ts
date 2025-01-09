@@ -1,11 +1,12 @@
+import { IControllerCommon } from '@common/interface/IControllerCommon';
+import { IStoreService } from '@service/store/IStoreService';
+import StoreService from '@service/store/StoreService';
 import { Express, Request, Response } from 'express';
-import { IControllerCommon } from '../../common/interface/IControllerCommon';
-import { IStoreService } from '../../service/store/IStoreService';
-import StoreService from '../../service/store/StoreService';
 
 class StoreController implements IControllerCommon {
   private readonly storeService: IStoreService = new StoreService();
   public readonly PATH = '/api/stores';
+  public readonly controllerName = 'StoreController';
 
   constructor(private readonly app: Express) {}
 

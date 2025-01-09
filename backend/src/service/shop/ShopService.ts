@@ -1,9 +1,9 @@
+import { Shop, ShopDTO } from '@models/shop.model';
 import { NextFunction, Request, Response } from 'express';
-import { Shop, ShopDTO } from '../../models/shop.model';
 
-import { BackupResponse } from '../../common/interface/IBackupResponse';
-import { BackupDTO } from '../../models/backup.model';
-import { ResponseDTO } from '../../models/response.model';
+import { BackupResponse } from '@common/interface/IBackupResponse';
+import { BackupDTO } from '@models/backup.model';
+import { ResponseDTO } from '@models/response.model';
 import { IShopService } from './IShopService';
 
 class ShopService implements IShopService {
