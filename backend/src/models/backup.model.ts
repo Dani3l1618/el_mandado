@@ -1,4 +1,6 @@
 import { Schema } from 'mongoose';
+import { ShopDTO } from './shop.model';
+import { StoreDTO } from './store.model';
 
 const BackupSchema = (schema: Schema) =>
   new Schema({
@@ -13,4 +15,10 @@ export interface BackupDTO<Data> {
   date: Date;
   type?: string;
   data: Data[];
+}
+
+export interface AppDataBackup {
+  stores: StoreDTO[];
+  drafts: ShopDTO[];
+  archives: ShopDTO[];
 }

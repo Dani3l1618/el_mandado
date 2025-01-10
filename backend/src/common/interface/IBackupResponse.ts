@@ -1,4 +1,5 @@
 export interface BackupResponse {
   date: Date;
-  backupID: string;
+  backupID: string | string[];
 }
+
