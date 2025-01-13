@@ -35,7 +35,7 @@ export const MENU_ITEMS = [
   {
     iconSrc: IconSrc.sync,
     title: 'Sincronizar',
-    url: AppRoutes.home,
+    url: AppRoutes.sync,
     id: '6',
   },
 ];

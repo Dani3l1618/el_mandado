@@ -9,6 +9,7 @@ export enum AppRoutes {
   viewList = 'list-shop/view-list/:id',
   history = 'history',
   search = 'search',
+  sync = 'sync',
 }
 
 export const routes: Routes = [
@@ -52,7 +53,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/search/search.page').then((c) => c.SearchPage),
   },
-
+  {
+    path: AppRoutes.sync,
+    loadComponent: () =>
+      import('./pages/sync/sync.page').then((c) => c.SyncPage),
+  },
   {
     path: '',
     redirectTo: 'home',
