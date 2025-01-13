@@ -58,24 +58,4 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  {
-    path: 'tiendas',
-    loadComponent: () =>
-      import('./pages/tiendas/tiendas.page').then((m) => m.TiendasPage),
-  },
-  {
-    path: 'list-shop',
-    loadComponent: () =>
-      import('./pages/list-shop/list-shop.page').then((m) => m.ListShopPage),
-  },
-  {
-    path: 'history',
-    loadComponent: () =>
-      import('./pages/history/history.page').then((m) => m.HistoryPage),
-  },
-  {
-    path: 'search',
-    loadComponent: () =>
-      import('./pages/search/search.page').then((m) => m.SearchPage),
-  },
 ];
