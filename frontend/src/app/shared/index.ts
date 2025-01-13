@@ -14,6 +14,7 @@ export { AppStorageService } from './services/app-storage.service';
 export { ComputeService } from './services/compute.service';
 export { DataService } from './services/data.service';
 export { DateService } from './services/date.service';
+export { HttpService } from './services/http.service';
 export { MediaService } from './services/media.service';
 export { ModalService } from './services/modal.service';
 export { NavigateService } from './services/navigate.service';
@@ -22,6 +23,7 @@ export { StateService } from './services/state.service';
 //.- Models
 export * from './models/dialog.model';
 export * from './models/form.model';
+export * from './models/http.model';
 export * from './models/icon.model';
 export * from './models/maskito.model';
 export * from './models/pipe.model';

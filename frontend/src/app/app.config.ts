@@ -1,4 +1,5 @@
 import { registerLocaleData } from '@angular/common';
+import { provideHttpClient } from '@angular/common/http';
 import localeMX from '@angular/common/locales/es-MX';
 import { EnvironmentProviders, LOCALE_ID, Provider } from '@angular/core';
 import {
@@ -20,7 +21,7 @@ const APP_CONFIG: (Provider | EnvironmentProviders)[] = [
   provideIonicAngular(),
   provideRouter(routes, withPreloading(PreloadAllModules)),
   { provide: LOCALE_ID, useValue: 'es-Mx' },
-  // {provide: DEFAULT_CURRENCY_CODE, useValue: 'en-US' }
+  provideHttpClient(),
 ];
 
 export default APP_CONFIG;
