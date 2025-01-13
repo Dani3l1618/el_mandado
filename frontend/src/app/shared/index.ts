@@ -26,6 +26,7 @@ export * from './models/form.model';
 export * from './models/http.model';
 export * from './models/icon.model';
 export * from './models/maskito.model';
+export * from './models/notify.model';
 export * from './models/pipe.model';
 export * from './models/sort.model';
 export * from './models/storage.model';
@@ -43,5 +44,6 @@ export * from './constants/defaults';
 export * from './constants/form.config';
 export { ICONS } from './constants/icons';
 export * from './constants/mask.options';
+export * from './constants/notify.config';
 export * from './constants/state.catalog';
 
