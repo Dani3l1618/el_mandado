@@ -22,3 +22,9 @@ export interface AppDataBackup {
   drafts: ShopDTO[];
   archives: ShopDTO[];
 }
+
+export interface AppDataBackupDto {
+  stores: BackupDTO<StoreDTO> | null;
+  drafts: BackupDTO<ShopDTO> | null;
+  archives: BackupDTO<ShopDTO> | null;
+}

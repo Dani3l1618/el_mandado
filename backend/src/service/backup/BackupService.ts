@@ -1,5 +1,9 @@
 import { BackupResponse } from '@common/interface/IBackupResponse';
-import { AppDataBackup, BackupDTO } from '@models/backup.model';
+import {
+  AppDataBackup,
+  AppDataBackupDto,
+  BackupDTO
+} from '@models/backup.model';
 import { ResponseDTO } from '@models/response.model';
 import { Shop, ShopDTO } from '@models/shop.model';
 import { Store, StoreDTO } from '@models/store.model';
@@ -10,15 +14,12 @@ class BackupService implements IBackupService {
   public async saveBackup(req: Request, res: Response, next: NextFunction) {
     try {
       const data = req.body as AppDataBackup;
-      const [backupStore, backupDraft, backupArchive] = this.getDTOs(data);
-      const newStoreBk = new Store(backupStore);
-      const newDraftBk = new Shop(backupDraft);
-      const newArchiveBk = new Shop(backupArchive);
+      const { stores, drafts, archives } = this.getDTOs(data);
 
       const [r1, r2, r3] = await Promise.all([
-        newArchiveBk.save(),
-        newDraftBk.save(),
-        newStoreBk.save()
+        this.trySaveShopBk(archives),
+        this.trySaveShopBk(drafts),
+        this.trySaveStoreBk(stores)
       ]);
 
       const response: ResponseDTO<BackupResponse> = {
@@ -26,7 +27,11 @@ class BackupService implements IBackupService {
         status: 201,
         response: {
           date: new Date(),
-          backupID: [r1._id.toString(), r2._id.toString(), r3._id.toString()]
+          backupID: {
+            archives: r1,
+            drafts: r2,
+            stores: r3
+          }
         }
       };
 
@@ -62,9 +67,9 @@ class BackupService implements IBackupService {
         message: 'Last backup retrieve successfully',
         status: 200,
         response: {
-          draft: draft.at(0) ?? null,
-          archive: archive.at(0) ?? null,
-          store: store.at(0) ?? null
+          drafts: draft.at(0) ?? null,
+          archives: archive.at(0) ?? null,
+          stores: store.at(0) ?? null
         }
       };
 
@@ -74,28 +79,62 @@ class BackupService implements IBackupService {
     }
   }
 
-  private getDTOs(
-    data: AppDataBackup
-  ): [BackupDTO<StoreDTO>, BackupDTO<ShopDTO>, BackupDTO<ShopDTO>] {
+  private getDTOs({
+    stores,
+    drafts,
+    archives
+  }: AppDataBackup): AppDataBackupDto {
     const today = new Date();
-    const backupStore = {
-      date: today,
-      data: data.stores
-    };
+    const backupStore =
+      stores.length > 0
+        ? {
+            date: today,
+            data: stores
+          }
+        : null;
 
-    const backupDraft = {
-      date: today,
-      data: data.drafts,
-      type: 'draft'
-    };
+    const backupDraft =
+      drafts.length > 0
+        ? {
+            date: today,
+            data: drafts,
+            type: 'draft'
+          }
+        : null;
 
-    const backupArchive = {
-      date: today,
-      data: data.archives,
-      type: 'archive'
-    };
+    const backupArchive =
+      archives.length > 0
+        ? {
+            date: today,
+            data: archives,
+            type: 'archive'
+          }
+        : null;
 
-    return [backupStore, backupDraft, backupArchive];
+    return {
+      stores: backupStore,
+      drafts: backupDraft,
+      archives: backupArchive
+    };
+  }
+
+  private async trySaveStoreBk(
+    data: BackupDTO<StoreDTO> | null
+  ): Promise<string | null> {
+    console.log(JSON.stringify(data));
+    const store = await new Store(data).save();
+    return store._id.toString();
+  }
+
+  private async trySaveShopBk(
+    data: BackupDTO<ShopDTO> | null
+  ): Promise<string | null> {
+    try {
+      const shop = await new Shop(data).save();
+      return shop._id.toString();
+    } catch (e) {
+      return null;
+    }
   }
 }
 
