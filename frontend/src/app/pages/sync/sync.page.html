@@ -1,0 +1,24 @@
+<app-shared-header-page [defaultHref]="defaultHref" title="Sincronizar" />
+
+<ion-content class="ion-padding sync">
+  <ion-item>
+    <ion-input
+      labelPlacement="stacked"
+      label="Host"
+      placeholder="https://api.com"
+      [(ngModel)]="host"
+      [disabled]="loading()"
+    />
+  </ion-item>
+  <div class="ion-padding-vertical sync-btns">
+    <ion-button (click)="backup()">
+      <ion-icon slot="start" name="sync" [class.rotate]="backupState()" />
+      {{ backupTxt() }}
+    </ion-button>
+
+    <ion-button color="secondary" (click)="restore()">
+      <ion-icon slot="start" name="documents" [class.pulse]="restoreState()"/>
+      {{ restoreTxt() }}
+    </ion-button>
+  </div>
+</ion-content>

@@ -27,4 +27,10 @@ export class AppStorageService {
 
     return archives || [];
   }
+
+  public async getDrafts(): Promise<ListShop[]> {
+    const drafts = await this.dataService.getData<ListShop[]>('drafts');
+
+    return drafts || [];
+  }
 }

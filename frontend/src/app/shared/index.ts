@@ -22,6 +22,7 @@ export { StateService } from './services/state.service';
 
 //.- Models
 export * from './models/dialog.model';
+export * from './models/error.model';
 export * from './models/form.model';
 export * from './models/http.model';
 export * from './models/icon.model';
