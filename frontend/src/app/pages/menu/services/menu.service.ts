@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { NavigateService } from 'src/app/shared';
 import { MENU_ITEMS } from '../constants/menu-items';
 import { MenuItem } from '../models';

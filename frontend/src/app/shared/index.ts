@@ -20,6 +20,11 @@ export { ModalService } from './services/modal.service';
 export { NavigateService } from './services/navigate.service';
 export { StateService } from './services/state.service';
 
+//.- Guards
+export { archivesCheckGuard } from './guards/archives-check.guard';
+export { draftCheckGuard } from './guards/draft-check.guard';
+export { storeCheckGuard } from './guards/store-check.guard';
+
 //.- Models
 export * from './models/dialog.model';
 export * from './models/error.model';

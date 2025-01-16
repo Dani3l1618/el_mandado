@@ -1,4 +1,4 @@
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { IconSrc } from 'src/app/shared';
 
 export const MENU_ITEMS = [

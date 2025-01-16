@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { DataService, DateService } from 'src/app/shared';
 import { ListShop } from '../../list-shop';
 import { Store } from '../../tiendas/models';

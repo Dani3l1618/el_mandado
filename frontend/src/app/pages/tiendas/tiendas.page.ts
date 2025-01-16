@@ -7,7 +7,7 @@ import {
   WritableSignal,
 } from '@angular/core';
 import { IonContent, IonList } from '@ionic/angular/standalone';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { ModalService, SharedFabComponent } from 'src/app/shared';
 import { SharedHeaderPageComponent } from 'src/app/shared/components/shared-header-page/shared-header-page.component';
 import { TiendasFormComponent, TiendasItemComponent } from './components';

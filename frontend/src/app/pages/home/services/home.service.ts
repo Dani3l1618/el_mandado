@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { addMonths, compareAsc, startOfToday } from 'date-fns';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import {
   AppStorageService,
   ComputeService,
@@ -104,7 +104,6 @@ export class HomeService {
 
   private getAverageTime(archives: ListShop[]): number {
     const times = archives.map((item) => item.time);
-
     return this.computeService.getAverage(...times);
   }
 }

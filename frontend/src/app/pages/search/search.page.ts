@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { IonContent } from '@ionic/angular/standalone';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { SharedHeaderPageComponent } from 'src/app/shared/components/shared-header-page/shared-header-page.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchListComponent } from './components/search-list/search-list.component';

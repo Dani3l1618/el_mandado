@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { IonContent, Platform } from '@ionic/angular/standalone';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { SharedHeaderPageComponent } from 'src/app/shared/components/shared-header-page/shared-header-page.component';
 import { HistoryFilterComponent } from './components/history-filter/history-filter.component';
 import { HistoryListComponent } from './components/history-list/history-list.component';

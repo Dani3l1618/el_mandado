@@ -7,7 +7,7 @@ import {
   IonInput,
   IonItem,
 } from '@ionic/angular/standalone';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { SharedHeaderPageComponent } from 'src/app/shared/components/shared-header-page/shared-header-page.component';
 import { NotifyService } from 'src/app/shared/services/notify.service';
 import { SyncService } from './service/sync.service';

@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { IonText } from '@ionic/angular/standalone';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { MENU_ITEMS } from 'src/app/pages/menu';
 import { IconComponent } from 'src/app/shared';
 import { HomeService } from '../../services';

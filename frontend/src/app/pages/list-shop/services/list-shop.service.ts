@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { DataService } from 'src/app/shared';
 import { Store } from '../../tiendas/models';
 import { LS_MODE } from '../constants/list-shop.config';

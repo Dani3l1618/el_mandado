@@ -1,6 +1,6 @@
 import { Component, computed, inject, model } from '@angular/core';
 import { IonButton, IonIcon, IonPopover } from '@ionic/angular/standalone';
-import { AppRoutes } from 'src/app/app.routes';
+import { AppRoutes } from 'src/app/AppRoutes';
 import { NavigateService } from 'src/app/shared';
 import { HomeMenuComponent } from '../home-menu/home-menu.component';
 
