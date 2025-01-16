@@ -31,4 +31,9 @@ export class HomePage implements OnInit {
     this.homeService.getResume();
     this.homeService.getListItems();
   }
+
+  ionViewWillEnter() {
+    this.homeService.getResume();
+    this.homeService.getListItems();
+  }
 }
