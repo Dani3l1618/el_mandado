@@ -32,6 +32,8 @@ export class ComputeService {
   public getAverage(...values: number[]): number {
     const items = values.length;
 
+    if (items === 0) return 0;
+
     return values.reduce((p, c) => p + c, 0) / items;
   }
 }

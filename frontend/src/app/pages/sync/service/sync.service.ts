@@ -53,7 +53,7 @@ export class SyncService {
         this.notifyService.presentError({
           message: 'Ocurrio un error al realizar el backup',
         });
-        this.backupSatate.set(false);
+        this.restoreState.set(false);
         return throwError(() => error);
       }),
     );
