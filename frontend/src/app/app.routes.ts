@@ -1,16 +1,6 @@
 import { Routes } from '@angular/router';
-
-export enum AppRoutes {
-  home = 'home',
-  menu = 'menu',
-  stores = 'tiendas',
-  newList = 'list-shop/new-list',
-  draftList = 'list-shop/draft-list',
-  viewList = 'list-shop/view-list/:id',
-  history = 'history',
-  search = 'search',
-  sync = 'sync',
-}
+import { AppRoutes } from './AppRoutes';
+import { archivesCheckGuard, draftCheckGuard, storeCheckGuard } from './shared';
 
 export const routes: Routes = [
   {
@@ -30,11 +20,13 @@ export const routes: Routes = [
   },
   {
     path: AppRoutes.newList,
+    canActivate: [storeCheckGuard],
     loadComponent: () =>
       import('./pages/list-shop/list-shop.page').then((m) => m.ListShopPage),
   },
   {
     path: AppRoutes.draftList,
+    canActivate: [draftCheckGuard],
     loadComponent: () =>
       import('./pages/list-shop/list-shop.page').then((m) => m.ListShopPage),
   },
@@ -45,6 +37,7 @@ export const routes: Routes = [
   },
   {
     path: AppRoutes.history,
+    canActivate: [archivesCheckGuard],
     loadComponent: () =>
       import('./pages/history/history.page').then((c) => c.HistoryPage),
   },
