@@ -1,8 +1,8 @@
 <app-shared-header-page [defaultHref]="defaultHref" title="Mis tienditas"/>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" (click)="storeList.closeSlidingItems()">
   <app-shared-fab (action)="createStore()"/>
-  <ion-list lines="none" class="mandado-list ion-padding">
+  <ion-list #storeList lines="none" class="mandado-list ion-padding">
     @for (store of stores(); track store.id) {
       <app-tiendas-item [store]="store" (delete)="deleteStore($event)" (edit)="editStore($event)"/>
     }

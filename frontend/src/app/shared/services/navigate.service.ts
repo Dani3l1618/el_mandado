@@ -4,13 +4,12 @@ import { AppRoutes } from 'src/app/AppRoutes';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NavigateService {
   private router = inject(Router);
 
-  async navigateTo(url:AppRoutes) {
-    console.log("url", {url})
+  async navigateTo(url: AppRoutes) {
     await this.router.navigateByUrl(url);
   }
 }

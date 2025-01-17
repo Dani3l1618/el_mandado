@@ -39,19 +39,18 @@ export class ListShopDialogsService {
         stores,
         currentConfig,
       },
+      cssClass: ['modal-35'],
     });
 
     return response;
   }
 
   async openDraftConfig(
-    listShopService: ListShopService,
     state: ListShopStateService,
   ): Promise<ListShop | undefined> {
     const response = await this.modalService.openModal<ListShop>({
       component: ListShopSelectDraftComponent,
       componentProps: {
-        listShopService,
         state,
       },
       cssClass: ['modal-25'],

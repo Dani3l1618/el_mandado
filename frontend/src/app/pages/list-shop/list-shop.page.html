@@ -1,6 +1,6 @@
 <app-list-shop-header />
 
-<ion-content class="ion-padding" fixed-slot-placement="before">
+<ion-content class="ion-padding" fixed-slot-placement="before" (click)="closeSlidingItems()">
   @if (shopDate()) {
     <span class="shopdate">{{ shopDate() | date: "dd MMM YYYY" }}</span>
   }
@@ -22,7 +22,7 @@
   @if (emptyList()) {
     <app-list-shop-empty />
   } @else {
-    <app-list-shop-list />
+    <app-list-shop-list #itemShopList/>
   }
 </ion-content>
 

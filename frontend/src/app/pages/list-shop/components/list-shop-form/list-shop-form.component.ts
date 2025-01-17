@@ -96,7 +96,6 @@ export class ListShopFormComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.priceInput());
     setTimeout(() => this.priceInput()?.setFocus(), 100);
   }
 

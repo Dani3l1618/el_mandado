@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, viewChild } from '@angular/core';
 import { IonContent } from '@ionic/angular/standalone';
 import { SharedFabComponent } from 'src/app/shared';
 import { ListShopEmptyComponent } from './components/list-shop-empty/list-shop-empty.component';
@@ -41,6 +41,7 @@ const imports = [
 export class ListShopPage {
   private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
+  private itemShopList = viewChild(ListShopListComponent);
   shopDate = computed(() => this.state.listOnEdit()?.shopDate);
   mode = this.state.mode.asReadonly();
 
@@ -62,5 +63,9 @@ export class ListShopPage {
 
   protected returnArchive() {
     this.listShopService.returnHistory();
+  }
+
+  protected closeSlidingItems() {
+    this.itemShopList()?.closeSlidingItems();
   }
 }

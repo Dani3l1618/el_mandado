@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, viewChild } from '@angular/core';
 import { IonList } from '@ionic/angular/standalone';
 import { ListShopStateService } from '../../services/list-shop-state.service';
 import { ListShopItemComponent } from '../list-shop-item/list-shop-item.component';
@@ -14,6 +14,11 @@ const imports = [IonList, ListShopItemComponent];
 })
 export class ListShopListComponent {
   private state = inject(ListShopStateService);
+  private ionShopList = viewChild(IonList);
 
   listShop = this.state.listItemShop.asReadonly();
+
+  public async closeSlidingItems(): Promise<boolean | undefined> {
+    return await this.ionShopList()?.closeSlidingItems();
+  }
 }

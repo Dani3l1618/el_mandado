@@ -69,16 +69,6 @@ ion-alert {
   }
 }
 
-.list-shop-item-slide{
-  .item-delete{
-    ion-item-option{
-      --background: #ffffff;
-      background-color: var(--ion-background-color);
-      color: var(--ion-color-secondary);
-    }
-  }
-}
-
 ion-popover.el-mandado-home-popover{
   --offset-y: -1rem;
   --background: transparent;

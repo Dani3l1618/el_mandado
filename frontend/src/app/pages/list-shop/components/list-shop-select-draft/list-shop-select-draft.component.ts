@@ -14,7 +14,6 @@ import {
 } from 'src/app/shared';
 import { ListShop } from '../../models/list-shop.model';
 import { ListShopStateService } from '../../services/list-shop-state.service';
-import { ListShopService } from '../../services/list-shop.service';
 
 const imports = [
   IonContent,
@@ -36,7 +35,6 @@ const imports = [
   imports,
 })
 export class ListShopSelectDraftComponent implements OnInit {
-  private listShopService!: ListShopService;
   private state!: ListShopStateService;
   protected selectOptions = SELECT_INTERFACE_OPTIONS;
   private modalController = inject(ModalController);

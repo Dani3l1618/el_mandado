@@ -170,7 +170,7 @@ export class ListShopService {
   }
 
   private async openDraftConfig(): Promise<ListShop | undefined> {
-    return this.dialogService.openDraftConfig(this, this.state);
+    return this.dialogService.openDraftConfig(this.state);
   }
 
   async hanldeExit() {

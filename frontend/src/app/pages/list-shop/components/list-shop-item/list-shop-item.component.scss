@@ -1,9 +1,15 @@
-.list-shop-item {
+:host {
+  --option-edit-bg: var(--ion-background-color);
+  --option-edit-cl: var(--ion-color-secondary);
+  --option-delete-bg: var(--ion-background-color);
+  --option-delete-cl: var(--ion-background-color-step-550);
+}
 
-  .item-name{
+.list-shop-item {
+  .item-name {
     width: 100%;
     padding: 0 5px;
-    &--empty{
+    &--empty {
       opacity: 0.5;
     }
   }
