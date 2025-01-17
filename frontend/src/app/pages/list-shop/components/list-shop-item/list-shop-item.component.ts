@@ -31,8 +31,7 @@ export class ListShopItemComponent {
   private state = inject(ListShopStateService);
   item = input.required<ListShopItem>();
 
-  showIncrements = computed(() => ['new', 'draft'].includes(this.state.mode()));
-  //todo: pasar la tupla a un objeto.
+  interactMode = computed(() => ['new', 'draft'].includes(this.state.mode()));
 
   modifyQuantity(quantity: 1 | -1) {
     const newQuantity = this.item().quantity + quantity;
