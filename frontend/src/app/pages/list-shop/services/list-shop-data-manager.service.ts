@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { ComputeService, DataService } from 'src/app/shared';
+import { ComputeService, DataService, DateService } from 'src/app/shared';
 import { ListShop, ListShopDraft } from '../models/list-shop.model';
 import { ListShopStateService } from './list-shop-state.service';
 
@@ -8,7 +8,7 @@ export class ListShopDataManagerService {
   private dataService = inject(DataService);
   private state = inject(ListShopStateService);
   private computeService = inject(ComputeService);
-
+  private dateService = inject(DateService);
   private currentDraft = this.state.currentDraft.asReadonly();
 
   async getDrafts(): Promise<ListShop[]> {
@@ -45,10 +45,6 @@ export class ListShopDataManagerService {
     const list = this.generateListShop(infoList);
 
     await this.dataService.saveData('currentDraft', list);
-    console.log(
-      '%ctodo: ¿Cómo identificas un new draft de un edit draft?',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
     return list;
   }
 
@@ -89,7 +85,8 @@ export class ListShopDataManagerService {
     time,
   }: ListShopDraft): ListShop {
     const id = this.currentDraft()?.id ?? this.dataService.generateId();
-    const shopDate = this.currentDraft()?.shopDate ?? new Date().toJSON();
+    const shopDate =
+      this.currentDraft()?.shopDate ?? this.dateService.newDate();
     const name = this.computeService.generateDateName(
       storeConfig.store.chain,
       new Date(shopDate),

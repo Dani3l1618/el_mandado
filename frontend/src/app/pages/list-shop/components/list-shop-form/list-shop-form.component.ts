@@ -81,10 +81,6 @@ export class ListShopFormComponent implements OnInit, AfterViewInit {
   protected helperPrice = signal('');
 
   constructor() {
-    console.log(
-      '%ctodo: Hacer focus en input de precio',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
     effect(() => {
       this.divedPrice();
       this.itemForm.updateValueAndValidity({ emitEvent: true });

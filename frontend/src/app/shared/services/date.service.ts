@@ -28,4 +28,8 @@ export class DateService {
     d.setHours(23, 59, 59, 0);
     return d.toISOString();
   }
+
+  newDate(): string {
+    return this.setToMidnight(new Date().toJSON());
+  }
 }

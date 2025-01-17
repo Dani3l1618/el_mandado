@@ -28,10 +28,6 @@ export class ListShopService {
   constructor() {
     const url = this.router.url;
     this.state.mode.set(this.getMode(url));
-    console.log(
-      '%ctodo: Guardar la fecha con hora 00:00',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
   }
 
   returnHome() {
@@ -166,11 +162,6 @@ export class ListShopService {
   private async openListConfig(
     editMode = false,
   ): Promise<ListShopConfig | undefined> {
-    console.log(
-      '%ctodo: Manejar cuando no haya tiendas',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
-
     const listConfig = editMode
       ? this.state.storeConfig.asReadonly()
       : signal(undefined);
@@ -179,11 +170,6 @@ export class ListShopService {
   }
 
   private async openDraftConfig(): Promise<ListShop | undefined> {
-    console.log(
-      '%ctodo: Manejar cuando no haya draft',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
-
     return this.dialogService.openDraftConfig(this, this.state);
   }
 
