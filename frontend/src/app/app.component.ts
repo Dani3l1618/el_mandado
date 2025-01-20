@@ -11,6 +11,14 @@ export class AppComponent {
   private mediaService = inject(MediaService);
   constructor() {
     this.mediaService.registIcons();
+    console.log(
+      '%ctodo: Bloquear back button cuando se este en el componente de list-items',
+      'color: #1a4704; background-color: #d0f0c0;',
+    );
+    console.log(
+      '%ctodo: Crear el icon',
+      'color: #1a4704; background-color: #d0f0c0;',
+    );
   }
   //https://app.uizard.io/prototypes/create?prototypeTemplateId=XXwl8eP0eouzp0qwOjMM
   colors = [
