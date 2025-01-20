@@ -8,7 +8,7 @@
   ion-button {
     width: 100%;
     height: var(--btn-h);
-    transition: width 0.3s ease-in-out;
+    transition: width 0.5s;
     --ripple-color: transparent;
     
     &::part(native) {
