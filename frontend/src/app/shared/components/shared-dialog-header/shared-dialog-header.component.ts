@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, OnDestroy, OnInit } from '@angular/core';
 import {
   IonButton,
   IonButtons,
@@ -7,7 +7,9 @@ import {
   IonTitle,
   IonToolbar,
   ModalController,
+  Platform,
 } from '@ionic/angular/standalone';
+import { Subscription } from 'rxjs';
 
 const imports = [
   IonHeader,
@@ -25,9 +27,25 @@ const imports = [
   standalone: true,
   imports,
 })
-export class SharedDialogHeaderComponent {
+export class SharedDialogHeaderComponent implements OnInit, OnDestroy {
   title = input<string>('El mandado');
   private modalController = inject(ModalController);
+  private platform = inject(Platform);
+  private backBtnSub?: Subscription;
+
+  ngOnInit(): void {
+    this.backBtnSub = this.platform.backButton.subscribeWithPriority(
+      999,
+      () => {
+        this.cancel();
+        console.log('cerrando modal');
+      },
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.backBtnSub?.unsubscribe();
+  }
 
   cancel() {
     this.modalController.dismiss(undefined, 'cancel');

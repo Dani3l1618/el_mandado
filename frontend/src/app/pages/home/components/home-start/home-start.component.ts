@@ -20,6 +20,6 @@ export class HomeStartComponent {
   );
 
   navigateToMenu(): void {
-    this.navigateService.navigateTo(AppRoutes.menu);
+    this.navigateService.navigateTo(AppRoutes.home);
   }
 }

@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, computed, inject, viewChild } from '@angular/core';
-import { IonContent } from '@ionic/angular/standalone';
+import { IonContent, Platform } from '@ionic/angular/standalone';
+import { Subscription } from 'rxjs';
 import { SharedFabComponent } from 'src/app/shared';
 import { ListShopEmptyComponent } from './components/list-shop-empty/list-shop-empty.component';
 import { ListShopFabActionsComponent } from './components/list-shop-fab-actions/list-shop-fab-actions.component';
@@ -41,6 +42,8 @@ const imports = [
 export class ListShopPage {
   private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
+  private platform = inject(Platform);
+  private backBtnSubs?: Subscription;
   private itemShopList = viewChild(ListShopListComponent);
   shopDate = computed(() => this.state.listOnEdit()?.shopDate);
   mode = this.state.mode.asReadonly();
@@ -55,6 +58,18 @@ export class ListShopPage {
     } else {
       this.listShopService.initViewMode();
     }
+
+    this.backBtnSubs = this.platform.backButton.subscribeWithPriority(
+      800,
+      (next) => {
+        if (this.state.mode() !== 'view') {
+          this.listShopService.hanldeExit();
+          return;
+        }
+
+        next();
+      },
+    );
   }
 
   protected openItemForm() {
@@ -67,5 +82,9 @@ export class ListShopPage {
 
   protected closeSlidingItems() {
     this.itemShopList()?.closeSlidingItems();
+  }
+
+  ionViewDidLeave() {
+    this.backBtnSubs?.unsubscribe();
   }
 }

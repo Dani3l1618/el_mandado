@@ -9,11 +9,6 @@ export const routes: Routes = [
       import('./pages/home/home.page').then((m) => m.HomePage),
   },
   {
-    path: AppRoutes.menu,
-    loadComponent: () =>
-      import('./pages/menu/menu.page').then((m) => m.MenuPage),
-  },
-  {
     path: AppRoutes.stores,
     loadComponent: () =>
       import('./pages/tiendas/tiendas.page').then((m) => m.TiendasPage),
