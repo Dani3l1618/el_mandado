@@ -7,9 +7,10 @@ services:
     volumes:
       - mongodb_data:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-      MONGO_INITDB_DATABASE: elmandado
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+      MONGO_INITDB_DATABASE: ${MONGO_DB}
+    
     networks:
       - elmandado_network
   
@@ -19,10 +20,14 @@ services:
       dockerfile: Dockerfile
     container_name: sync-service
     ports:
-      - '3000:3000'
+      - '${SERVICE_PORT}:3000'
     environment:
-      MONGO_URI: mongodb://root:example@mongodb:27017
-      MONGO_DB: el_mandado_test
+      MONGO_USER: ${MONGO_USER}
+      MONGO_PASS: ${MONGO_PASS}
+      MONGO_DB: ${MONGO_DB}
+      MONGO_HOST: ${MONGO_HOST}
+    depends_on:
+      - mongodb
     networks:
       - elmandado_network
 
