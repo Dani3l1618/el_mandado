@@ -62,8 +62,8 @@ export class SyncService {
   private async restoreAppData({ drafts, archives, stores }: SyncRestore) {
     try {
       await Promise.all([
-        this.dataService.saveData('archives', archives.data),
-        this.dataService.saveData('drafts', drafts.data),
+        this.dataService.saveData('archives', archives?.data ?? []),
+        this.dataService.saveData('drafts', drafts?.data ?? []),
         this.dataService.saveData('stores', stores.data),
       ]);
 

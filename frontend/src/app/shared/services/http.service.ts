@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -7,12 +7,17 @@ import { Observable } from 'rxjs';
 })
 export class HttpService {
   private readonly http = inject(HttpClient);
+  private readonly commonHeader = {
+    'ngrok-skip-browser-warning': 'true',
+  };
 
   public get<Response>(url: string): Observable<Response> {
-    return this.http.get<Response>(url);
+    const headers = new HttpHeaders(this.commonHeader);
+    return this.http.get<Response>(url, { headers });
   }
 
   public post<Response, Body>(url: string, body: Body): Observable<Response> {
-    return this.http.post<Response>(url, body);
+    const headers = new HttpHeaders(this.commonHeader);
+    return this.http.post<Response>(url, body, { headers });
   }
 }

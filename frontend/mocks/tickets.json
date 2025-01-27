@@ -1,0 +1,2017 @@
+[
+  {
+    "id": "ff568bd6-d8e4-45a7-81c7-6744e8ac29fc",
+    "name": "24-10-2024-BodegaAurrera",
+    "shopDate": "2024-10-24T06:00:00.000Z",
+    "storeId": "cf8503b6-3a49-4043-9cf5-98c78609c785",
+    "budget": 18000,
+    "total": 1810.95,
+    "items": [
+      {
+        "name": "Roma 1Kg",
+        "quantity": 2,
+        "barcode": null,
+        "price": 32,
+        "id": "04d13695-2b1f-4a81-a546-e6812eabed60"
+      },
+      {
+        "name": "Harina Hotcake",
+        "quantity": 1,
+        "barcode": null,
+        "price": 33,
+        "id": "06ecc374-5b39-4573-a616-35580ac4eb63"
+      },
+      {
+        "name": "Arroz Bodega Aurrera",
+        "quantity": 2,
+        "barcode": null,
+        "price": 15,
+        "id": "e5ee84eb-d5b9-4849-b893-a7a6f417845c",
+        "promo": "2x30"
+      },
+      {
+        "name": "Spaghetti",
+        "quantity": 2,
+        "barcode": null,
+        "price": 43,
+        "id": "b12482aa-baa7-483e-b1ed-dc133b27dbd8"
+      },
+      {
+        "name": "Sal La Fina",
+        "quantity": 1,
+        "barcode": null,
+        "price": 24.5,
+        "id": "480d021b-85c5-477d-b702-25ab5a187126"
+      },
+      {
+        "name": "Arroz Mercedes",
+        "quantity": 4,
+        "barcode": null,
+        "price": 26.5,
+        "id": "e4ed51b4-2e32-4409-b720-0d7c1a9226d8"
+      },
+      {
+        "name": "Shampoo Caprice",
+        "quantity": 1,
+        "barcode": null,
+        "price": 40,
+        "id": "a1f5116f-e20c-4494-b7e6-5222d6c316a4"
+      },
+      {
+        "name": "Catsup Heinz",
+        "quantity": 1,
+        "barcode": null,
+        "price": 49,
+        "id": "f8fe8d95-cb34-41e6-934f-88b0445a182a"
+      },
+      {
+        "name": "Chuleta Cerdo",
+        "quantity": 1,
+        "barcode": null,
+        "price": 48,
+        "id": "80f0529a-a6cb-42ab-b773-32e593bfc1f5"
+      },
+      {
+        "name": "Filete Tilapia",
+        "quantity": 1,
+        "barcode": null,
+        "price": 82.53,
+        "id": "b60a2d7a-f375-4e76-805c-95e8ef4ad879"
+      },
+      {
+        "name": "Chuleta Cerdo",
+        "quantity": 1,
+        "barcode": null,
+        "price": 36.48,
+        "id": "1de0f98c-4d47-4269-889b-7c75e2a8e1d5"
+      },
+      {
+        "name": "Chuleta Cerdo",
+        "quantity": 1,
+        "barcode": null,
+        "price": 45.44,
+        "id": "3319e3ce-bfa3-44eb-9dcd-c87f292f0c83"
+      },
+      {
+        "name": "Pinol",
+        "quantity": 1,
+        "barcode": null,
+        "price": 46,
+        "id": "0bb8ee81-10ea-4451-9235-e737aa0bcd30"
+      },
+      {
+        "name": "Pasta Codo 3",
+        "quantity": 1,
+        "barcode": null,
+        "price": 43,
+        "id": "1aac7149-8dec-43d6-91c7-1170324e2f91"
+      },
+      {
+        "name": "Detergente Mas Negro",
+        "quantity": 2,
+        "barcode": null,
+        "price": 30,
+        "id": "6ed850fb-9f95-4576-a204-365c11d42734"
+      },
+      {
+        "name": "Pasta Dientes Colgate",
+        "quantity": 2,
+        "barcode": null,
+        "price": 57.5,
+        "id": "705e616a-8c14-44cd-90e8-0b2a3d697eef",
+        "promo": "2x115"
+      },
+      {
+        "name": "Bolsa GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 19.5,
+        "id": "a5323221-48f4-4a04-aee9-89024dfa18e0",
+        "promo": "2x115"
+      },
+      {
+        "name": "Ceppillo Dientes Pack 3",
+        "quantity": 2,
+        "barcode": null,
+        "price": 40.5,
+        "id": "78945621-b0ed-42dc-ab8b-5daaa47aa727",
+        "promo": "2x115"
+      },
+      {
+        "name": "Svetia",
+        "quantity": 1,
+        "barcode": null,
+        "price": 15,
+        "id": "f56679f1-1ed1-4600-87ee-3ba0397b1078"
+      },
+      {
+        "name": "Clorox 3.8",
+        "quantity": 1,
+        "barcode": null,
+        "price": 39,
+        "id": "82180a37-bd50-4b69-8bfe-98144a8d877f"
+      },
+      {
+        "name": "Papel de baño Cottonelle",
+        "quantity": 1,
+        "barcode": null,
+        "price": 119,
+        "id": "3058ae36-398c-4323-981a-bf54b222ddd2"
+      },
+      {
+        "name": "Salsa Soya Pack",
+        "quantity": 1,
+        "barcode": null,
+        "price": 38,
+        "id": "418c0e7d-9ce7-4340-83de-5dfe6792b228"
+      },
+      {
+        "name": "Atún Herdez",
+        "quantity": 3,
+        "barcode": null,
+        "price": 18,
+        "id": "642c11a0-a3a0-419f-89d7-3cc20814ae6a"
+      },
+      {
+        "name": "Té Manzanilla",
+        "quantity": 1,
+        "barcode": null,
+        "price": 18,
+        "id": "57900ce4-44c8-4c30-b267-7a0b35f3e475"
+      },
+      {
+        "name": "Mermelada Zarzamora",
+        "quantity": 1,
+        "barcode": null,
+        "price": 64.5,
+        "id": "2fb1ef6d-a761-46d1-af8d-527ccbb1ef79"
+      },
+      {
+        "name": "Mermelada Fresa",
+        "quantity": 1,
+        "barcode": null,
+        "price": 37.5,
+        "id": "97394e71-473b-45d4-8b6c-251142b8ad91"
+      },
+      {
+        "name": "Pechugas Rellenas",
+        "quantity": 1,
+        "barcode": null,
+        "price": 69,
+        "id": "3fcbdef9-4b93-40cb-bb5a-4bad43fa97e1"
+      },
+      {
+        "name": "Maruchan",
+        "quantity": 5,
+        "barcode": null,
+        "price": 8,
+        "id": "e0cdcbf3-ad60-4b11-9bf0-026ed7cd72dc"
+      },
+      {
+        "name": "Pepsi 1lt",
+        "quantity": 1,
+        "barcode": null,
+        "price": 25,
+        "id": "be9eea11-764d-4bf8-bb72-710862a390d7"
+      },
+      {
+        "name": "Cereal Extra",
+        "quantity": 1,
+        "barcode": null,
+        "price": 69.5,
+        "id": "d4562cc3-da7f-4f05-a4c8-4e742a5effc5"
+      },
+      {
+        "name": "Crema Alpura",
+        "quantity": 1,
+        "barcode": null,
+        "price": 78,
+        "id": "8b9057c3-57d0-4b05-80e3-8410cf1a3833"
+      },
+      {
+        "name": "Mantequilla 245gr",
+        "quantity": 2,
+        "barcode": null,
+        "price": 32.5,
+        "id": "a3b03188-d4b0-4a20-8bb8-7e911cf92c45"
+      },
+      {
+        "name": "Mantequilla Primavera",
+        "quantity": 1,
+        "barcode": null,
+        "price": 33,
+        "id": "e441df33-2f37-4510-b5f3-89dec19e134b"
+      },
+      {
+        "name": "Glade",
+        "quantity": 1,
+        "barcode": null,
+        "price": 37,
+        "id": "4388f57d-6235-42b5-9d3f-30f6aed1b3cc"
+      }
+    ],
+    "time": 7200
+  },
+  {
+    "id": "9f69a739-82eb-4cdc-aa5a-2d8632896038",
+    "name": "09-01-2025-BodegaAurrera",
+    "shopDate": "2025-01-09T06:00:00.000Z",
+    "storeId": "cf8503b6-3a49-4043-9cf5-98c78609c785",
+    "budget": 4200,
+    "total": 3294.73,
+    "items": [
+      {
+        "name": "Suavisante Suavitel 4.8lt",
+        "quantity": 1,
+        "barcode": null,
+        "price": 140,
+        "id": "c2b77d5f-bc23-4755-bad8-fbfc7876060f"
+      },
+      {
+        "name": "Ajax Mascotas",
+        "quantity": 1,
+        "barcode": null,
+        "price": 40,
+        "id": "3acc826f-bac8-45a7-9f09-c920f8c8d204"
+      },
+      {
+        "name": "Shampoo Caprice",
+        "quantity": 1,
+        "barcode": null,
+        "price": 40,
+        "id": "db103bf4-518d-400a-9338-6aec076668ee"
+      },
+      {
+        "name": "Detergente GV Bicarbonato 7l",
+        "quantity": 1,
+        "barcode": null,
+        "price": 179,
+        "id": "d0cbe504-dc29-428b-bd95-b87133fcac93"
+      },
+      {
+        "name": "Refresco Squirt 2lt",
+        "quantity": 1,
+        "barcode": null,
+        "price": 25,
+        "id": "70ac3c1f-76dc-45dc-9fd1-38a66a342dc7"
+      },
+      {
+        "name": "Refresco Peñafiel 2lt",
+        "quantity": 1,
+        "barcode": null,
+        "price": 28,
+        "id": "7cc23957-c8fb-405a-898c-282da8d69f41"
+      },
+      {
+        "name": "Jabón Zote Barra 200g",
+        "quantity": 5,
+        "barcode": null,
+        "price": 9,
+        "id": "560b7195-5c24-49fe-8b87-21a978dfa4c1"
+      },
+      {
+        "name": "Palomitas Merced",
+        "quantity": 1,
+        "barcode": null,
+        "price": 17,
+        "id": "439cde21-2737-46d2-85b7-5038c6330075"
+      },
+      {
+        "name": "Vinagre GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 18,
+        "id": "66acc7d0-b74f-43ec-b494-f8f0e4b2e18c"
+      },
+      {
+        "name": "Pinol",
+        "quantity": 1,
+        "barcode": null,
+        "price": 41,
+        "id": "ccc71024-0a43-41f9-8572-52802bca270f"
+      },
+      {
+        "name": "Sopa",
+        "quantity": 1,
+        "barcode": null,
+        "price": 8.35,
+        "id": "6df6cdfd-ce11-4091-ba07-11e484a2afde"
+      },
+      {
+        "name": "Sopa fideo2 250g",
+        "quantity": 2,
+        "barcode": null,
+        "price": 8.33,
+        "id": "2ea1aa5a-a3b3-4972-bc3c-c6726051fa19"
+      },
+      {
+        "name": "Papel de baño Cottonelle",
+        "quantity": 2,
+        "barcode": null,
+        "price": 115,
+        "id": "203cd068-0571-46c1-a4dd-13c000a1f59e"
+      },
+      {
+        "name": "Jabón Ariel",
+        "quantity": 1,
+        "barcode": null,
+        "price": 39,
+        "id": "ea94ce30-cff5-4e66-bc79-7c3971d85b2b"
+      },
+      {
+        "name": "Jabón Ace",
+        "quantity": 1,
+        "barcode": null,
+        "price": 35,
+        "id": "3bab53d5-b974-4052-8254-8c00b8353994"
+      },
+      {
+        "name": "Jabón Persil",
+        "quantity": 1,
+        "barcode": null,
+        "price": 25,
+        "id": "e2bff835-0bce-4d3c-8181-eb56db18dea9"
+      },
+      {
+        "name": "Jabón Roma 1kg",
+        "quantity": 4,
+        "barcode": null,
+        "price": 34.5,
+        "id": "238a13f6-2020-4c59-96b8-da4f7664a9ba",
+        "promo": "2x69"
+      },
+      {
+        "name": "Ensala verdulas Costeña",
+        "quantity": 2,
+        "barcode": null,
+        "price": 15,
+        "id": "28797151-ae35-4294-aa7c-b907787f6fc6",
+        "promo": "2x30"
+      },
+      {
+        "name": "Detergente Mas",
+        "quantity": 2,
+        "barcode": null,
+        "price": 30,
+        "id": "b8f306f6-5942-49af-b917-046026935954"
+      },
+      {
+        "name": "Bolsa basura GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 22.5,
+        "id": "1cda1478-361a-4eb2-a222-845d5ffc2b7d"
+      },
+      {
+        "name": "Pure Tomate 259gr",
+        "quantity": 3,
+        "barcode": null,
+        "price": 11,
+        "id": "282870e4-c368-4199-85ab-7a9be344a3c5"
+      },
+      {
+        "name": "Atún Dolores",
+        "quantity": 3,
+        "barcode": null,
+        "price": 21.33,
+        "id": "a2def622-c46c-49c7-b7d8-950e408a082b",
+        "promo": "2x42"
+      },
+      {
+        "name": "Pan Bimbo",
+        "quantity": 1,
+        "barcode": null,
+        "price": 51,
+        "id": "3e50d989-4e40-4257-98f8-625dfbcb7cae",
+        "promo": "2x42"
+      },
+      {
+        "name": "Aceite Aurrera 800",
+        "quantity": 3,
+        "barcode": null,
+        "price": 25,
+        "id": "8d4a1488-e520-4e9f-b801-6b635319d085",
+        "promo": "3x75"
+      },
+      {
+        "name": "Arroz SOS",
+        "quantity": 3,
+        "barcode": null,
+        "price": 33,
+        "id": "23a09ffd-e39b-412b-9cc4-bd986187d211"
+      },
+      {
+        "name": "Brasso mx4",
+        "quantity": 2,
+        "barcode": null,
+        "price": 20,
+        "id": "28ca6fff-99f7-4894-a977-97cde0578c73",
+        "promo": "2x40"
+      },
+      {
+        "name": "Spaghetti 25",
+        "quantity": 3,
+        "barcode": null,
+        "price": 8.33,
+        "id": "cf0e23ec-8574-4fd9-92e6-6db1a8f177b3",
+        "promo": "3x25"
+      },
+      {
+        "name": "Jabón Axión 1.5lt",
+        "quantity": 1,
+        "barcode": null,
+        "price": 69,
+        "id": "471d96e7-b36e-4eaf-8404-fd84a6ec2aa8"
+      },
+      {
+        "name": "Sardina Guaymex",
+        "quantity": 1,
+        "barcode": null,
+        "price": 42,
+        "id": "e0d3f0ff-5b2b-4ff1-a728-9976d702a038"
+      },
+      {
+        "name": "Cerillos",
+        "quantity": 1,
+        "barcode": null,
+        "price": 26,
+        "id": "00e51f2d-f509-444d-8e45-3b1bb56ca259"
+      },
+      {
+        "name": "Arroz Mercedez",
+        "quantity": 1,
+        "barcode": null,
+        "price": 29,
+        "id": "d120b81a-6e95-40fd-be4a-944ddfc75c14"
+      },
+      {
+        "name": "Elotes Herdez",
+        "quantity": 1,
+        "barcode": null,
+        "price": 21,
+        "id": "5496a382-915a-4e42-8a1f-34b26d1214c4"
+      },
+      {
+        "name": "Mermelada Fresa",
+        "quantity": 1,
+        "barcode": null,
+        "price": 25.5,
+        "id": "e094aa57-6c13-4937-95ab-14700511639d"
+      },
+      {
+        "name": "Vasos de vidrio",
+        "quantity": 3,
+        "barcode": null,
+        "price": 22,
+        "id": "b3ebb578-0957-4f24-aefb-1ded83dbf909"
+      },
+      {
+        "name": "Desinfectante Microdyn",
+        "quantity": 1,
+        "barcode": null,
+        "price": 31.5,
+        "id": "caac6f63-e915-41f3-ace7-00df3c807b2b"
+      },
+      {
+        "name": "Chpotle SM",
+        "quantity": 1,
+        "barcode": null,
+        "price": 26.5,
+        "id": "3733ea33-d5b9-43e4-a479-9ad666c0c998"
+      },
+      {
+        "name": "Jabón Neutro Balance",
+        "quantity": 4,
+        "barcode": null,
+        "price": 16.25,
+        "id": "d7fd0a8c-9ee8-427e-83e1-1586302163c8"
+      },
+      {
+        "name": "Yogurt Lala",
+        "quantity": 1,
+        "barcode": null,
+        "price": 44.5,
+        "id": "098c8146-0753-408e-b6cf-ddced698ba3e"
+      },
+      {
+        "name": "Sal La Fina 1.1kg",
+        "quantity": 1,
+        "barcode": null,
+        "price": 26,
+        "id": "e3cc4d0c-e1d0-48fd-869c-cee5ec93e6e7"
+      },
+      {
+        "name": "Desdoronate OS",
+        "quantity": 1,
+        "barcode": null,
+        "price": 89,
+        "id": "43900f51-2817-4579-856e-6acce2ee6fdc"
+      },
+      {
+        "name": "Sopa AU",
+        "quantity": 4,
+        "barcode": null,
+        "price": 5,
+        "id": "1e3a099c-efe4-49e1-aea8-791a80c66ee2",
+        "promo": "4x20"
+      },
+      {
+        "name": "Harina Hotcakes",
+        "quantity": 1,
+        "barcode": null,
+        "price": 33,
+        "id": "81fb8670-fae6-42cc-abc4-0f867631c02a"
+      },
+      {
+        "name": "Mantequilla 245g",
+        "quantity": 1,
+        "barcode": null,
+        "price": 32.5,
+        "id": "fd46b796-b929-4fb1-b3f9-3054373c1997"
+      },
+      {
+        "name": "Comino GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 19,
+        "id": "3d9db03e-7ee0-483f-b810-db6184f1ad7c"
+      },
+      {
+        "name": "Salsa Bolognesa",
+        "quantity": 1,
+        "barcode": null,
+        "price": 30,
+        "id": "53c15295-7777-40bc-9b79-6b9efdc56f3b"
+      },
+      {
+        "name": "Aceite 123",
+        "quantity": 4,
+        "barcode": null,
+        "price": 37.5,
+        "id": "64baad0f-6b09-4246-99f0-8d85e62f56d7",
+        "promo": "2x75"
+      },
+      {
+        "name": "Crema Alpura",
+        "quantity": 1,
+        "barcode": null,
+        "price": 65,
+        "id": "bcb9da16-f3a2-408e-bb4b-0e73f1406927"
+      },
+      {
+        "name": "Aceite Nutrioli",
+        "quantity": 3,
+        "barcode": null,
+        "price": 39,
+        "id": "f74ecf4a-e18b-40ce-92f4-16f4c3df40d8"
+      },
+      {
+        "name": "Plomitas Caramelo",
+        "quantity": 1,
+        "barcode": null,
+        "price": 10,
+        "id": "1aac7fbe-ab89-478a-b92e-415036eaff34"
+      },
+      {
+        "name": "Leche Alpura Des",
+        "quantity": 6,
+        "barcode": null,
+        "price": 25.33,
+        "id": "b0407248-cca2-4bf3-b5d4-71741a2d1654"
+      },
+      {
+        "name": "Mayonesa MC",
+        "quantity": 1,
+        "barcode": null,
+        "price": 92,
+        "id": "7a50df4d-155a-470e-827d-777d87d3e672"
+      },
+      {
+        "name": "Ajo Polvo GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 25,
+        "id": "8e39161b-5669-4f73-8758-d78a94e4ea68"
+      },
+      {
+        "name": "Svetia",
+        "quantity": 1,
+        "barcode": null,
+        "price": 112,
+        "id": "641f3b66-18e7-4202-b18f-947209d11033"
+      },
+      {
+        "name": "GV Past AZ",
+        "quantity": 2,
+        "barcode": null,
+        "price": 10,
+        "id": "660881fe-25b6-494f-bbb5-8388abbec79f"
+      },
+      {
+        "name": "Filete Tilapia",
+        "quantity": 1,
+        "barcode": null,
+        "price": 79.73,
+        "id": "60fcdd8a-57dc-4ff2-8870-d719422ab175"
+      },
+      {
+        "name": "Enjuague OralB",
+        "quantity": 1,
+        "barcode": null,
+        "price": 53,
+        "id": "b7a23f79-793d-4b08-9adc-3fdfc894e035"
+      },
+      {
+        "name": "Playera",
+        "quantity": 1,
+        "barcode": null,
+        "price": 159,
+        "id": "054359aa-0258-40a3-81e2-4212aab50b24"
+      }
+    ],
+    "time": 7200
+  },
+  {
+    "id": "f2b01ddc-bc1e-4e27-be53-0db93ff603ea",
+    "name": "18-12-2024-BodegaAurrera",
+    "shopDate": "2024-12-18T06:00:00.000Z",
+    "storeId": "cf8503b6-3a49-4043-9cf5-98c78609c785",
+    "budget": 4200,
+    "total": 3294.73,
+    "time": 7200,
+    "items": [
+      {
+        "name": "Refresco Peñafiel 2l",
+        "quantity": 1,
+        "barcode": null,
+        "price": 28,
+        "id": "bf4c747a-32a0-419f-b4ba-ab8d4dc9701a"
+      },
+      {
+        "name": "Atún Dolores",
+        "quantity": 6,
+        "barcode": null,
+        "price": 21.5,
+        "id": "38c80229-e210-4c22-a105-e7eb45528ece",
+        "promo": "2x43"
+      },
+      {
+        "name": "Suavizante Suavitel 4.8lt",
+        "quantity": 1,
+        "barcode": null,
+        "price": 140,
+        "id": "1bf24088-a959-477b-92f7-b71091579c01"
+      },
+      {
+        "name": "Arroz SOS",
+        "quantity": 3,
+        "barcode": null,
+        "price": 33,
+        "id": "f3290dfc-7041-4763-b3e8-e341334f84e9"
+      },
+      {
+        "name": "Foco Aurr",
+        "quantity": 1,
+        "barcode": null,
+        "price": 15,
+        "id": "7c977d37-3783-4fd6-8d48-5db5403051c7"
+      },
+      {
+        "name": "Tinte Cabello Miss Clair",
+        "quantity": 1,
+        "barcode": null,
+        "price": 34,
+        "id": "ebca7bc0-cd01-43a6-897d-21b5a6580468"
+      },
+      {
+        "name": "Jabón Manos 2.1l",
+        "quantity": 1,
+        "barcode": null,
+        "price": 80,
+        "id": "c0c59c1d-c611-43c9-b70a-c6d4992b9aba"
+      },
+      {
+        "name": "Catsup Heinz",
+        "quantity": 1,
+        "barcode": null,
+        "price": 68,
+        "id": "f81a078e-3325-4b62-bd40-741e7ca6dfbc"
+      },
+      {
+        "name": "Jabón Neutro Balance",
+        "quantity": 4,
+        "barcode": null,
+        "price": 18.75,
+        "id": "fc203b65-d0ef-4852-8e5c-e19eb4f5d8a8"
+      },
+      {
+        "name": "Bolsa GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 13,
+        "id": "ea4e17b0-6db6-413c-a737-fee8f5fc76ff"
+      },
+      {
+        "name": "Aceite Oliva GV 500",
+        "quantity": 1,
+        "barcode": null,
+        "price": 135,
+        "id": "f669fbdd-556f-4a0a-a3d7-bdbcc8f7e981"
+      },
+      {
+        "name": "Vinagre",
+        "quantity": 1,
+        "barcode": null,
+        "price": 35,
+        "id": "982d714e-a5cc-4cf3-a23d-fdc664162472"
+      },
+      {
+        "name": "Galletas Marias 7",
+        "quantity": 1,
+        "barcode": null,
+        "price": 70,
+        "id": "584d2d05-af17-4050-91c3-349eeca96e18"
+      },
+      {
+        "name": "Pasta de dientes Colgate",
+        "quantity": 2,
+        "barcode": null,
+        "price": 60,
+        "id": "442feabc-2d1f-4c23-ac8d-f647aad1bb24",
+        "promo": "2x120"
+      },
+      {
+        "name": "Bolsa GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 22.5,
+        "id": "56d1a5cd-b784-4d5e-954e-e56af019f28f"
+      },
+      {
+        "name": "Detergente Mas",
+        "quantity": 2,
+        "barcode": null,
+        "price": 35,
+        "id": "83048860-f10e-46a2-9093-4c14d7c7f895"
+      },
+      {
+        "name": "Barritas Fresa",
+        "quantity": 1,
+        "barcode": null,
+        "price": 38,
+        "id": "74762ced-ea9c-49ab-919f-e413d126f3e2"
+      },
+      {
+        "name": "Barritas Piña",
+        "quantity": 1,
+        "barcode": null,
+        "price": 38,
+        "id": "b8221ea2-5bef-45d1-a8ba-e9017f4d1e5a"
+      },
+      {
+        "name": "Petalo",
+        "quantity": 2,
+        "barcode": null,
+        "price": 29,
+        "id": "6e0982e1-d71b-449b-9de2-f327f108b44b"
+      },
+      {
+        "name": "Espaguetti",
+        "quantity": 3,
+        "barcode": null,
+        "price": 24,
+        "id": "740bdcf8-4f03-4703-9fc3-22422896767b"
+      },
+      {
+        "name": "Elotes Costeña",
+        "quantity": 1,
+        "barcode": null,
+        "price": 19,
+        "id": "1c9f4843-aa34-40d7-8d50-6cf47041c1e1"
+      },
+      {
+        "name": "Ensalada de verduras Costeña",
+        "quantity": 1,
+        "barcode": null,
+        "price": 17,
+        "id": "d664d444-438e-4ca4-b352-1a418b12e00c"
+      },
+      {
+        "name": "Toallas Saba Panti",
+        "quantity": 1,
+        "barcode": null,
+        "price": 33,
+        "id": "5e144628-1feb-4814-81b9-1e3e7331fecd"
+      },
+      {
+        "name": "Caddy",
+        "quantity": 1,
+        "barcode": null,
+        "price": 59.01,
+        "id": "93a095ac-0441-4c1a-82e6-ea80b3d9e325"
+      },
+      {
+        "name": "Jabón Poett",
+        "quantity": 1,
+        "barcode": null,
+        "price": 29,
+        "id": "5d26cc53-845e-4e19-b5a6-d391b30e1435"
+      },
+      {
+        "name": "Detergente Ajax Bic",
+        "quantity": 1,
+        "barcode": null,
+        "price": 40,
+        "id": "12baad2d-0d3b-40f1-a11f-d39e534afd35"
+      },
+      {
+        "name": "Detergente Ajax Masc",
+        "quantity": 1,
+        "barcode": null,
+        "price": 40,
+        "id": "ba84a402-890b-4e4b-ab48-094e6f9f54cd"
+      },
+      {
+        "name": "Salsa soya Maggi",
+        "quantity": 1,
+        "barcode": null,
+        "price": 35,
+        "id": "fcafc94a-575f-4df7-a1bd-f1d682ded73a"
+      },
+      {
+        "name": "Servilletas Fancy",
+        "quantity": 1,
+        "barcode": null,
+        "price": 27.5,
+        "id": "9d967940-e103-4125-ad2a-ca76e120e626"
+      },
+      {
+        "name": "Té MCM",
+        "quantity": 2,
+        "barcode": null,
+        "price": 15,
+        "id": "1b18661d-465f-42c9-b33d-762bc60a88c1",
+        "promo": "2x30"
+      },
+      {
+        "name": "Salsa BBQ Hunts",
+        "quantity": 1,
+        "barcode": null,
+        "price": 43.5,
+        "id": "432a4eb8-1107-43b1-8ed1-7744635acfe2"
+      },
+      {
+        "name": "Isopos",
+        "quantity": 1,
+        "barcode": null,
+        "price": 15,
+        "id": "42ef460f-d4e8-4cd0-a5a4-d364e49a2b8f"
+      },
+      {
+        "name": "Pasta Codo 3",
+        "quantity": 1,
+        "barcode": null,
+        "price": 43,
+        "id": "f046cf7f-6f2f-47ce-a468-a14d4825aa16"
+      },
+      {
+        "name": "Atún Ensalada Tuny",
+        "quantity": 2,
+        "barcode": null,
+        "price": 16,
+        "id": "ea56ba4a-321d-4578-a255-47cb4bc26271",
+        "promo": "2x32"
+      },
+      {
+        "name": "Chipotle",
+        "quantity": 2,
+        "barcode": null,
+        "price": 16,
+        "id": "e4c6d471-2e34-45e2-97fb-b7321c9da32f"
+      },
+      {
+        "name": "Aceite 123",
+        "quantity": 3,
+        "barcode": null,
+        "price": 42,
+        "id": "025e6683-cdc8-4ff4-b3b9-50b73993b65a"
+      },
+      {
+        "name": "Sal La Fina 1.1kg",
+        "quantity": 2,
+        "barcode": null,
+        "price": 26,
+        "id": "dd604d1e-5493-4fe4-ba74-730aad3339c2"
+      },
+      {
+        "name": "Papel de baño Cottonelle",
+        "quantity": 4,
+        "barcode": null,
+        "price": 115,
+        "id": "90449cc5-1fe9-498d-bb2c-a14eeae504e5"
+      },
+      {
+        "name": "Salsa soya",
+        "quantity": 1,
+        "barcode": null,
+        "price": 20.5,
+        "id": "85fc85ad-fded-4828-a476-c86244890fc6"
+      },
+      {
+        "name": "Cloralex",
+        "quantity": 1,
+        "barcode": null,
+        "price": 31,
+        "id": "f0bd68d1-f428-4afc-95ec-540285f06d0a"
+      },
+      {
+        "name": "Pure tomate Fuerte",
+        "quantity": 1,
+        "barcode": null,
+        "price": 29,
+        "id": "2928343d-76b4-4a64-bc8f-e6a885690bfd"
+      },
+      {
+        "name": "Crema Alpura",
+        "quantity": 1,
+        "barcode": null,
+        "price": 78,
+        "id": "94a4b917-464b-49bf-99e5-653da477d49e"
+      },
+      {
+        "name": "Knorr 130g",
+        "quantity": 2,
+        "barcode": null,
+        "price": 20,
+        "id": "1a8bb728-fa67-4ece-a121-904b4cfdf66e",
+        "promo": "2x40"
+      },
+      {
+        "name": "Salsa Bolognesa Hunts",
+        "quantity": 2,
+        "barcode": null,
+        "price": 31,
+        "id": "b43279ec-4733-4d53-90f3-fc1012d61eff"
+      },
+      {
+        "name": "Mantequilla 245gr",
+        "quantity": 1,
+        "barcode": null,
+        "price": 32.5,
+        "id": "809784c2-c1cb-44b8-9618-0df7281d60cb"
+      },
+      {
+        "name": "Jabón Roma 5kg",
+        "quantity": 1,
+        "barcode": null,
+        "price": 198,
+        "id": "0c1632a4-af02-49d9-823c-c35a670006f8"
+      },
+      {
+        "name": "Café",
+        "quantity": 1,
+        "barcode": null,
+        "price": 134,
+        "id": "ef933189-2aa9-4058-b140-27d761b39495"
+      }
+    ]
+  },
+  {
+    "id": "332e5fb6-c003-40ef-bfd1-f1e0066ea8ab",
+    "name": "03-07-2024-BodegaAurrera",
+    "shopDate": "2024-07-03T06:00:00.000Z",
+    "storeId": "cf8503b6-3a49-4043-9cf5-98c78609c785",
+    "budget": 2000,
+    "total": 1380.01,
+    "time": 7200,
+    "items": [
+      {
+        "name": "Papel de baño Cottonelle",
+        "quantity": 1,
+        "barcode": null,
+        "price": 99,
+        "id": "5bf53b9a-3c7e-4ebb-918a-b60a46af254e"
+      },
+      {
+        "name": "Arroz Merced",
+        "quantity": 2,
+        "barcode": null,
+        "price": 29,
+        "id": "2feae41c-c9eb-4ab3-af81-834287d966d5"
+      },
+      {
+        "name": "Detergente Roma 2kg",
+        "quantity": 1,
+        "barcode": null,
+        "price": 74,
+        "id": "a1f81fab-83f5-4e76-ab28-7a1f6eadbc52"
+      },
+      {
+        "name": "Salsa pure Herdez",
+        "quantity": 4,
+        "barcode": null,
+        "price": 13,
+        "id": "e20b66dc-e801-4e51-a3b9-80edfa03e6d1"
+      },
+      {
+        "name": "Crema Alpura",
+        "quantity": 1,
+        "barcode": null,
+        "price": 78,
+        "id": "91f6797e-8130-404b-911a-8f65e943add6"
+      },
+      {
+        "name": "Aceite Oliva GV 500",
+        "quantity": 1,
+        "barcode": null,
+        "price": 139,
+        "id": "580f8b8e-21c2-4fa4-9520-971994d803ce"
+      },
+      {
+        "name": "Aceite 123",
+        "quantity": 2,
+        "barcode": null,
+        "price": 37.5,
+        "id": "facf499a-d65d-4083-9e5a-98c7b289b298",
+        "promo": "2x75"
+      },
+      {
+        "name": "Salsa Chipotle Molcajete",
+        "quantity": 1,
+        "barcode": null,
+        "price": 17.5,
+        "id": "4beea00d-d85d-48e9-861f-595565dd5d88"
+      },
+      {
+        "name": "Mantequilla 245g",
+        "quantity": 1,
+        "barcode": null,
+        "price": 33,
+        "id": "35f9a820-d279-4300-ac47-c3f7bd5b0ab7"
+      },
+      {
+        "name": "Acondicionador Sedal",
+        "quantity": 1,
+        "barcode": null,
+        "price": 20.5,
+        "id": "be6952ce-13da-4c03-b968-cebeb0b609c4"
+      },
+      {
+        "name": "Mermelada fresa",
+        "quantity": 1,
+        "barcode": null,
+        "price": 35,
+        "id": "8d474cbd-6f29-4631-a42a-c6b51d8308ae"
+      },
+      {
+        "name": "Cloralex",
+        "quantity": 1,
+        "barcode": null,
+        "price": 25,
+        "id": "3d857454-3459-4a11-a79d-733b55480179",
+        "promo": "1x25"
+      },
+      {
+        "name": "Spaguetti",
+        "quantity": 1,
+        "barcode": null,
+        "price": 21,
+        "id": "ec036d07-b346-4cee-8278-2d939db406d6"
+      },
+      {
+        "name": "Atún Dolores",
+        "quantity": 2,
+        "barcode": null,
+        "price": 19.5,
+        "id": "cbd2c289-f8e1-47ca-86f8-869c7d29c798",
+        "promo": "2x39"
+      },
+      {
+        "name": "Mayonesa MCC 625",
+        "quantity": 1,
+        "barcode": null,
+        "price": 65,
+        "id": "dbbf301e-0501-42f1-8887-7e8b7e17dfaf"
+      },
+      {
+        "name": "Chocolate Milkyway",
+        "quantity": 2,
+        "barcode": null,
+        "price": 17,
+        "id": "53b06209-9f23-4eb6-aae5-b8e9a0c2c6a3",
+        "promo": "2x34"
+      },
+      {
+        "name": "Sobres Pro",
+        "quantity": 3,
+        "barcode": null,
+        "price": 13,
+        "id": "6037cb80-b8f5-4dd8-94f8-273644761887"
+      },
+      {
+        "name": "Cereal Extra",
+        "quantity": 1,
+        "barcode": null,
+        "price": 65.01,
+        "id": "c1b39e49-a544-4d50-af49-08a3705502e1"
+      },
+      {
+        "name": "Catsup Heinz",
+        "quantity": 1,
+        "barcode": null,
+        "price": 68,
+        "id": "0a6d3fbe-45fb-4c9e-a7d1-56a251811591"
+      },
+      {
+        "name": "Maruchan",
+        "quantity": 2,
+        "barcode": null,
+        "price": 15,
+        "id": "74ebb035-a921-42d8-b899-eb86391833ed"
+      },
+      {
+        "name": "Elotes Herdez",
+        "quantity": 2,
+        "barcode": null,
+        "price": 15.5,
+        "id": "fad2c06b-6b79-412f-b077-c6c9743b18cf"
+      },
+      {
+        "name": "Cepillo dientes pack",
+        "quantity": 1,
+        "barcode": null,
+        "price": 39,
+        "id": "3e0940a1-04b4-4573-bcf0-2fe9bf2fd915"
+      },
+      {
+        "name": "Pasta de dientes Colgate",
+        "quantity": 1,
+        "barcode": null,
+        "price": 72,
+        "id": "5685c49b-7d81-4518-b8a6-7bd019ab000d"
+      },
+      {
+        "name": "Servitoalla AU",
+        "quantity": 1,
+        "barcode": null,
+        "price": 34,
+        "id": "24315f1a-c67f-4b12-adc0-ba38e33dbeea"
+      },
+      {
+        "name": "Té MC",
+        "quantity": 1,
+        "barcode": null,
+        "price": 15,
+        "id": "88d4310a-71fc-4d94-b62e-89e89bb1bbdf"
+      },
+      {
+        "name": "Pasta Ital",
+        "quantity": 3,
+        "barcode": null,
+        "price": 6.33,
+        "id": "1a9329b7-97bb-49e9-8e68-90a65e2337b2",
+        "promo": "3x19"
+      },
+      {
+        "name": "Maruchan Yakisoba",
+        "quantity": 1,
+        "barcode": null,
+        "price": 21.5,
+        "id": "1fe4ad72-3e22-481f-bd1c-8e48bb9e6b7c"
+      },
+      {
+        "name": "Sal la fina 1.1kg",
+        "quantity": 1,
+        "barcode": null,
+        "price": 24.5,
+        "id": "74257e8f-8758-4d4c-8b09-40982fe1d575"
+      },
+      {
+        "name": "Pasta Rotini",
+        "quantity": 1,
+        "barcode": null,
+        "price": 21,
+        "id": "3ae1d82c-b0f2-47fb-88c0-864536399c79"
+      },
+      {
+        "name": "Vinagre CJ",
+        "quantity": 1,
+        "barcode": null,
+        "price": 35,
+        "id": "121f2105-483f-4d59-8c2b-0ed48d5193d0"
+      }
+    ]
+  },
+  {
+    "id": "4bab4f7f-89eb-4a45-95bd-41496bf6b7df",
+    "name": "04-08-2024-BodegaAurrera",
+    "shopDate": "2024-08-04T06:00:00.000Z",
+    "storeId": "cf8503b6-3a49-4043-9cf5-98c78609c785",
+    "budget": 2500,
+    "total": 3122.5,
+    "time": 7200,
+    "items": [
+      {
+        "name": "Colorsilk",
+        "quantity": 2,
+        "barcode": null,
+        "price": 32.5,
+        "id": "238c2d6b-556e-408b-b0b5-e8cc84d9457d",
+        "promo": "2x65"
+      },
+      {
+        "name": "Jabón liquído EQ",
+        "quantity": 1,
+        "barcode": null,
+        "price": 50,
+        "id": "9aaf7927-7130-4200-8f48-b9dc39816ac5"
+      },
+      {
+        "name": "Desodorante OS",
+        "quantity": 1,
+        "barcode": null,
+        "price": 84,
+        "id": "1069b639-27ed-4d02-8231-ebbd41a180fb"
+      },
+      {
+        "name": "Bolsa GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 22.5,
+        "id": "e04aadd0-ad8d-4041-b4a9-852f5d340fb4"
+      },
+      {
+        "name": "Detergente Roma 1kg",
+        "quantity": 4,
+        "barcode": null,
+        "price": 31,
+        "id": "4d227a1b-e57a-4fca-aea3-274b3e57e6fb"
+      },
+      {
+        "name": "Sobres perro PO",
+        "quantity": 4,
+        "barcode": null,
+        "price": 10.5,
+        "id": "3eef0fb1-17ab-44e4-8a7c-909f4a104d59",
+        "promo": "4x42"
+      },
+      {
+        "name": "Sobres Gato PO",
+        "quantity": 4,
+        "barcode": null,
+        "price": 9.75,
+        "id": "b7e630a6-38e4-47f5-915e-e1bca3b183b6",
+        "promo": "4x39"
+      },
+      {
+        "name": "Premios Perro",
+        "quantity": 1,
+        "barcode": null,
+        "price": 15,
+        "id": "3dc8b26b-fa6a-4579-a852-7a703951840d"
+      },
+      {
+        "name": "Chiles Rajas Mor",
+        "quantity": 1,
+        "barcode": null,
+        "price": 29,
+        "id": "6d497bb3-4ab2-4609-b1a8-96d2f413254e"
+      },
+      {
+        "name": "Lata Verduras Costeña",
+        "quantity": 2,
+        "barcode": null,
+        "price": 19,
+        "id": "28521fce-993b-43b8-97ba-8053cc8f9bdd"
+      },
+      {
+        "name": "Elotes Del Monte",
+        "quantity": 1,
+        "barcode": null,
+        "price": 18,
+        "id": "a6383aa8-d276-46d3-b5ea-8340947b0fb6"
+      },
+      {
+        "name": "Bolsas perro",
+        "quantity": 1,
+        "barcode": null,
+        "price": 44,
+        "id": "fcae21b2-a924-4072-b4ec-53725301d043"
+      },
+      {
+        "name": "Shampoo HE",
+        "quantity": 1,
+        "barcode": null,
+        "price": 75,
+        "id": "ef3016a2-f65b-48f1-bd0e-c636a86d14da"
+      },
+      {
+        "name": "Atún Dolores",
+        "quantity": 4,
+        "barcode": null,
+        "price": 19.5,
+        "id": "f9284719-1189-49ba-b08d-cbfc06281433",
+        "promo": "2x39"
+      },
+      {
+        "name": "Sarten 20c",
+        "quantity": 1,
+        "barcode": null,
+        "price": 269,
+        "id": "1ec848e8-7ea0-4402-ae2e-beb1b0b0b046"
+      },
+      {
+        "name": "Sarten",
+        "quantity": 1,
+        "barcode": null,
+        "price": 429,
+        "id": "7fe98462-6c6a-444a-92f8-7790a7446937"
+      },
+      {
+        "name": "Servilletas Petalo",
+        "quantity": 2,
+        "barcode": null,
+        "price": 25,
+        "id": "305b7d9d-ce53-465f-bdce-c61bc962d679",
+        "promo": "2x50"
+      },
+      {
+        "name": "Cloralex 2",
+        "quantity": 1,
+        "barcode": null,
+        "price": 26,
+        "id": "86ced620-219e-44d4-9e69-81afd7e1492a"
+      },
+      {
+        "name": "Botana Perro",
+        "quantity": 1,
+        "barcode": null,
+        "price": 54,
+        "id": "80be5e2f-3dc1-4f0b-9d27-8531580e3187"
+      },
+      {
+        "name": "Sazonador Knorr Tomate",
+        "quantity": 2,
+        "barcode": null,
+        "price": 12.5,
+        "id": "8705743f-1b0f-493b-bb01-21cc77c1900b",
+        "promo": "2x25"
+      },
+      {
+        "name": "Chipotle",
+        "quantity": 2,
+        "barcode": null,
+        "price": 16,
+        "id": "192799e5-fa25-445e-9ab6-4d0944ef561e"
+      },
+      {
+        "name": "Spaghetti",
+        "quantity": 1,
+        "barcode": null,
+        "price": 43,
+        "id": "5c4564b1-f7b7-4ed1-970d-c2fa43adc44d"
+      },
+      {
+        "name": "Mole DM",
+        "quantity": 1,
+        "barcode": null,
+        "price": 24,
+        "id": "bb73c643-43a9-4bbe-bd0e-58b923f922f9"
+      },
+      {
+        "name": "Yakult",
+        "quantity": 1,
+        "barcode": null,
+        "price": 37,
+        "id": "700469b5-9af6-44dc-8837-627b0e0e041e"
+      },
+      {
+        "name": "Papel de baño Elite",
+        "quantity": 99,
+        "barcode": null,
+        "price": 2,
+        "id": "07e96d0d-0049-4447-959e-1e3b56a7e4b2"
+      },
+      {
+        "name": "Café GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 127,
+        "id": "b4bf016c-a023-4c14-8c07-7702929e69dd"
+      },
+      {
+        "name": "Cereal Extra Choco",
+        "quantity": 1,
+        "barcode": null,
+        "price": 90,
+        "id": "8843cdec-e6a2-4d66-a5fe-1ce9e18bb4dc"
+      },
+      {
+        "name": "Cereal Extra",
+        "quantity": 1,
+        "barcode": null,
+        "price": 91,
+        "id": "053da993-6965-4907-8e2d-2465cb7d1ff6"
+      },
+      {
+        "name": "Arroz AU",
+        "quantity": 2,
+        "barcode": null,
+        "price": 14,
+        "id": "26229a47-45f9-4791-9d30-1c56896306cd",
+        "promo": "2x28"
+      },
+      {
+        "name": "Suavizante Ensueño",
+        "quantity": 2,
+        "barcode": null,
+        "price": 65,
+        "id": "39f4ae1c-bfc5-4047-9256-25ce254d99f2"
+      },
+      {
+        "name": "Arroz Mercedes",
+        "quantity": 2,
+        "barcode": null,
+        "price": 25.5,
+        "id": "86aea89e-12bb-4f43-965b-0c4b04fc298b"
+      },
+      {
+        "name": "Sal La Fina 1.1kg",
+        "quantity": 1,
+        "barcode": null,
+        "price": 24.5,
+        "id": "e66de561-b5ec-4af1-89b2-5109e0582b36"
+      },
+      {
+        "name": "Té Manzanilla",
+        "quantity": 1,
+        "barcode": null,
+        "price": 10,
+        "id": "db6356a2-b0af-45dd-889d-36ca1cba55b4"
+      },
+      {
+        "name": "Shampoo Palmolive",
+        "quantity": 1,
+        "barcode": null,
+        "price": 65,
+        "id": "712f77c3-8a6c-4a23-8e2c-515dc721b2fe"
+      },
+      {
+        "name": "Té Limón",
+        "quantity": 1,
+        "barcode": null,
+        "price": 10,
+        "id": "32b644c2-363e-404e-8812-ee5b131cbb6f"
+      },
+      {
+        "name": "Sazonador Consome",
+        "quantity": 1,
+        "barcode": null,
+        "price": 39,
+        "id": "41bcd7f9-ce46-4c6d-8994-4092f64232a9"
+      },
+      {
+        "name": "Detergente GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 164,
+        "id": "cc231fdd-de2a-4099-932d-d2519820a780"
+      },
+      {
+        "name": "Pinol",
+        "quantity": 2,
+        "barcode": null,
+        "price": 39,
+        "id": "2ea8e97f-0677-4f37-8cab-7f59e3fe64f6",
+        "promo": "2x78"
+      },
+      {
+        "name": "Aceite 123",
+        "quantity": 2,
+        "barcode": null,
+        "price": 37.5,
+        "id": "1e69d328-e319-46e1-8366-66c3b1e598d4",
+        "promo": "2x75"
+      },
+      {
+        "name": "Fideo 2 250g",
+        "quantity": 3,
+        "barcode": null,
+        "price": 8.33,
+        "id": "7592269b-58cb-4ae7-9957-1c210d29a653",
+        "promo": "3x25"
+      },
+      {
+        "name": "Codo 3 250g",
+        "quantity": 3,
+        "barcode": null,
+        "price": 12,
+        "id": "e3f025bf-fb4b-4552-b953-54fc0788efce"
+      },
+      {
+        "name": "Lechera",
+        "quantity": 1,
+        "barcode": null,
+        "price": 29,
+        "id": "2c11bf63-fb92-451d-933a-0d6bbcd14e8a"
+      },
+      {
+        "name": "Platos Soperos",
+        "quantity": 2,
+        "barcode": null,
+        "price": 22,
+        "id": "08009b0a-17ae-4e3a-ab86-8d221b7bb3db"
+      },
+      {
+        "name": "Cilantro GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 14,
+        "id": "51aaa9ec-54b0-4277-ae28-acdda98cf750"
+      },
+      {
+        "name": "Frijol AU",
+        "quantity": 1,
+        "barcode": null,
+        "price": 37,
+        "id": "f7f53e11-2e31-4127-9c25-00454053bcf1"
+      },
+      {
+        "name": "Crema AU",
+        "quantity": 1,
+        "barcode": null,
+        "price": 44.5,
+        "id": "a82f16f0-e0dd-4c6a-9b5f-8478feb8598a"
+      }
+    ]
+  },
+  {
+    "id": "7d74905b-fc01-470a-9037-56dc8686f8e6",
+    "name": "18-06-2024-BodegaAurrera",
+    "shopDate": "2024-06-18T06:00:00.000Z",
+    "storeId": "cf8503b6-3a49-4043-9cf5-98c78609c785",
+    "budget": 1700,
+    "total": 1864.8,
+    "time": 7200,
+    "items": [
+      {
+        "name": "Detergente Roma 1KG",
+        "quantity": 4,
+        "barcode": null,
+        "price": 32.5,
+        "id": "58a9c077-852d-412c-b258-9877c457049f",
+        "promo": "2x65"
+      },
+      {
+        "name": "Detergente Ariel",
+        "quantity": 2,
+        "barcode": null,
+        "price": 30,
+        "id": "4950e999-268e-4da6-9162-31a3b798374a",
+        "promo": "2x60"
+      },
+      {
+        "name": "Italpasta Pluma",
+        "quantity": 3,
+        "barcode": null,
+        "price": 6.33,
+        "id": "c2f44e17-05a1-4029-914c-74435ff1268c",
+        "promo": "3x19"
+      },
+      {
+        "name": "Gelatina DGari",
+        "quantity": 3,
+        "barcode": null,
+        "price": 13,
+        "id": "3fa52828-112c-4e39-abb2-4617e9427e1c"
+      },
+      {
+        "name": "Arroz Mercedes",
+        "quantity": 3,
+        "barcode": null,
+        "price": 29,
+        "id": "6465d2fe-cb25-42f3-9535-6ef4972aa722"
+      },
+      {
+        "name": "Queso Manchego",
+        "quantity": 1,
+        "barcode": null,
+        "price": 45,
+        "id": "05de27c2-f75d-4fbf-9468-770941f92851"
+      },
+      {
+        "name": "Spaguetti",
+        "quantity": 2,
+        "barcode": null,
+        "price": 43,
+        "id": "e9ed4398-5a45-4685-bab9-3d6d73f28ecb"
+      },
+      {
+        "name": "Bolillos",
+        "quantity": 1,
+        "barcode": null,
+        "price": 16.3,
+        "id": "b0455068-73a8-4934-bdfb-1112cb03477a"
+      },
+      {
+        "name": "Filete",
+        "quantity": 2,
+        "barcode": null,
+        "price": 39,
+        "id": "6424708a-9887-4486-9606-fb95ffbaf2df"
+      },
+      {
+        "name": "Jabón Mas 4.65l",
+        "quantity": 1,
+        "barcode": null,
+        "price": 149,
+        "id": "7b698d24-4489-4ae7-a1c7-e49f1da38697"
+      },
+      {
+        "name": "Italpasta Tornillo",
+        "quantity": 1,
+        "barcode": null,
+        "price": 23.5,
+        "id": "7da0b548-4b37-486a-bcbc-cb3a7f4c7aed"
+      },
+      {
+        "name": "Sal La Fina 1.1kg",
+        "quantity": 1,
+        "barcode": null,
+        "price": 24.5,
+        "id": "a4cb2e2b-4fb6-4983-826c-82bbdf55c116"
+      },
+      {
+        "name": "Bolsa GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 25,
+        "id": "7d0815e2-ddac-42ee-965a-af35ec572518",
+        "promo": "1x25"
+      },
+      {
+        "name": "Hotdog",
+        "quantity": 1,
+        "barcode": null,
+        "price": 45,
+        "id": "ab5c0cae-046b-4322-b6d3-02519de5e4db"
+      },
+      {
+        "name": "Salchichas GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 66.5,
+        "id": "11bba8a3-35c5-4467-a070-c8fcc6b662a2"
+      },
+      {
+        "name": "Crema Lala",
+        "quantity": 1,
+        "barcode": null,
+        "price": 69,
+        "id": "4bc389a2-5c6e-4ad0-aa37-c7610a756ed2"
+      },
+      {
+        "name": "Queso Philadelphia",
+        "quantity": 1,
+        "barcode": null,
+        "price": 26,
+        "id": "346614be-c20f-42a3-8e68-d0e672caf8c0"
+      },
+      {
+        "name": "Mantequilla 245g",
+        "quantity": 1,
+        "barcode": null,
+        "price": 30,
+        "id": "c1463f5c-2633-4419-b882-bc53dabc785c"
+      },
+      {
+        "name": "Elotes Herdez",
+        "quantity": 2,
+        "barcode": null,
+        "price": 15.5,
+        "id": "a523bec9-84b3-4470-be72-0cac4ffb29f3"
+      },
+      {
+        "name": "Bolsa GV",
+        "quantity": 1,
+        "barcode": null,
+        "price": 34.5,
+        "id": "804c0e32-1088-4580-8365-e549710fe3dc"
+      },
+      {
+        "name": "Talco Rexona",
+        "quantity": 2,
+        "barcode": null,
+        "price": 47.5,
+        "id": "72e48f33-ca77-45a5-ba63-8a20a13c3227",
+        "promo": "2x95"
+      },
+      {
+        "name": "Crema Hinds",
+        "quantity": 2,
+        "barcode": null,
+        "price": 37.5,
+        "id": "3fc0a09a-bcf8-4872-a3f0-f43342ecc1de",
+        "promo": "2x75"
+      },
+      {
+        "name": "Atún Dolores",
+        "quantity": 6,
+        "barcode": null,
+        "price": 18,
+        "id": "ffd0b638-f72e-4def-938a-2328ec267242",
+        "promo": "3x54"
+      },
+      {
+        "name": "Yakult",
+        "quantity": 2,
+        "barcode": null,
+        "price": 37,
+        "id": "b2a68952-b4c8-4045-94da-19092196dc19"
+      },
+      {
+        "name": "Sobres Perro PO",
+        "quantity": 4,
+        "barcode": null,
+        "price": 10.5,
+        "id": "f1f363b8-1bc3-468a-8002-13fb47f2f225",
+        "promo": "4x42"
+      },
+      {
+        "name": "Premios Perro",
+        "quantity": 1,
+        "barcode": null,
+        "price": 23.5,
+        "id": "22c025a8-46ce-45bb-92d0-b13b1c4e9b9c"
+      },
+      {
+        "name": "MMonstru",
+        "quantity": 1,
+        "barcode": null,
+        "price": 39,
+        "id": "040107f9-0c06-4e62-bf72-dc38d86e743d"
+      },
+      {
+        "name": "Aceite 123",
+        "quantity": 3,
+        "barcode": null,
+        "price": 42,
+        "id": "6eb9bf3e-0910-4509-9311-60b37d4574c8"
+      },
+      {
+        "name": "Papel de baño Cottonelle",
+        "quantity": 2,
+        "barcode": null,
+        "price": 99,
+        "id": "7fcfb4b1-bc35-482f-aafb-de72379793e0"
+      }
+    ]
+  },
+  {
+    "id": "ad226029-591e-4b0a-8059-c1733bbe31b5",
+    "name": "01-10-2024-Scorpion",
+    "shopDate": "2024-10-01T06:00:00.000Z",
+    "storeId": "c4eaa36e-27bd-40c7-9fdb-2e63a5f6baa7",
+    "budget": 2200,
+    "total": 2039.23,
+    "time": 7200,
+    "items": [
+      {
+        "name": "Atún Dolores 13.3",
+        "quantity": 6,
+        "barcode": null,
+        "price": 18.5,
+        "id": "11858b13-7258-4d90-810e-e44aefa45c02"
+      },
+      {
+        "name": "Arroz Morelos",
+        "quantity": 3,
+        "barcode": null,
+        "price": 29.39,
+        "id": "537db11b-a738-4e22-b0b8-ec4ee6148385"
+      },
+      {
+        "name": "Bolsa Basura grande",
+        "quantity": 1,
+        "barcode": null,
+        "price": 24.67,
+        "id": "5b02d001-c25e-421a-940c-e80074d77927"
+      },
+      {
+        "name": "Bolsa Basura Mediana",
+        "quantity": 1,
+        "barcode": null,
+        "price": 14.91,
+        "id": "d933d47c-9379-4d1a-9115-f63c8c7d424d"
+      },
+      {
+        "name": "Lenteja",
+        "quantity": 2,
+        "barcode": null,
+        "price": 19.5,
+        "id": "00b4bc98-5521-4bfb-aea6-9af1141bb3fa"
+      },
+      {
+        "name": "Chiles Jalapeños Morena 2.8kg",
+        "quantity": 1,
+        "barcode": null,
+        "price": 87.58,
+        "id": "98bc204e-9aff-4097-bab5-5f406f817374"
+      },
+      {
+        "name": "Vinagre blanco La Costeña",
+        "quantity": 1,
+        "barcode": null,
+        "price": 36.88,
+        "id": "1b52fca0-38a6-474a-8a1f-690784533d49"
+      },
+      {
+        "name": "Servitoalla Petalo Jumbo",
+        "quantity": 1,
+        "barcode": null,
+        "price": 27.9,
+        "id": "61c89190-8bf8-438b-a12e-3bea7fa04b17"
+      },
+      {
+        "name": "Huevo Blanco 1kg",
+        "quantity": 1.75,
+        "barcode": null,
+        "price": 40.63,
+        "id": "6df2c90d-c9c7-4cae-8774-d72f264f0532"
+      },
+      {
+        "name": "Jabón Zote Blanco 200g",
+        "quantity": 3,
+        "barcode": null,
+        "price": 9.48,
+        "id": "85fd010c-823f-47e5-8308-1bc3d43d59a7"
+      },
+      {
+        "name": "Elote Herdez 400g",
+        "quantity": 3,
+        "barcode": null,
+        "price": 16.3,
+        "id": "afa4fb02-8509-43aa-a331-f2ae8da22075"
+      },
+      {
+        "name": "Chicharo Del Monte 410g",
+        "quantity": 3,
+        "barcode": null,
+        "price": 18.15,
+        "id": "4321416a-abb0-4446-91ac-66458ca8197b"
+      },
+      {
+        "name": "Sardina Dolores 425g",
+        "quantity": 1,
+        "barcode": null,
+        "price": 36.5,
+        "id": "904cba95-8b1d-4cd9-b9f9-b2b7096de417"
+      },
+      {
+        "name": "Sobres Perro Beneful",
+        "quantity": 20,
+        "barcode": null,
+        "price": 8.68,
+        "id": "c6630126-05cd-47e9-aaa5-6b2a0b93ad2d"
+      },
+      {
+        "name": "Servilletas 450pz",
+        "quantity": 1,
+        "barcode": null,
+        "price": 37.83,
+        "id": "2c53cac1-0643-4de5-a24c-658ea137a0d8"
+      },
+      {
+        "name": "Leche Alpura Deslactosada 1L",
+        "quantity": 12,
+        "barcode": null,
+        "price": 21.99,
+        "id": "be379fc8-ad96-4e16-ae18-83f93acf1142"
+      },
+      {
+        "name": "Papel de Baño Pétalo 6pz",
+        "quantity": 4,
+        "barcode": null,
+        "price": 51.65,
+        "id": "2d5a6938-446c-42a2-8e60-ef5f6435321a"
+      },
+      {
+        "name": "Jabón de manos 1lt",
+        "quantity": 2,
+        "barcode": null,
+        "price": 44.45,
+        "id": "72187990-50dd-47e1-8b1f-1900c30d36fc"
+      },
+      {
+        "name": "Detergente Roma 1kg",
+        "quantity": 3,
+        "barcode": null,
+        "price": 32.75,
+        "id": "6bb002d3-bd70-451e-906f-9efc81a8c41a"
+      },
+      {
+        "name": "Pastilla sanitaria Flash",
+        "quantity": 3,
+        "barcode": null,
+        "price": 14.18,
+        "id": "cf9d50d7-dc2c-4916-b6ed-f11c10c93780"
+      },
+      {
+        "name": "Detergente Ace 650g",
+        "quantity": 1,
+        "barcode": null,
+        "price": 38,
+        "id": "4bfd8a04-50e0-43b3-b33a-65c7874372dd"
+      },
+      {
+        "name": "Jabón Dove 135g",
+        "quantity": 1,
+        "barcode": null,
+        "price": 34.09,
+        "id": "450e1d92-ac6b-4207-a5db-d9e0b1c52998"
+      },
+      {
+        "name": "Jabón Escudo",
+        "quantity": 4,
+        "barcode": null,
+        "price": 15.9,
+        "id": "7ff86671-f9ae-4d68-a3de-abfd8b6f414b"
+      },
+      {
+        "name": "Jabón Zest",
+        "quantity": 3,
+        "barcode": null,
+        "price": 15.28,
+        "id": "0a29523d-59e3-4f1b-bff3-869eac2b5e4c"
+      },
+      {
+        "name": "Pure de tomate Del Fuerte 345g",
+        "quantity": 3,
+        "barcode": null,
+        "price": 13.33,
+        "id": "1dbf28cc-c5a6-40e2-b397-abe1e824cdd5"
+      },
+      {
+        "name": "Clarasol Mascota 1lt",
+        "quantity": 1,
+        "barcode": null,
+        "price": 27.1,
+        "id": "aaa823a5-21e0-4a8a-b636-52a17f375827"
+      },
+      {
+        "name": "Mayonesa MC 725g",
+        "quantity": 1,
+        "barcode": null,
+        "price": 68.74,
+        "id": "db7848fd-c2c1-4b82-a9ea-6621440791d2"
+      },
+      {
+        "name": "Aceite 123 3.785lt",
+        "quantity": 1,
+        "barcode": null,
+        "price": 140.88,
+        "id": "6b206190-bb88-42bb-9d33-779dfee94597"
+      }
+    ]
+  }
+]

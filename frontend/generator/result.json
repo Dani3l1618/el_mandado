@@ -1,0 +1,198 @@
+[
+  {
+    "name": "Atún Dolores 13.3",
+    "quantity": 6,
+    "barcode": null,
+    "price": 18.5,
+    "id": "11858b13-7258-4d90-810e-e44aefa45c02"
+  },
+  {
+    "name": "Arroz Morelos",
+    "quantity": 3,
+    "barcode": null,
+    "price": 29.39,
+    "id": "537db11b-a738-4e22-b0b8-ec4ee6148385"
+  },
+  {
+    "name": "Bolsa Basura grande",
+    "quantity": 1,
+    "barcode": null,
+    "price": 24.67,
+    "id": "5b02d001-c25e-421a-940c-e80074d77927"
+  },
+  {
+    "name": "Bolsa Basura Mediana",
+    "quantity": 1,
+    "barcode": null,
+    "price": 14.91,
+    "id": "d933d47c-9379-4d1a-9115-f63c8c7d424d"
+  },
+  {
+    "name": "Lenteja",
+    "quantity": 2,
+    "barcode": null,
+    "price": 19.5,
+    "id": "00b4bc98-5521-4bfb-aea6-9af1141bb3fa"
+  },
+  {
+    "name": "Chiles Jalapeños Morena 2.8kg",
+    "quantity": 1,
+    "barcode": null,
+    "price": 87.58,
+    "id": "98bc204e-9aff-4097-bab5-5f406f817374"
+  },
+  {
+    "name": "Vinagre blanco La Costeña",
+    "quantity": 1,
+    "barcode": null,
+    "price": 36.88,
+    "id": "1b52fca0-38a6-474a-8a1f-690784533d49"
+  },
+  {
+    "name": "Servitoalla Petalo Jumbo",
+    "quantity": 1,
+    "barcode": null,
+    "price": 27.9,
+    "id": "61c89190-8bf8-438b-a12e-3bea7fa04b17"
+  },
+  {
+    "name": "Huevo Blanco 1kg",
+    "quantity": 1.75,
+    "barcode": null,
+    "price": 40.63,
+    "id": "6df2c90d-c9c7-4cae-8774-d72f264f0532"
+  },
+  {
+    "name": "Jabón Zote Blanco 200g",
+    "quantity": 3,
+    "barcode": null,
+    "price": 9.48,
+    "id": "85fd010c-823f-47e5-8308-1bc3d43d59a7"
+  },
+  {
+    "name": "Elote Herdez 400g",
+    "quantity": 3,
+    "barcode": null,
+    "price": 16.3,
+    "id": "afa4fb02-8509-43aa-a331-f2ae8da22075"
+  },
+  {
+    "name": "Chicharo Del Monte 410g",
+    "quantity": 3,
+    "barcode": null,
+    "price": 18.15,
+    "id": "4321416a-abb0-4446-91ac-66458ca8197b"
+  },
+  {
+    "name": "Sardina Dolores 425g",
+    "quantity": 1,
+    "barcode": null,
+    "price": 36.5,
+    "id": "904cba95-8b1d-4cd9-b9f9-b2b7096de417"
+  },
+  {
+    "name": "Sobres Perro Beneful",
+    "quantity": 20,
+    "barcode": null,
+    "price": 8.68,
+    "id": "c6630126-05cd-47e9-aaa5-6b2a0b93ad2d"
+  },
+  {
+    "name": "Servilletas 450pz",
+    "quantity": 1,
+    "barcode": null,
+    "price": 37.83,
+    "id": "2c53cac1-0643-4de5-a24c-658ea137a0d8"
+  },
+  {
+    "name": "Leche Alpura Deslactosada 1L",
+    "quantity": 12,
+    "barcode": null,
+    "price": 21.99,
+    "id": "be379fc8-ad96-4e16-ae18-83f93acf1142"
+  },
+  {
+    "name": "Papel de Baño Pétalo 6pz",
+    "quantity": 4,
+    "barcode": null,
+    "price": 51.65,
+    "id": "2d5a6938-446c-42a2-8e60-ef5f6435321a"
+  },
+  {
+    "name": "Jabón de manos 1lt",
+    "quantity": 2,
+    "barcode": null,
+    "price": 44.45,
+    "id": "72187990-50dd-47e1-8b1f-1900c30d36fc"
+  },
+  {
+    "name": "Detergente Roma 1kg",
+    "quantity": 3,
+    "barcode": null,
+    "price": 32.75,
+    "id": "6bb002d3-bd70-451e-906f-9efc81a8c41a"
+  },
+  {
+    "name": "Pastilla sanitaria Flash",
+    "quantity": 3,
+    "barcode": null,
+    "price": 14.18,
+    "id": "cf9d50d7-dc2c-4916-b6ed-f11c10c93780"
+  },
+  {
+    "name": "Detergente Ace 650g",
+    "quantity": 1,
+    "barcode": null,
+    "price": 38,
+    "id": "4bfd8a04-50e0-43b3-b33a-65c7874372dd"
+  },
+  {
+    "name": "Jabón Dove 135g",
+    "quantity": 1,
+    "barcode": null,
+    "price": 34.09,
+    "id": "450e1d92-ac6b-4207-a5db-d9e0b1c52998"
+  },
+  {
+    "name": "Jabón Escudo",
+    "quantity": 4,
+    "barcode": null,
+    "price": 15.9,
+    "id": "7ff86671-f9ae-4d68-a3de-abfd8b6f414b"
+  },
+  {
+    "name": "Jabón Zest",
+    "quantity": 3,
+    "barcode": null,
+    "price": 15.28,
+    "id": "0a29523d-59e3-4f1b-bff3-869eac2b5e4c"
+  },
+  {
+    "name": "Pure de tomate Del Fuerte 345g",
+    "quantity": 3,
+    "barcode": null,
+    "price": 13.33,
+    "id": "1dbf28cc-c5a6-40e2-b397-abe1e824cdd5"
+  },
+  {
+    "name": "Clarasol Mascota 1lt",
+    "quantity": 1,
+    "barcode": null,
+    "price": 27.1,
+    "id": "aaa823a5-21e0-4a8a-b636-52a17f375827"
+  },
+  {
+    "name": "Mayonesa MC 725g",
+    "quantity": 1,
+    "barcode": null,
+    "price": 68.74,
+    "id": "db7848fd-c2c1-4b82-a9ea-6621440791d2"
+  },
+  {
+    "name": "Aceite 123 3.785lt",
+    "quantity": 1,
+    "barcode": null,
+    "price": 140.88,
+    "id": "6b206190-bb88-42bb-9d33-779dfee94597"
+  }
+]

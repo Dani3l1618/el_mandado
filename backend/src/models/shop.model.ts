@@ -6,7 +6,12 @@ const ItemSchema = new Schema({
   name: { type: String, required: true },
   quantity: { type: Number, required: true },
   barcode: { type: String, required: false },
-  price: { type: Number, required: true }
+  price: { type: Number, required: true },
+  promo: {
+    type: String,
+    required: false,
+    validator: (v: string) => /^\d+x\d+(\.\d+)?$/.test(v)
+  }
 });
 
 const ShopSchema = new Schema({

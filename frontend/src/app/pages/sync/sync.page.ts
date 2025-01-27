@@ -34,7 +34,7 @@ export class SyncPage {
   private readonly notifyService = inject(NotifyService);
 
   defaultHref = AppRoutes.home;
-  host = model('http://192.168.68.101:3000');
+  host = model('');
   loading = this.syncService.loading;
   backupState = this.syncService.backupSatate.asReadonly();
   restoreState = this.syncService.restoreState.asReadonly();

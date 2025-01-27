@@ -17,8 +17,8 @@ export interface SyncBackup {
 
 export interface SyncRestore {
   stores: BackupMetadata<Store[]>;
-  drafts: BackupMetadata<ListShop[]>;
-  archives: BackupMetadata<ListShop[]>;
+  drafts: BackupMetadata<ListShop[]> | null;
+  archives: BackupMetadata<ListShop[]> | null;
 }
 
 export interface SyncBackupDataResponse {
