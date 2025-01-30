@@ -1,31 +1,28 @@
 import { Component, inject } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
-import { MediaService } from './shared';
+
+import { IonApp, IonRouterOutlet, Platform } from '@ionic/angular/standalone';
+import { MediaService, StatusBarService } from './shared';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: 'app.component.html',
-    imports: [IonApp, IonRouterOutlet]
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
   private mediaService = inject(MediaService);
+  private statusbarService = inject(StatusBarService);
+  private platform = inject(Platform);
   constructor() {
     this.mediaService.registIcons();
+    this.configApp();
     console.log(
-      '%ctodo: Bloquear back button cuando se este en el componente de list-items',
-      'color: #1a4704; background-color: #d0f0c0;',
-    );
-    console.log(
-      '%ctodo: Crear el icon',
+      '%ctodo:Back button para cerrar app',
       'color: #1a4704; background-color: #d0f0c0;',
     );
   }
-  //https://app.uizard.io/prototypes/create?prototypeTemplateId=XXwl8eP0eouzp0qwOjMM
-  colors = [
-    '#fee6ab', //primary
-    '#f6f6f0', //background
-    '#241808', //terciary
-    '#ffffff', //secondary
-    '#f3d58b',
-  ];
+
+  async configApp() {
+    await this.platform.ready();
+    this.statusbarService.changeColor();
+  }
 }

@@ -2,7 +2,11 @@ import { DatePipe } from '@angular/common';
 import { Component, computed, inject, viewChild } from '@angular/core';
 import { IonContent, Platform } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
-import { SharedFabComponent } from 'src/app/shared';
+import {
+  APP_COLORS,
+  SharedFabComponent,
+  StatusBarService,
+} from 'src/app/shared';
 import { ListShopEmptyComponent } from './components/list-shop-empty/list-shop-empty.component';
 import { ListShopFabActionsComponent } from './components/list-shop-fab-actions/list-shop-fab-actions.component';
 import { ListShopFooterComponent } from './components/list-shop-footer/list-shop-footer.component';
@@ -42,6 +46,7 @@ const imports = [
 export class ListShopPage {
   private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
+  private statusbar = inject(StatusBarService);
   private platform = inject(Platform);
   private backBtnSubs?: Subscription;
   private itemShopList = viewChild(ListShopListComponent);
@@ -49,6 +54,10 @@ export class ListShopPage {
   mode = this.state.mode.asReadonly();
 
   protected emptyList = computed(() => this.state.listItemShop().length === 0);
+
+  ionViewWillEnter() {
+    this.statusbar.changeColor(APP_COLORS.primary);
+  }
 
   ionViewDidEnter() {
     if (this.state.mode() === 'new') {
@@ -82,6 +91,10 @@ export class ListShopPage {
 
   protected closeSlidingItems() {
     this.itemShopList()?.closeSlidingItems();
+  }
+
+  ionViewWillLeave() {
+    this.statusbar.changeColor();
   }
 
   ionViewDidLeave() {
