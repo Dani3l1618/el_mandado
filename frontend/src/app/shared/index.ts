@@ -14,12 +14,12 @@ export { AppStorageService } from './services/app-storage.service';
 export { ComputeService } from './services/compute.service';
 export { DataService } from './services/data.service';
 export { DateService } from './services/date.service';
+export { DeviceService } from './services/device.service';
 export { HttpService } from './services/http.service';
 export { MediaService } from './services/media.service';
 export { ModalService } from './services/modal.service';
 export { NavigateService } from './services/navigate.service';
 export { StateService } from './services/state.service';
-export { StatusBarService } from './services/status-bar.service';
 
 //.- Guards
 export { archivesCheckGuard } from './guards/archives-check.guard';
@@ -27,7 +27,6 @@ export { draftCheckGuard } from './guards/draft-check.guard';
 export { storeCheckGuard } from './guards/store-check.guard';
 
 //.- Models
-export * from './models/color.model';
 export * from './models/dialog.model';
 export * from './models/error.model';
 export * from './models/form.model';
@@ -48,6 +47,7 @@ export { MediaStorePipe } from './pipes/media-store.pipe';
 export { TimerPipe } from './pipes/timer.pipe';
 
 //.- Constans
+export * from './constants/color.model';
 export * from './constants/defaults';
 export * from './constants/form.config';
 export { ICONS } from './constants/icons';

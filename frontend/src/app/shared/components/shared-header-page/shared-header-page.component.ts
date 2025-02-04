@@ -6,8 +6,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
-import { APP_COLORS } from '../../models/color.model';
-import { StatusBarService } from '../../services/status-bar.service';
+import { APP_COLORS } from '../../constants/color.model';
+import { DeviceService } from '../../services/device.service';
 
 const imports = [IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle];
 
@@ -19,17 +19,17 @@ const imports = [IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle];
   imports,
 })
 export class SharedHeaderPageComponent implements OnInit, OnDestroy {
-  private statusBarService = inject(StatusBarService);
+  private statusBarService = inject(DeviceService);
   defaultHref = input.required<string>();
   title = input.required<string>();
 
   ngOnInit() {
     console.log('view enter');
-    this.statusBarService.changeColor(APP_COLORS.primary);
+    this.statusBarService.changeStatusBarColor(APP_COLORS.primary);
   }
 
   ngOnDestroy() {
     console.log('view leave');
-    this.statusBarService.changeColor();
+    this.statusBarService.changeStatusBarColor();
   }
 }
