@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StatusBar } from '@capacitor/status-bar';
+import { HELLO_MESSAGE } from '../constants/defaults';
 import { APP_COLORS } from '../models/color.model';
 
 @Injectable({
@@ -7,15 +8,20 @@ import { APP_COLORS } from '../models/color.model';
 })
 export class StatusBarService {
   public changeColor(color = APP_COLORS.background) {
-    console.log('status bar color ', color);
-    StatusBar.setBackgroundColor({ color });
+    StatusBar.setBackgroundColor({ color }).catch((e) =>
+      console.log(HELLO_MESSAGE),
+    );
   }
 
-  public changePosition(show: boolean) {
-    if (show) {
-      StatusBar.show();
-    } else {
-      StatusBar.hide();
+  public async changePosition(show: boolean) {
+    try {
+      if (show) {
+        await StatusBar.show();
+      } else {
+        await StatusBar.hide();
+      }
+    } catch {
+      console.log(HELLO_MESSAGE);
     }
   }
 

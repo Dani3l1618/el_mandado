@@ -12,3 +12,5 @@ export const DEFAULT_STORE: Store = {
   img: StoreMedia.none,
   lastUpdate: new Date(),
 };
+
+export const HELLO_MESSAGE = 'Hi! You are cool 😎';
