@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ShowOptions, SplashScreen } from '@capacitor/splash-screen';
-import { StatusBar } from '@capacitor/status-bar';
+import { Animation, StatusBar } from '@capacitor/status-bar';
 import { APP_COLORS } from '../constants/color.model';
 import { HELLO_MESSAGE, SPLASH_SCREEN_SHOW } from '../constants/defaults';
 
@@ -17,7 +17,9 @@ export class DeviceService {
   public async changeStatusBarPosition(show: boolean) {
     try {
       if (show) {
-        await StatusBar.show();
+        await StatusBar.show({
+          animation: Animation.Fade,
+        });
       } else {
         await StatusBar.hide();
       }
@@ -41,8 +43,12 @@ export class DeviceService {
   }
 
   public async initializeSplashScreen(): Promise<void> {
-    await this.hideSplashScreen();
-    this.changeStatusBarColor(APP_COLORS.splash);
-    return this.showSplashScreen();
+    try {
+      await this.hideSplashScreen();
+      this.changeStatusBarColor(APP_COLORS.splash);
+      return this.showSplashScreen();
+    } catch {
+      console.log(HELLO_MESSAGE);
+    }
   }
 }
