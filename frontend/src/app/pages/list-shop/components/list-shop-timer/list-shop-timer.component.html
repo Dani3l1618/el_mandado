@@ -1,10 +1,19 @@
 <ion-chip color="secondary" class="chip">
-  <ion-icon name="timer" color="secondary"></ion-icon>
+  <div class="chip-lottie">
+    <ng-lottie
+      height="100%"
+      width="100%"
+      [options]="lottieOptions()"
+      (animationCreated)="handleAnimationCreation($event)"
+    />
+  </div>
   @if (emptyList()) {
-    <ion-label class="chip-label">{{ 0 | timer}}</ion-label>
-  }@else if (mode() === "new") {
-    <ion-label class="chip-label">{{(timeInStore$ | async) ?? 0 | timer}}</ion-label>
-  }@else {
-    <ion-label class="chip-label">{{ timeInStore() | timer}}</ion-label>
+    <ion-label class="chip-label">{{ 0 | timer }}</ion-label>
+  } @else if (mode() === "new") {
+    <ion-label class="chip-label">{{
+      (timeInStore$ | async) ?? 0 | timer
+    }}</ion-label>
+  } @else {
+    <ion-label class="chip-label">{{ timeInStore() | timer }}</ion-label>
   }
 </ion-chip>
