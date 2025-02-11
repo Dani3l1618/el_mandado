@@ -47,6 +47,7 @@ export { MediaStorePipe } from './pipes/media-store.pipe';
 export { TimerPipe } from './pipes/timer.pipe';
 
 //.- Constans
+export * from './constants/animation.config';
 export * from './constants/color.model';
 export * from './constants/defaults';
 export * from './constants/form.config';

@@ -18,6 +18,8 @@ import {
   IonicRouteStrategy,
   provideIonicAngular,
 } from '@ionic/angular/standalone';
+import player from 'lottie-web';
+import { provideLottieOptions } from 'ngx-lottie';
 import { routes } from './app.routes';
 import { DeviceService } from './shared';
 
@@ -30,6 +32,7 @@ const splashScreen = async () => {
 
 const APP_CONFIG: (Provider | EnvironmentProviders)[] = [
   { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  provideLottieOptions({ player: () => player }),
   provideIonicAngular(),
   provideRouter(routes, withPreloading(PreloadAllModules)),
   { provide: LOCALE_ID, useValue: 'es-Mx' },
