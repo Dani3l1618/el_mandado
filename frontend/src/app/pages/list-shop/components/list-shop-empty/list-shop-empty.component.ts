@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { IonImg, IonText } from '@ionic/angular/standalone';
+import { Component, signal } from '@angular/core';
+import { IonText } from '@ionic/angular/standalone';
+import { AnimationOptions, LottieComponent } from 'ngx-lottie';
+import { ANIMATION_SOURCE } from 'src/app/shared';
 
-const imports = [IonImg, IonText];
+const imports = [IonText, LottieComponent];
 @Component({
   selector: 'app-list-shop-empty',
   templateUrl: './list-shop-empty.component.html',
@@ -9,4 +11,10 @@ const imports = [IonImg, IonText];
   standalone: true,
   imports,
 })
-export class ListShopEmptyComponent {}
+export class ListShopEmptyComponent {
+  options = signal<AnimationOptions>({
+    path: ANIMATION_SOURCE.bascket,
+    loop: true,
+    autoplay: true,
+  });
+}

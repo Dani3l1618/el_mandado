@@ -1,7 +1,12 @@
 <div class="shop-list-empty ion-text-center">
-  <ion-img src="assets/img/shop-list/shop_list_empty.webp" alt="Lista vacía" ></ion-img>
-
+  <div class="shop-list-lottie">
+    <ng-lottie
+    [options]="options()"
+    width="100%"
+    height="100%"
+    />
+  </div>
   <ion-text>
-    <em>🛒 Lista vacía 🛒</em>
+    <em>¡Carrito vacío! <br> <span>¿Qué agregamos?</span></em>
   </ion-text>
 </div>
