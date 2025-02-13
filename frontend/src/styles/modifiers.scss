@@ -26,25 +26,31 @@
 }
 
 ion-modal {
-  --height: 45%;
+
+  --modal-height: 45%;
+  --height: var(--modal-height);
   --width: 95%;
   --border-radius: 16px;
   backdrop-filter: blur(1px);
 
   &.modal-md {
-    --height: 70%;
+    --modal-height: 65%;
   }
 
   &.modal-35 {
-    --height: 35%;
+    --modal-height: 35%;
   }
 
   &.modal-sm {
-    --height: 30%;
+    --modal-height: 30%;
   }
   
   &.modal-25 {
-    --height: 25%;
+    --modal-height: 25%;
+  }
+
+  @media screen and (max-height:500px) {
+    --height: calc(var(--modal-height) + 20%);
   }
 }
 
