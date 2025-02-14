@@ -1,4 +1,8 @@
 <ion-content [fullscreen]="true" class="ion-padding home">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content refreshingSpinner="crescent"></ion-refresher-content>
+  </ion-refresher>
+
   <app-title/>
 
   <div class="home__stadistics">

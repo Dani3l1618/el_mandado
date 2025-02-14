@@ -1,5 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { IonContent, Platform } from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonRefresher,
+  IonRefresherContent,
+  Platform,
+} from '@ionic/angular/standalone';
 import { TitleComponent } from 'src/app/shared';
 import {
   HomeListComponent,
@@ -10,6 +15,8 @@ import { HomeService } from './services';
 
 const imports = [
   IonContent,
+  IonRefresher,
+  IonRefresherContent,
 
   LastShopingComponent,
   HomeListComponent,
@@ -29,19 +36,27 @@ export class HomePage implements OnInit {
   private readonly platform = inject(Platform);
 
   ngOnInit(): void {
-    this.homeService.getResume();
-    this.homeService.getListItems();
+    this.refreshData();
     this.listenExit();
   }
 
   ionViewWillEnter() {
-    this.homeService.getResume();
-    this.homeService.getListItems();
+    this.refreshData();
   }
 
   listenExit() {
     this.platform.backButton.subscribeWithPriority(-1, () => {
       this.homeService.openConfirmExit();
     });
+  }
+
+  async handleRefresh(event: CustomEvent) {
+    await this.refreshData();
+    (event.target as HTMLIonRefresherElement).complete();
+  }
+
+  private async refreshData() {
+    await this.homeService.getResume();
+    await this.homeService.getListItems();
   }
 }
