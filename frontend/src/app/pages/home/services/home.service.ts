@@ -1,15 +1,19 @@
 import { inject, Injectable, signal } from '@angular/core';
+import { App } from '@capacitor/app';
 import { addMonths, compareAsc, startOfToday } from 'date-fns';
 import { AppRoutes } from 'src/app/AppRoutes';
 import {
   AppStorageService,
   ComputeService,
+  ModalService,
   NavigateService,
+  SharedConfirmDialogComponent,
 } from 'src/app/shared';
 import { ListShop, ListShopItem } from '../../list-shop';
 import {
   HOME_CARD_NULL_INFO,
   HOME_CARDS,
+  HOME_CONFIRM_EXIT_DIALOG,
   HOME_LIST,
 } from '../constants/home-cards.config';
 import { HomeCardInfo, HomeRows } from '../models/home-card.model';
@@ -22,6 +26,7 @@ export class HomeService {
   private readonly appStorage = inject(AppStorageService);
   private readonly computeService = inject(ComputeService);
   private readonly navigateService = inject(NavigateService);
+  private readonly modalService = inject(ModalService);
   private readonly MONTH_AGO = 6;
   public homeInfoCards = signal<HomeRows[]>(HOME_CARDS(HOME_CARD_NULL_INFO));
   public homeInfoList = signal<HomeListItem[]>(HOME_LIST([0, 0, 0]));
@@ -40,6 +45,20 @@ export class HomeService {
 
   public navigateTo(url: AppRoutes) {
     this.navigateService.navigateTo(url);
+  }
+
+  public async openConfirmExit(): Promise<void> {
+    const componentProps = HOME_CONFIRM_EXIT_DIALOG;
+
+    const exit = await this.modalService.openModal({
+      component: SharedConfirmDialogComponent,
+      componentProps,
+      cssClass: 'modal-25',
+    });
+
+    if (exit) {
+      App.exitApp();
+    }
   }
 
   private async getCardInfo(): Promise<HomeCardInfo> {

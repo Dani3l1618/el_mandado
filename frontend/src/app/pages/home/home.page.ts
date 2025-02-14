@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { IonContent } from '@ionic/angular/standalone';
+import { IonContent, Platform } from '@ionic/angular/standalone';
 import { TitleComponent } from 'src/app/shared';
 import {
   HomeListComponent,
@@ -26,14 +26,22 @@ const imports = [
 })
 export class HomePage implements OnInit {
   private readonly homeService = inject(HomeService);
+  private readonly platform = inject(Platform);
 
   ngOnInit(): void {
     this.homeService.getResume();
     this.homeService.getListItems();
+    this.listenExit();
   }
 
   ionViewWillEnter() {
     this.homeService.getResume();
     this.homeService.getListItems();
+  }
+
+  listenExit() {
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      this.homeService.openConfirmExit();
+    });
   }
 }

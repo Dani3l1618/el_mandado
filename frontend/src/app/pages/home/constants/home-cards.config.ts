@@ -97,3 +97,9 @@ export const HOME_LIST: (data: [number, number, number]) => HomeListItem[] = ([
     pipe: 'time',
   },
 ];
+
+export const HOME_CONFIRM_EXIT_DIALOG = {
+  title: '¿Ya te vas?',
+  question: 'Revisa la lista 2 veces, aún así aquí te esperamos',
+  confirmText: 'Salir',
+};
