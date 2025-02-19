@@ -53,8 +53,14 @@ export class ListShopService {
   }
 
   async initDraftMode(): Promise<void> {
-    await this.getDrafts();
-    const listOnEdit = await this.openDraftConfig();
+    const drafts =  await this.getDrafts();
+    let listOnEdit: ListShop | undefined = undefined;
+
+    if(drafts.length === 1){
+      listOnEdit = drafts.at(0);
+    }else{
+      listOnEdit = await this.openDraftConfig();
+    }
 
     if (!listOnEdit) {
       return this.returnHome();
@@ -151,10 +157,12 @@ export class ListShopService {
     this.state.currentDraft.set(list);
   }
 
-  async getDrafts(): Promise<void> {
+  async getDrafts(): Promise<ListShop []> {
     const drafts = await this.dataManager.getDrafts();
 
     this.state.listDrafts.set(drafts);
+
+    return drafts;
   }
 
   //.- Dialogs
