@@ -1,7 +1,7 @@
 <app-shared-dialog-header [title]="title()" />
 
 <ion-content>
-  <form [formGroup]="storeForm">
+  <form [formGroup]="storeForm" appAutofocus (ngSubmit)="confirm()">
     <ion-item>
       <ion-select
         [interfaceOptions]="interfaceOption"
@@ -71,6 +71,7 @@
         inputmode="numeric"
       ></ion-input>
     </ion-item>
+    <button #formBtn type="submit" hidden></button>
   </form>
 </ion-content>
-<app-shared-dialog-footer (confirm)="confirm()" [actionTxt]="confirmBtn()"/>
+<app-shared-dialog-footer (confirm)="formBtn.click()" [actionTxt]="confirmBtn()"/>

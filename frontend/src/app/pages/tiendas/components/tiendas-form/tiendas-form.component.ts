@@ -13,6 +13,7 @@ import {
   ModalController,
 } from '@ionic/angular/standalone';
 import {
+  AutofocusDirective,
   SELECT_INTERFACE_OPTIONS,
   SharedDialogFooterComponent,
   SharedDialogHeaderComponent,
@@ -30,6 +31,8 @@ const imports = [
   SharedDialogHeaderComponent,
   SharedDialogFooterComponent,
   ReactiveFormsModule,
+
+  AutofocusDirective,
 ];
 
 @Component({

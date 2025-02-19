@@ -56,3 +56,6 @@ export * from './constants/mask.options';
 export * from './constants/notify.config';
 export * from './constants/state.catalog';
 
+//.- Directives
+
+export { AutofocusDirective } from './directives/autofocus.directive';
