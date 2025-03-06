@@ -5,4 +5,5 @@ export type StorageKey =
   | 'drafts'
   | 'currentDraft'
   | 'listsShop'
-  | 'archives';
+  | 'archives'
+  | 'currentMode';

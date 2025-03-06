@@ -9,6 +9,7 @@ import { ListShopConfigComponent } from '../components/list-shop-config/list-sho
 import { ListShopFormComponent } from '../components/list-shop-form/list-shop-form.component';
 import { ListShopSelectDraftComponent } from '../components/list-shop-select-draft/list-shop-select-draft.component';
 import {
+  LS_DF_RETRIEVE,
   LS_DF_WARN_ARCHIVE,
   LS_DF_WARN_DELETE,
   LS_DF_WARN_EXIT,
@@ -79,6 +80,12 @@ export class ListShopDialogsService {
 
   async openDeleteDraftConfirmation() {
     const props = LS_DF_WARN_DELETE;
+
+    return this.openConfirmDialog(props);
+  }
+
+  async openRetrieveDraftDialog() {
+    const props = LS_DF_RETRIEVE;
 
     return this.openConfirmDialog(props);
   }

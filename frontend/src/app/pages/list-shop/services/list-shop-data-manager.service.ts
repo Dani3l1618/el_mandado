@@ -1,6 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { ComputeService, DataService, DateService } from 'src/app/shared';
-import { ListShop, ListShopDraft } from '../models/list-shop.model';
+import {
+  ListShop,
+  ListShopCurrentDraft,
+  ListShopDraft,
+  ListShopMode,
+} from '../models/list-shop.model';
 import { ListShopStateService } from './list-shop-state.service';
 
 @Injectable()
@@ -15,23 +20,20 @@ export class ListShopDataManagerService {
     return (await this.dataService.getData('drafts')) ?? [];
   }
 
-  public async saveListShopOnDrafts() {
-    if (!this.currentDraft()) return;
+  public async storeListShopOnDrafts(mode: ListShopMode) {
+    if (!this.currentDraft()[mode]) return;
+    const draft = this.currentDraft()[mode]!;
 
-    const drafts = await this.getDrafts();
+    let drafts = await this.getDrafts();
 
-    await this.dataService.saveData('drafts', [this.currentDraft(), ...drafts]);
-  }
+    if (mode === 'new') {
+      drafts = [draft, ...drafts];
+    } else if (mode === 'draft') {
+      drafts = drafts.map((item) => (item.id === draft.id ? draft : item));
+    }
 
-  public async updateListShopOnDrafts() {
-    if (!this.currentDraft()) return;
-
-    const drafts = await this.getDrafts();
-    const updatedDrafts = drafts.map((item) =>
-      item.id === this.currentDraft()!.id ? this.currentDraft()! : item,
-    );
-
-    await this.dataService.saveData('drafts', updatedDrafts);
+    await this.dataService.saveData('drafts', drafts);
+    await this.updateCurrentDraft(mode, null);
   }
 
   public async saveDraftList(): Promise<ListShop> {
@@ -41,11 +43,22 @@ export class ListShopDataManagerService {
       total: this.state.listShopTotal(),
       time: this.state.timeInStore(),
     };
+    const mode = this.state.mode();
 
-    const list = this.generateListShop(infoList);
+    const list = this.generateListShop(infoList, this.currentDraft()[mode]);
 
-    await this.dataService.saveData('currentDraft', list);
+    this.updateCurrentDraft(mode, list);
     return list;
+  }
+
+  public async getDraftList(mode: ListShopMode): Promise<ListShop | null> {
+    const currentDrafts = await this.getCurrentDraftList();
+
+    return currentDrafts ? currentDrafts[mode] : currentDrafts;
+  }
+
+  public async getCurrentDraftList(): Promise<ListShopCurrentDraft | null> {
+    return await this.dataService.getData<ListShopCurrentDraft>('currentDraft');
   }
 
   public async deleteDraftOfList(id: string) {
@@ -78,15 +91,17 @@ export class ListShopDataManagerService {
     return history.find((item) => item.id === id)!;
   }
 
-  private generateListShop({
-    storeConfig,
-    items,
-    total,
-    time,
-  }: ListShopDraft): ListShop {
-    const id = this.currentDraft()?.id ?? this.dataService.generateId();
-    const shopDate =
-      this.currentDraft()?.shopDate ?? this.dateService.newDate();
+  public async updateCurrentDraft(mode: ListShopMode, item: ListShop | null) {
+    this.state.updateCurrentDraft(mode, item);
+    this.dataService.saveData('currentDraft', this.state.currentDraft());
+  }
+
+  private generateListShop(
+    { storeConfig, items, total, time }: ListShopDraft,
+    currentDraft: ListShop | null,
+  ): ListShop {
+    const id = currentDraft?.id ?? this.dataService.generateId();
+    const shopDate = currentDraft?.shopDate ?? this.dateService.newDate();
     const name = this.computeService.generateDateName(
       storeConfig.store.chain,
       new Date(shopDate),
@@ -97,7 +112,8 @@ export class ListShopDataManagerService {
     return { id, name, shopDate, storeId, budget, total, items, time };
   }
 
-  reset() {
-    this.dataService.removeData('currentDraft');
+  resetCurrentDraft() {
+    const mode = this.state.mode();
+    this.updateCurrentDraft(mode, null);
   }
 }

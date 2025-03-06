@@ -1,6 +1,6 @@
 import { Store } from '../../tiendas/models';
 
-export type ListShopMode = 'new' | 'draft' | 'view';
+export type ListShopMode = 'new' | 'draft' | 'view' | 'none';
 
 export interface ListShopConfig {
   store: Store;
@@ -17,6 +17,8 @@ export interface ListShop {
   total: number;
   time: number; //Seconds
 }
+
+export type ListShopCurrentDraft = Record<ListShopMode, ListShop | null>;
 
 export interface ListShopDraft {
   storeConfig: ListShopConfig;

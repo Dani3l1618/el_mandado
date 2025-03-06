@@ -1,13 +1,26 @@
 import { DatePipe } from '@angular/common';
-import { Component, computed, inject, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  untracked,
+  viewChild,
+} from '@angular/core';
 import { IonContent, Platform } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
-import { APP_COLORS, DeviceService, SharedFabComponent } from 'src/app/shared';
+import {
+  APP_COLORS,
+  DataService,
+  DeviceService,
+  SharedFabComponent,
+} from 'src/app/shared';
 import { ListShopEmptyComponent } from './components/list-shop-empty/list-shop-empty.component';
 import { ListShopFabActionsComponent } from './components/list-shop-fab-actions/list-shop-fab-actions.component';
 import { ListShopFooterComponent } from './components/list-shop-footer/list-shop-footer.component';
 import { ListShopHeaderComponent } from './components/list-shop-header/list-shop-header.component';
 import { ListShopListComponent } from './components/list-shop-list/list-shop-list.component';
+import { INITIAL_CURRENT_DRAFT } from './constants/list-shop.config';
 import { ListShopDataManagerService } from './services/list-shop-data-manager.service';
 import { ListShopDialogsService } from './services/list-shop-dialogs.service';
 import { ListShopStateService } from './services/list-shop-state.service';
@@ -43,6 +56,8 @@ export class ListShopPage {
   private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
   private deviceService = inject(DeviceService);
+  private readonly dataManager = inject(ListShopDataManagerService);
+  private readonly dataService = inject(DataService);
   private platform = inject(Platform);
   private backBtnSubs?: Subscription;
   private itemShopList = viewChild(ListShopListComponent);
@@ -51,8 +66,34 @@ export class ListShopPage {
 
   protected emptyList = computed(() => this.state.listItemShop().length === 0);
 
-  ionViewWillEnter() {
+  constructor() {
+    effect(
+      () => {
+        const mode = this.state.mode();
+        untracked(() => {
+          this.dataService.saveData('currentMode', mode);
+        });
+      },
+      { forceRoot: true },
+    );
+
+    console.log(
+      '%ctodo: Disminuir el precio de 10 pesos',
+      'color: #1a4704; background-color: #d0f0c0;',
+    );
+    console.log(
+      '%ctodo: Poner colores a los botones de acción de las listas, confunden',
+      'color: #1a4704; background-color: #d0f0c0;',
+    );
+  }
+
+  async ionViewWillEnter() {
     this.deviceService.changeStatusBarColor(APP_COLORS.primary);
+    const currentDraft = await this.dataManager.getCurrentDraftList();
+
+    this.state.currentDraft.set(
+      currentDraft ? currentDraft : INITIAL_CURRENT_DRAFT,
+    );
   }
 
   ionViewDidEnter() {

@@ -11,6 +11,7 @@ export const DEFAULT_NOTIFY_CONFIG: ToastOptions = {
       icon: 'close',
     },
   ],
+  cssClass: 'toast-white',
 };
 
 export const NOTIFY_MESSAGES = {
@@ -18,4 +19,5 @@ export const NOTIFY_MESSAGES = {
   checkStoreGuard: 'Antes de comenzar, primero agrega una tienda.',
   checkDraftGuard: 'No hay borradores por revisar.',
   checkArchiveGuard: 'El historial esta vacío.',
+  oneDraftMessage: 'Se ha encontrado un solo borrador.',
 };

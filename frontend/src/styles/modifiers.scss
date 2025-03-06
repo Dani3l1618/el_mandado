@@ -89,3 +89,8 @@ ion-popover.el-mandado-home-popover{
     width: fit-content;
   }
 }
+
+.toast-white{
+  --background: var(--ion-color-white);
+  --color: var(--ion-color-white-contrast);
+}

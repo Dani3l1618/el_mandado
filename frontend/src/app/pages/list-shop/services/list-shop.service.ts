@@ -1,7 +1,8 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppRoutes } from 'src/app/AppRoutes';
-import { DataService } from 'src/app/shared';
+import { DataService, NOTIFY_MESSAGES } from 'src/app/shared';
+import { NotifyService } from 'src/app/shared/services/notify.service';
 import { Store } from '../../tiendas/models';
 import { LS_MODE } from '../constants/list-shop.config';
 import {
@@ -24,6 +25,7 @@ export class ListShopService {
   private dataManager = inject(ListShopDataManagerService);
   private dialogService = inject(ListShopDialogsService);
   private state = inject(ListShopStateService);
+  private notify = inject(NotifyService);
 
   constructor() {
     const url = this.router.url;
@@ -41,6 +43,10 @@ export class ListShopService {
   }
 
   async initNewMode(): Promise<void> {
+    const currentDraft = await this.retrieveCurrentDraft('new');
+    if (currentDraft) {
+      return this.setCurrentDraft(currentDraft);
+    }
     await this.getStores();
     const storeConfig = await this.openListConfig();
 
@@ -53,22 +59,29 @@ export class ListShopService {
   }
 
   async initDraftMode(): Promise<void> {
-    const drafts =  await this.getDrafts();
+    const drafts = await this.getDrafts();
     let listOnEdit: ListShop | undefined = undefined;
+    const currentDraft = await this.retrieveCurrentDraft('draft');
 
-    if(drafts.length === 1){
+    if (currentDraft) {
+      return this.setCurrentDraft(currentDraft);
+    }
+
+    if (drafts.length === 1) {
       listOnEdit = drafts.at(0);
-    }else{
+      this.notify.notify({
+        message: NOTIFY_MESSAGES.oneDraftMessage,
+      });
+    } else {
       listOnEdit = await this.openDraftConfig();
     }
 
     if (!listOnEdit) {
-      return this.returnHome();
+      this.returnHome();
+      return;
     }
 
-    this.state.listOnEdit.set(listOnEdit);
-
-    this.setListShop(this.state.listOnEdit()!);
+    this.setCurrentDraft(listOnEdit);
   }
 
   async initViewMode() {
@@ -89,6 +102,26 @@ export class ListShopService {
     if (!newListConfig) return;
 
     this.state.storeConfig.set(newListConfig);
+  }
+
+  async setCurrentDraft(currentDraft: ListShop) {
+    this.state.listOnEdit.set(currentDraft);
+    this.setListShop(currentDraft);
+  }
+
+  async retrieveCurrentDraft(mode: ListShopMode): Promise<ListShop | null> {
+    const currentDraft = await this.dataManager.getDraftList(mode);
+
+    const showDialog = !!currentDraft && this.state.mode() === mode;
+
+    if (showDialog) {
+      const wantRetrieve = await this.dialogService.openRetrieveDraftDialog();
+      if (wantRetrieve) return currentDraft;
+
+      this.dataManager.updateCurrentDraft(mode, null);
+    }
+
+    return null;
   }
 
   //.- Item List management
@@ -140,24 +173,22 @@ export class ListShopService {
 
   async saveListShopOnDrafts() {
     this.deleteEmptyItem();
+    const mode = this.state.mode();
 
     await this.saveDraft();
 
-    if (this.state.mode() === 'new') {
-      await this.dataManager.saveListShopOnDrafts();
-    } else {
-      await this.dataManager.updateListShopOnDrafts();
+    if (mode === 'new' || mode === 'draft') {
+      await this.dataManager.storeListShopOnDrafts(mode);
     }
+
     this.returnHome();
   }
 
   async saveDraft() {
-    const list = await this.dataManager.saveDraftList();
-
-    this.state.currentDraft.set(list);
+    await this.dataManager.saveDraftList();
   }
 
-  async getDrafts(): Promise<ListShop []> {
+  async getDrafts(): Promise<ListShop[]> {
     const drafts = await this.dataManager.getDrafts();
 
     this.state.listDrafts.set(drafts);
@@ -182,7 +213,8 @@ export class ListShopService {
   }
 
   async hanldeExit() {
-    const exit = await this.dialogService.hanldeExit(this.state.mode());
+    const mode = this.state.mode();
+    const exit = await this.dialogService.hanldeExit(mode);
 
     if (exit) {
       this.returnHome();
@@ -206,13 +238,14 @@ export class ListShopService {
 
     const { budget, storeId, items, time } = listOnEdit;
     const store = await this.getStoreBy(storeId);
+    const mode = this.state.mode();
 
     if (!store) return;
 
     this.state.storeConfig.set({ budget, store });
     this.state.listItemShop.set(items);
     this.state.timeInStore.set(time);
-    this.state.currentDraft.set(listOnEdit);
+    this.dataManager.updateCurrentDraft(mode, listOnEdit);
   }
 
   public async archiveDraft() {
@@ -220,25 +253,22 @@ export class ListShopService {
     if (!confirmation) return;
 
     this.dataManager.archiveList();
-
     this.returnHome();
-    this.resetListShopState();
   }
 
-  public async deleteDrafr() {
+  public async deleteDraft() {
     const confirmation = await this.dialogService.openDeleteDraftConfirmation();
 
     if (!confirmation) return;
 
     await this.dataManager.deleteDraftOfList(this.state.listOnEdit()!.id);
     this.returnHome();
-    this.resetListShopState();
   }
 
   //.- Private
   private resetListShopState() {
-    this.state.reset();
-    this.dataManager.reset();
+    this.dataManager.resetCurrentDraft(); //primero actualiza el currentDraft  con el mode y
+    this.state.reset(); //después actualiza el mode a none
   }
 
   private deleteEmptyItem() {

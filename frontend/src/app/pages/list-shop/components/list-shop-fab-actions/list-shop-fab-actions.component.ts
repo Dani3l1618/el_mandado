@@ -48,7 +48,7 @@ export class ListShopFabActionsComponent {
   }
 
   onDelete() {
-    this.listShopService.deleteDrafr();
+    this.listShopService.deleteDraft();
   }
 
   onEdit() {
