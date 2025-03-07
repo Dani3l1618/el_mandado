@@ -7,10 +7,10 @@ export const MASK_CURRECY: MaskitoOptions = {
     decimalZeroPadding: false,
     precision: 2,
     decimalSeparator: '.',
-    min: 10,
+    min: 0.5,
     prefix: '$',
     thousandSeparator: ',',
-    max: 10000,
+    max: 50000,
   }),
 };
 
