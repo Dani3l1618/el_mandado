@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, viewChild } from '@angular/core';
 import {
   IonFab,
   IonFabButton,
@@ -20,25 +20,22 @@ const imports = [IonFab, IonFabButton, IonFabList, IonIcon];
 export class ListShopFabActionsComponent {
   private listShopService = inject(ListShopService);
   private state = inject(ListShopStateService);
+
+  private readonly fabButton = viewChild(IonFab);
   listItemShop = this.state.listItemShop.asReadonly();
   mode = this.state.mode.asReadonly();
+
+  closeFabButton() {
+    this.fabButton()?.close();
+  }
 
   onExit() {
     this.listShopService.hanldeExit();
   }
 
-  onSave() {
-    if (this.listItemShop().length === 0) return;
-    this.listShopService.saveDraft();
-  }
-
   async onDone() {
     if (this.listItemShop().length === 0) return;
-    const finish = await this.listShopService.openFinishShopConfirmation();
-
-    if (!finish) {
-      return this.onSave();
-    }
+    await this.listShopService.openFinishShopConfirmation();
 
     this.listShopService.saveListShopOnDrafts();
   }

@@ -138,7 +138,7 @@ export class ListShopFormComponent implements OnInit, AfterViewInit {
   }
 
   private saveItem(newItem: ListShopItemForm): void {
-    return this.listShopService.addNewItem(newItem);
+    this.listShopService.addNewItem(newItem);
   }
 
   private quantityListener() {

@@ -185,6 +185,7 @@ export class ListShopService {
   }
 
   async saveDraft() {
+    if (this.state.listItemShop().length === 0) return;
     await this.dataManager.saveDraftList();
   }
 

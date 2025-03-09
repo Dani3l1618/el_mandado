@@ -61,6 +61,7 @@ export class ListShopPage {
   private platform = inject(Platform);
   private backBtnSubs?: Subscription;
   private itemShopList = viewChild(ListShopListComponent);
+  private readonly listshopFab = viewChild(ListShopFabActionsComponent);
   shopDate = computed(() => this.state.listOnEdit()?.shopDate);
   mode = this.state.mode.asReadonly();
 
@@ -70,8 +71,10 @@ export class ListShopPage {
     effect(
       () => {
         const mode = this.state.mode();
+        const listShop = this.state.listItemShop();
         untracked(() => {
           this.dataService.saveData('currentMode', mode);
+          this.listShopService.saveDraft();
         });
       },
       { forceRoot: true },
@@ -119,6 +122,7 @@ export class ListShopPage {
   }
 
   protected openItemForm() {
+    this.listshopFab()?.closeFabButton();
     this.listShopService.openItemForm();
   }
 
