@@ -3,31 +3,28 @@
     <ion-icon name="chevron-up"></ion-icon>
   </ion-fab-button>
   <ion-fab-list side="top">
-    <ion-fab-button color="secondary" (click)="onExit()">
+    <ion-fab-button color="danger" (click)="onExit()">
       <ion-icon name="exit"></ion-icon>
     </ion-fab-button>
   
-    <ion-fab-button color="secondary" (click)="onSave()">
-      <ion-icon name="save"></ion-icon>
-    </ion-fab-button>
     <ion-fab-button color="secondary" (click)="onDone()">
       <ion-icon name="checkmark-done-circle"></ion-icon>
     </ion-fab-button>
 
     @if (mode() ==='draft') {
-      <ion-fab-button color="secondary" (click)="onArchive()">
-        <ion-icon name="book"></ion-icon>
+      <ion-fab-button color="primary" (click)="onArchive()">
+        <ion-icon name="save"></ion-icon>
       </ion-fab-button>
     }
   </ion-fab-list>
 
   @if(mode()==='draft'){
   <ion-fab-list side="end">
-      <ion-fab-button color="primary">
+      <ion-fab-button color="danger">
         <ion-icon name="trash" (click)="onDelete()"></ion-icon>
       </ion-fab-button>
       
-      <ion-fab-button color="primary">
+      <ion-fab-button color="secondary">
         <ion-icon name="pencil" (click)="onEdit()"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>
