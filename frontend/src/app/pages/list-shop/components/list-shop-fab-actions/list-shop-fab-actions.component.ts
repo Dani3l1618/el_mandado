@@ -35,9 +35,9 @@ export class ListShopFabActionsComponent {
 
   async onDone() {
     if (this.listItemShop().length === 0) return;
-    await this.listShopService.openFinishShopConfirmation();
+    const finish = await this.listShopService.openFinishShopConfirmation();
 
-    this.listShopService.saveListShopOnDrafts();
+    if (finish) this.listShopService.saveListShopOnDrafts();
   }
 
   onArchive() {
