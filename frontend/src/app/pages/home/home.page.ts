@@ -3,6 +3,7 @@ import {
   IonContent,
   IonRefresher,
   IonRefresherContent,
+  IonRouterOutlet,
   Platform,
 } from '@ionic/angular/standalone';
 import { TitleComponent } from 'src/app/shared';
@@ -34,6 +35,7 @@ const imports = [
 export class HomePage implements OnInit {
   private readonly homeService = inject(HomeService);
   private readonly platform = inject(Platform);
+  private readonly routerOutlet = inject(IonRouterOutlet);
 
   ngOnInit(): void {
     this.refreshData();
@@ -46,7 +48,7 @@ export class HomePage implements OnInit {
 
   listenExit() {
     this.platform.backButton.subscribeWithPriority(-1, () => {
-      this.homeService.openConfirmExit();
+      if (!this.routerOutlet.canGoBack()) this.homeService.openConfirmExit();
     });
   }
 
