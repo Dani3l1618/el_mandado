@@ -1,10 +1,9 @@
 import { Injectable, signal } from '@angular/core';
 import { PluginListenerHandle } from '@capacitor/core';
 import { Keyboard } from '@capacitor/keyboard';
-import { ShowOptions, SplashScreen } from '@capacitor/splash-screen';
 import { Animation, StatusBar } from '@capacitor/status-bar';
 import { APP_COLORS } from '../constants/color.model';
-import { HELLO_MESSAGE, SPLASH_SCREEN_SHOW } from '../constants/defaults';
+import { HELLO_MESSAGE } from '../constants/defaults';
 
 @Injectable({
   providedIn: 'root',
@@ -38,25 +37,6 @@ export class DeviceService {
     StatusBar.setOverlaysWebView({ overlay });
   }
 
-  public async showSplashScreen(
-    options: ShowOptions = SPLASH_SCREEN_SHOW,
-  ): Promise<void> {
-    return SplashScreen.show({ ...options });
-  }
-
-  public async hideSplashScreen(): Promise<void> {
-    return SplashScreen.hide();
-  }
-
-  public async initializeSplashScreen(): Promise<void> {
-    try {
-      await this.hideSplashScreen();
-      this.changeStatusBarColor(APP_COLORS.splash);
-      return this.showSplashScreen();
-    } catch {
-      console.log(HELLO_MESSAGE);
-    }
-  }
 
   public async detectKeyboard(): Promise<void> {
     const hideHanlder = await Keyboard.addListener('keyboardWillHide', () => {

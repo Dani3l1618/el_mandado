@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { IonApp, IonRouterOutlet, Platform } from '@ionic/angular/standalone';
-import { DeviceService, MediaService } from './shared';
+import { MediaService } from './shared';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,6 @@ import { DeviceService, MediaService } from './shared';
 })
 export class AppComponent {
   private mediaService = inject(MediaService);
-  private deviceService = inject(DeviceService);
   private platform = inject(Platform);
   constructor() {
     this.mediaService.registIcons();
@@ -22,6 +21,5 @@ export class AppComponent {
 
   async configApp() {
     await this.platform.ready();
-    this.deviceService.changeStatusBarColor();
   }
 }

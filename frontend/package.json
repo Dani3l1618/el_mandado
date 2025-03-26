@@ -36,6 +36,7 @@
     "@maskito/angular": "^3.2.0",
     "@maskito/core": "^3.2.0",
     "@maskito/kit": "^3.2.0",
+    "cordova-plugin-lottie-splashscreen": "^0.10.0",
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",
     "ionicons": "^7.2.1",
