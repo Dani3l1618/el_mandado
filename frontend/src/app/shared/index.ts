@@ -58,4 +58,6 @@ export * from './constants/state.catalog';
 
 //.- Directives
 
+export { ActiveBorderDirective } from './directives/active-border.directive';
 export { AutofocusDirective } from './directives/autofocus.directive';
+

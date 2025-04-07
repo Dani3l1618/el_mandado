@@ -1,5 +1,5 @@
 <ion-item-sliding class="list-shop-item-slide" [disabled]="!interactMode()">
-  <ion-item class="list-shop-item ion-no-padding mandado-item">
+  <ion-item #listItem class="list-shop-item ion-no-padding mandado-item" appActiveBorder [borderDisable]="!draftMode()">
 
     <span class="item-name" [class.item-name--empty]="item().name === ''">
       {{ item().name || "Incierto" }}

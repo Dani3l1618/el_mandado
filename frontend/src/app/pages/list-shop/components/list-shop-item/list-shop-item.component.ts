@@ -2,7 +2,11 @@ import { CurrencyPipe } from '@angular/common';
 import { Component, computed, inject, input, viewChild } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonItem, IonItemSliding } from '@ionic/angular/standalone';
-import { IconComponent, SharedListOptionsComponent } from 'src/app/shared';
+import {
+  ActiveBorderDirective,
+  IconComponent,
+  SharedListOptionsComponent,
+} from 'src/app/shared';
 import { ListShopItem } from '../../models/list-shop.model';
 import { ListShopStateService } from '../../services/list-shop-state.service';
 import { ListShopService } from '../../services/list-shop.service';
@@ -16,6 +20,7 @@ const imports = [
 
   IconComponent,
   SharedListOptionsComponent,
+  ActiveBorderDirective,
 ];
 
 @Component({
@@ -32,6 +37,7 @@ export class ListShopItemComponent {
   item = input.required<ListShopItem>();
 
   interactMode = computed(() => ['new', 'draft'].includes(this.state.mode()));
+  draftMode = computed(() => this.state.mode() === 'draft');
 
   modifyQuantity(quantity: 1 | -1) {
     const newQuantity = this.item().quantity + quantity;
