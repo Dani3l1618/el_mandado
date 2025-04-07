@@ -111,6 +111,12 @@ export class ListShopFormComponent implements OnInit, AfterViewInit {
     this.priceInput()?.setFocus();
   }
 
+  async selectText(input: IonInput) {
+    const htmlInput = await input.getInputElement();
+
+    htmlInput.select();
+  }
+
   private sendItem(): boolean {
     if (this.itemForm.invalid) {
       this.itemForm.markAllAsTouched();
